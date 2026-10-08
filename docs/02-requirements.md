@@ -79,7 +79,7 @@ REQ-AUTH-001
 | REQ-MSG-002 | Messages shall be displayed within the conversation history. | Relay README | Documented |
 | REQ-MSG-003 | Messages shall persist across application refresh and re-login. | Relay README | Documented |
 | REQ-MSG-004 | Message history shall support automatic scrolling behavior. | Relay README | Documented |
-| REQ-MSG-005 | Message history shall display calendar date separators. | Relay README | Documented |
+| REQ-MSG-005 | Message history shall display calendar date separators according to the documented date display rules. | Relay README / Developer clarification | Documented |
 
 ---
 

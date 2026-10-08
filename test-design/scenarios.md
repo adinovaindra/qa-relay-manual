@@ -349,7 +349,7 @@ Coverage considerations:
 
 ### SCN-MSG-006 — Calendar Date Separators
 
-Verify that message history displays calendar date separators.
+Verify that message history groups messages by calendar date and displays the appropriate date separator according to the documented date display rules.
 
 **Related Requirement:** REQ-MSG-005  
 **Risk Area:** User Experience  
@@ -357,8 +357,10 @@ Verify that message history displays calendar date separators.
 
 Coverage considerations:
 
+- Messages sent on the current date
+- Messages sent on the previous calendar date
+- Messages sent before the previous calendar date
 - Messages from the same calendar date
-- Messages across different calendar dates
 - Date separator placement
 - Date separator consistency after refresh
 - Date separator behavior when viewing message history
