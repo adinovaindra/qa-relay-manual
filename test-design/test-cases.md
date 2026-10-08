@@ -408,3 +408,253 @@ Exploratory discovery of application behavior does not by itself establish the e
 - The user is no longer in an authenticated state.
 - The protected chat functionality is no longer accessible to the logged-out user.
 
+### TC-AUTHZ-001-01 — Authorized User Accesses Existing Conversation
+
+| Field | Value |
+|---|---|
+| Test Case ID | TC-AUTHZ-001-01 |
+| Title | Authorized user accesses an existing conversation |
+| Related Scenario | SCN-AUTHZ-001 |
+| Related Requirement | REQ-AUTHZ-001, REQ-AUTHZ-002 |
+| Risk Level | High |
+| Test Design Method | Requirement-Based |
+| Test Type | Functional / Positive |
+| Priority | High |
+
+#### Preconditions
+
+- Relay is accessible.
+- User A is a registered user.
+- User B is a registered user.
+- A conversation exists between User A and User B.
+- User A's valid credentials are available.
+
+#### Test Data
+
+| Data | Value |
+|---|---|
+| Authorized User | User A |
+| Other Participant | User B |
+| Conversation | Existing conversation between User A and User B |
+
+#### Steps
+
+1. Open the Relay application.
+2. Sign in as User A using valid credentials.
+3. Navigate to the conversation between User A and User B.
+4. Observe the conversation displayed.
+
+#### Expected Result
+
+- User A can access the existing conversation.
+- The conversation content is displayed to User A.
+- The displayed conversation corresponds to the conversation between User A and User B.
+
+### TC-AUTHZ-004-01 — Message Is Attributed to the Authenticated User
+
+| Field | Value |
+|---|---|
+| Test Case ID | TC-AUTHZ-004-01 |
+| Title | Message is attributed to the authenticated user |
+| Related Scenario | SCN-AUTHZ-004 |
+| Related Requirement | REQ-AUTHZ-004 |
+| Risk Level | High |
+| Test Design Method | Requirement-Based |
+| Test Type | Functional / Positive |
+| Priority | High |
+
+#### Preconditions
+
+- Relay is accessible.
+- User A and User B are registered users.
+- A conversation exists between User A and User B.
+- User A's valid credentials are available.
+
+#### Test Data
+
+| Data | Value |
+|---|---|
+| Sender | User A |
+| Recipient | User B |
+| Message | Valid test message |
+
+#### Steps
+
+1. Open the Relay application.
+2. Sign in as User A using valid credentials.
+3. Navigate to the conversation between User A and User B.
+4. Enter the test message.
+5. Send the message.
+6. Observe the newly created message in the conversation.
+
+#### Expected Result
+
+- The message is created successfully.
+- The newly created message is attributed to User A.
+- The sender identity displayed for the message corresponds to the authenticated user who sent it.
+
+### TC-CONV-001-01 — Access an Existing One-on-One Conversation
+
+| Field | Value |
+|---|---|
+| Test Case ID | TC-CONV-001-01 |
+| Title | Access an existing one-on-one conversation |
+| Related Scenario | SCN-CONV-001 |
+| Related Requirement | REQ-CONV-001 |
+| Risk Level | High |
+| Test Design Method | Requirement-Based |
+| Test Type | Functional / Positive |
+| Priority | High |
+
+#### Preconditions
+
+- Relay is accessible.
+- User A and User B are registered users.
+- An existing one-on-one conversation between User A and User B is available.
+- User A's valid credentials are available.
+
+#### Test Data
+
+| Data | Value |
+|---|---|
+| User | User A |
+| Other Participant | User B |
+| Conversation | Existing conversation between User A and User B |
+
+#### Steps
+
+1. Open the Relay application.
+2. Sign in as User A using valid credentials.
+3. Navigate to the existing conversation between User A and User B.
+4. Observe the conversation displayed.
+
+#### Expected Result
+
+- User A can access the existing one-on-one conversation.
+- The conversation between User A and User B is displayed.
+
+### TC-CONV-002-01 — Retrieve an Existing Conversation
+
+| Field | Value |
+|---|---|
+| Test Case ID | TC-CONV-002-01 |
+| Title | Retrieve an existing conversation |
+| Related Scenario | SCN-CONV-002 |
+| Related Requirement | REQ-CONV-002 |
+| Risk Level | High |
+| Test Design Method | Requirement-Based |
+| Test Type | Functional / Positive |
+| Priority | High |
+
+#### Preconditions
+
+- Relay is accessible.
+- User A and User B are registered users.
+- An existing conversation between User A and User B is available.
+- User A's valid credentials are available.
+
+#### Test Data
+
+| Data | Value |
+|---|---|
+| User | User A |
+| Other Participant | User B |
+| Conversation | Existing conversation between User A and User B |
+
+#### Steps
+
+1. Open the Relay application.
+2. Sign in as User A using valid credentials.
+3. Verify that the chat page is displayed.
+4. Verify that the existing conversation with User B is present in the conversation list.
+5. Select the conversation with User B.
+6. Observe the conversation displayed in the main conversation panel.
+
+#### Expected Result
+
+- The existing conversation with User B is available in the conversation list.
+- Selecting the conversation retrieves and displays the existing conversation.
+- The displayed conversation corresponds to the existing conversation between User A and User B.
+
+### TC-CONV-002-02 — Create a New Conversation
+
+| Field | Value |
+|---|---|
+| Test Case ID | TC-CONV-002-02 |
+| Title | Create a new conversation |
+| Related Scenario | SCN-CONV-002 |
+| Related Requirement | REQ-CONV-002 |
+| Risk Level | High |
+| Test Design Method | Requirement-Based |
+| Test Type | Functional / Positive |
+| Priority | High |
+
+#### Preconditions
+
+- Relay is accessible.
+- User A and Alice are registered users.
+- No existing conversation between User A and Alice is available.
+- User A's valid credentials are available.
+
+#### Test Data
+
+| Data | Value |
+|---|---|
+| User | User A |
+| Conversation Participant | Alice |
+
+#### Steps
+
+1. Open the Relay application.
+2. Sign in as User A using valid credentials.
+3. Verify that the chat page is displayed.
+4. Open the **"Select a user"** dropdown under **"New Chat"**.
+5. Select **Alice**.
+6. Click the **"Start Chat"** button.
+7. Observe the conversation displayed in the main conversation panel.
+8. Observe the conversation list.
+
+#### Expected Result
+
+- A new conversation between User A and Alice is created.
+- The newly created conversation is displayed in the main conversation panel.
+- The newly created conversation is available in the conversation list.
+
+### TC-CONV-003-01 — Display Documented Conversation List Information
+
+- **Related Scenario:** SCN-CONV-003 — Conversation List Information
+- **Related Requirement:** REQ-CONV-003, REQ-CONV-004, REQ-CONV-005
+- **Risk Level:** Medium
+- **Test Design Method:** Requirement-Based
+- **Test Type:** Functional / Positive
+- **Priority:** Medium
+
+#### Preconditions
+
+- Relay is accessible.
+- A valid registered account for User A is available.
+- User A can authenticate successfully.
+- An existing 1-on-1 conversation between User A and User B is available.
+- The conversation has at least one message.
+
+#### Test Data
+
+- **User A:** Valid registered account
+- **User B:** Valid conversation counterpart
+- **Conversation:** Existing 1-on-1 conversation containing at least one message
+
+#### Steps
+
+1. Open Relay.
+2. Sign in using User A's valid credentials.
+3. Navigate to the chat page.
+4. Locate the existing conversation with User B in the conversation list.
+5. Inspect the conversation list entry.
+6. Verify the information displayed for the conversation.
+
+#### Expected Result
+
+- The conversation list entry displays the counterpart's name.
+- The conversation list entry displays the latest message preview.
+- The conversation list entry displays a timestamp associated with the conversation.
+
