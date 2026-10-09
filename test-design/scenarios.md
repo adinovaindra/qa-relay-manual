@@ -391,21 +391,23 @@ The exact expected content of empty states requires clarification where not defi
 
 ### SCN-UX-002 — Error States
 
-Verify that appropriate error states are displayed when relevant operations fail.
+Verify that appropriate error states and validation feedback are displayed when relevant application operations fail or required input is missing.
 
-**Related Requirement:** REQ-UX-006  
+**Related Requirement:** REQ-UX-006, REQ-AUTH-006  
 **Risk Area:** Error Handling  
 **Risk Level:** Medium
 
 Coverage considerations:
 
-- Error feedback when an operation fails
+- Validation feedback when a required authentication form field is left empty
+- Error feedback when login fails due to invalid credentials
+- Error feedback when registration fails
 - Error message visibility
 - Error message clarity
 - Recovery after an error
 - Error state does not expose inappropriate information
 
-The exact expected error-state content requires clarification where not defined by available documentation.
+The required-field validation tooltip `Please fill out this field.` is confirmed by developer clarification for empty required authentication form fields. Exact expected behavior for other error conditions requires clarification where not defined by available requirements or developer clarification.
 
 ---
 
@@ -470,88 +472,152 @@ The following exploratory scenarios target behaviors identified as requirement g
 
 They are not treated as definitive requirement-based PASS/FAIL scenarios until expected behavior is established.
 
-### SCN-EXP-001 — Duplicate Registration
+**SCN-EXP-001 — Invalid Registration Input**
 
-Explore the behavior when attempting to register an account using an already registered account identifier.
+**Exploration Objective**
 
-**Related Requirement Gap:** Duplicate account behavior
+Explore how Relay handles registration email inputs with different formats, observe client-side and application-level validation responses, and identify behaviors requiring clarification.
 
-Purpose:
+**Charter**
 
-- Observe actual application behavior.
-- Determine whether duplicate registration is prevented.
-- Identify the user feedback provided.
-- Determine whether the behavior requires clarification or defect investigation.
+Investigate email-format validation during registration by trying variations of email input and observing the resulting behavior. Record the validation response, whether registration proceeds, and whether the account is successfully created. Identify differences between browser-level feedback and errors displayed by the application.
 
----
+**Known Observations**
 
-### SCN-EXP-002 — Invalid Registration Input
+- An email ending in a trailing dot is rejected with a browser validation tooltip.
+- Another email format produces `invalid request data` on the Relay page after Register is clicked.
+- An email using the `@yaho.com` domain is accepted, and registration completes successfully.
 
-Explore how Relay handles invalid or incomplete registration input.
+**Requirement Gap**
 
-**Related Requirement Gap:** Registration validation rules
+The expected email-format validation rules and the intended handling of invalid email input have not been confirmed.
 
-Purpose:
+**Exit Criteria**
 
-- Identify validation behavior.
-- Observe error feedback.
-- Determine whether validation rules are consistent.
-
----
-
-### SCN-EXP-003 — Invalid or Expired Session
-
-Explore application behavior when the authentication state is no longer valid.
-
-**Related Requirement Gap:** Session expiration behavior
-
-Purpose:
-
-- Observe protected resource behavior.
-- Observe user-facing feedback.
-- Determine how the application handles an invalid session.
+- Relevant input variations and actual responses are documented.
+- Observable differences between validation responses are recorded.
+- Behaviors without a confirmed expected result are marked for clarification rather than classified as defects.
 
 ---
 
-### SCN-EXP-004 — Invalid Conversation Reference
+**SCN-EXP-002 — Invalid or Expired Session**
 
-Explore application behavior when a user attempts to access a conversation that does not exist or is not accessible.
+**Exploration Objective**
 
-**Related Requirement Gap:** Invalid or non-existent conversation behavior
+Explore how Relay handles access to protected resources when the user's authentication state is no longer valid, and identify behaviors requiring clarification.
 
-Purpose:
+**Charter**
 
-- Observe authorization behavior.
-- Observe error handling.
-- Determine whether the application exposes inappropriate information.
+Investigate Relay's authentication behavior by observing the browser state after login and logout, then attempting to access a protected resource after logout. Record observable changes to the authentication cookie, navigation behavior, and user-facing feedback. Identify session-expiration behavior that requires further exploration.
+
+**Known Observations**
+
+- The `auth_token` cookie is present in the browser after login.
+- The `auth_token` cookie is no longer present in the browser after logout.
+- Navigating to `/chat` after logout results in an automatic redirect to `/login`.
+- Reuse of a previously issued authentication token after logout has not been tested.
+
+**Requirement Gap**
+
+The expected behavior for expired sessions and invalid authentication states has not been fully confirmed. The extent to which logout invalidates a previously issued authentication token has not been verified.
+
+**Exit Criteria**
+
+- Observable authentication behavior during login, logout, and protected resource access is documented.
+- Session-expiration behavior requiring further exploration is identified.
+- Behaviors without a confirmed expected result are marked for clarification rather than classified as defects.
 
 ---
 
-### SCN-EXP-005 — Empty or Whitespace Message
+**SCN-EXP-003 — Invalid Conversation Reference**
 
-Explore application behavior when attempting to send an empty or whitespace-only message.
+**Exploration Objective**
 
-**Related Requirement Gap:** Message validation rules
+Explore how Relay handles attempts to access conversations using invalid references or valid conversation references that are not accessible to the current user, and identify behaviors requiring clarification.
 
-Purpose:
+**Charter**
 
-- Observe whether empty content is accepted or rejected.
-- Observe validation feedback.
-- Determine whether additional requirement clarification is needed.
+Investigate Relay's behavior when accessing a conversation through the `conversationId` query parameter. Try an invalid conversation ID, access a valid conversation URL using an account that is not involved in the conversation, and access the same URL using the correct account. Record the resulting page behavior, user-facing feedback, and differences between the observed outcomes. Identify behaviors that require further clarification.
+
+**Known Observations**
+
+- Accessing `/chat` with an invalid `conversationId` (`invalid-conversation-id`) results in an error page displaying `A server error occurred. Reload to try again.`
+- Accessing a valid conversation URL while logged in with an account that is not involved in the conversation results in the same error page.
+- Accessing the same valid conversation URL while logged in with the correct account allows the conversation to open successfully.
+- The underlying cause of the observed error behavior has not been independently verified.
+
+**Requirement Gap**
+
+The expected behavior for invalid conversation references and attempts to access conversations that the current user is not authorized to access has not been fully confirmed. The intended user-facing error handling for these conditions also requires clarification.
+
+**Exit Criteria**
+
+- Observable behavior for invalid conversation references is documented.
+- Behavior when accessing a valid conversation URL from different account contexts is documented.
+- User-facing error messages and successful access behavior are recorded.
+- Behaviors without a confirmed expected result are marked for clarification rather than classified as defects.
 
 ---
 
-### SCN-EXP-006 — Message Length Boundary
+**SCN-EXP-004 — Empty or Whitespace Message**
 
-Explore application behavior to determine whether a message length boundary exists and how the application behaves near and beyond it.
+**Exploration Objective**
 
-**Related Requirement Gap:** Maximum message length
+Explore how Relay handles attempts to send empty or whitespace-only messages and identify behaviors requiring clarification.
 
-Purpose:
+**Charter**
 
-- Determine whether a message length limit exists.
-- Observe behavior at the boundary.
-- Observe behavior beyond the boundary.
+Investigate message input validation by attempting to send a message with an empty input field and an input containing only whitespace. Observe the state of the Send button, whether the action can be triggered, and any validation feedback provided by the application. Record differences between the observed behaviors and identify any remaining requirement gaps.
+
+**Known Observations**
+
+- When the message input is empty, the Send button appears disabled and cannot be clicked.
+- When the message input contains whitespace only, the Send button remains disabled and cannot be clicked.
+- The cursor changes to a prohibited symbol when hovering over the disabled Send button, according to direct observation.
+- No message submission or validation feedback was observed during these attempts.
+
+**Requirement Gap**
+
+The expected validation rules for empty and whitespace-only messages have not been formally confirmed. The observed UI behavior is documented, but server-side handling has not been independently verified.
+
+**Exit Criteria**
+
+- Observable behavior for empty and whitespace-only message inputs is documented.
+- The Send button state and available user interaction are recorded for both conditions.
+- Behaviors without a confirmed expected result are marked for clarification rather than classified as defects.
+
+---
+
+**SCN-EXP-005 — Message Length Boundary**
+
+**Exploration Objective**
+
+Explore whether Relay imposes a message length boundary, observe how the application handles long message inputs, and identify behaviors requiring clarification.
+
+**Charter**
+
+Investigate message length handling by entering messages of different lengths and observing the input field, Send button state, and submission behavior. Examine whether the UI exposes a character limit and whether a long message can be submitted and displayed successfully. Record the observed behavior and identify any remaining uncertainty regarding the maximum permitted message length.
+
+**Known Observations**
+
+- A short message (`Test Message 123`) can be entered, and the Send button is active.
+- A message of approximately 100 characters can be entered, and the Send button is active.
+- The textarea can accommodate approximately 10,000 words without visibly truncating the entered text.
+- The Send button remains active when the textarea contains a very large amount of text.
+- The inspected `textarea#message-input` element does not contain a `maxlength` attribute.
+- A message containing exactly 1,000 characters, verified using Notepad++, was successfully submitted and displayed in the conversation.
+- No explicit message length indicator or maximum-length guidance was observed in the UI.
+
+**Requirement Gap**
+
+The maximum permitted message length and the expected behavior when that limit is reached or exceeded have not been confirmed. The observations do not establish whether a limit is enforced during submission or by server-side validation.
+
+**Exit Criteria**
+
+- Observable input behavior for messages of different lengths is documented.
+- The Send button state and submission result for a 1,000-character message are recorded.
+- Any visible length indicators or input restrictions are documented.
+- Behaviors without a confirmed expected result are marked for clarification rather than classified as defects.
 
 ---
 
@@ -592,7 +658,7 @@ The current scenario set covers:
 | Conversations                  |              4 |
 | Messaging                      |              6 |
 | User Experience                |              5 |
-| Exploratory / Requirement Gaps |              6 |
-| **Total**                      |         **30** |
+| Exploratory / Requirement Gaps |              5 |
+| **Total**                      |         **29** |
 
 The scenario count is not intended to represent final test case count. Individual scenarios may produce multiple test cases covering positive, negative, boundary, and edge conditions.

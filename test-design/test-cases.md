@@ -119,18 +119,18 @@ Exploratory discovery of application behavior does not by itself establish the e
 - The registration request creates a new user account.
 - The newly created account can be used to authenticate successfully.
 
-### TC-AUTH-001-02 — Required Field Behavior
+### TC-AUTH-001-02 — Required Field Validation During Registration
 
-| Field               | Value                                                                 |
-| ------------------- | --------------------------------------------------------------------- |
-| Test Case ID        | TC-AUTH-001-02                                                        |
-| Title               | Investigate registration behavior when a required field is left empty |
-| Related Scenario    | SCN-AUTH-001                                                          |
-| Related Requirement | REQ-AUTH-001                                                          |
-| Risk Level          | High                                                                  |
-| Test Design Method  | Exploratory + Clarification-Driven                                    |
-| Test Type           | Functional / Negative                                                 |
-| Priority            | High                                                                  |
+| Field               | Value                                                |
+| ------------------- | ---------------------------------------------------- |
+| Test Case ID        | TC-AUTH-001-02                                       |
+| Title               | Verify required field validation during registration |
+| Related Scenario    | SCN-AUTH-001, SCN-UX-002                             |
+| Related Requirement | REQ-AUTH-001, REQ-AUTH-006                           |
+| Risk Level          | High                                                 |
+| Test Design Method  | Requirement-Based + Exploratory                      |
+| Test Type           | Functional / Negative                                |
+| Priority            | High                                                 |
 
 #### Preconditions
 
@@ -154,30 +154,37 @@ Exploratory discovery of application behavior does not by itself establish the e
 3. Leave one registration field empty.
 4. Enter valid data in the remaining fields.
 5. Click the "Create account" button.
-6. Observe the result of the registration attempt.
+6. Observe the validation behavior and any error message displayed.
+7. Repeat the test with each registration field left empty individually.
+8. Leave all registration fields empty and click the "Create account" button.
+9. Observe which field receives validation feedback first.
 
 #### Expected Result
 
-- Clarification Required — the available product documentation does not define the expected behavior when a registration field is left empty.
+- Registration is not completed when a required registration field is left empty.
+- The application displays the validation tooltip "Please fill out this field." for an empty required authentication form field.
+- Validation feedback is associated with the field requiring input.
+- The exact validation order when multiple required fields are empty is not specified by the requirement.
 
-### TC-AUTH-001-03 — Duplicate Account Behavior
+### TC-AUTH-001-03 — Registration with an Existing Email Address
 
-| Field               | Value                                                     |
-| ------------------- | --------------------------------------------------------- |
-| Test Case ID        | TC-AUTH-001-03                                            |
-| Title               | Investigate registration behavior for an existing account |
-| Related Scenario    | SCN-AUTH-001                                              |
-| Related Requirement | REQ-AUTH-001                                              |
-| Risk Level          | High                                                      |
-| Test Design Method  | Exploratory + Clarification-Driven                        |
-| Test Type           | Functional / Negative                                     |
-| Priority            | High                                                      |
+| Field               | Value                                                |
+| ------------------- | ---------------------------------------------------- |
+| Test Case ID        | TC-AUTH-001-03                                       |
+| Title               | Verify registration behavior for an existing account |
+| Related Scenario    | SCN-AUTH-001, SCN-UX-002                             |
+| Related Requirement | REQ-AUTH-001                                         |
+| Risk Level          | High                                                 |
+| Test Design Method  | Clarification-Driven + Exploratory                   |
+| Test Type           | Functional / Negative                                |
+| Priority            | High                                                 |
 
 #### Preconditions
 
 - Relay is accessible.
 - An existing user account is available.
 - The tester is not authenticated.
+- The existing account's email address is known.
 
 #### Test Data
 
@@ -197,49 +204,60 @@ Exploratory discovery of application behavior does not by itself establish the e
 5. Enter a valid password according to the application's supported requirements.
 6. Enter the same password in the "Confirm password" field.
 7. Click the "Create account" button.
-8. Observe the result of the registration attempt.
+8. Observe the registration result and any error message displayed.
 
 #### Expected Result
 
-- Clarification Required — the available product documentation does not define the expected behavior when an existing account's email address is submitted during registration.
+- Observe whether registration is accepted or rejected when an existing email address is submitted.
+- Record the actual application response and any error feedback displayed.
+- Determine whether a second account is created using the existing email address.
+- The definitive expected behavior requires clarification because duplicate account behavior is not specified by the available requirements.
 
-### TC-AUTH-001-04 — Registration Error Handling
+### TC-AUTH-001-04 — Registration Password Confirmation Validation
 
-| Field               | Value                                               |
-| ------------------- | --------------------------------------------------- |
-| Test Case ID        | TC-AUTH-001-04                                      |
-| Title               | Investigate error handling during user registration |
-| Related Scenario    | SCN-AUTH-001                                        |
-| Related Requirement | REQ-AUTH-001                                        |
-| Risk Level          | High                                                |
-| Test Design Method  | Exploratory + Clarification-Driven                  |
-| Test Type           | Functional / Negative                               |
-| Priority            | High                                                |
+| Field               | Value                                                       |
+| ------------------- | ----------------------------------------------------------- |
+| Test Case ID        | TC-AUTH-001-04                                              |
+| Title               | Verify password confirmation validation during registration |
+| Related Scenario    | SCN-AUTH-001, SCN-UX-002                                    |
+| Related Requirement | REQ-AUTH-001                                                |
+| Risk Level          | High                                                        |
+| Test Design Method  | Clarification-Driven + Exploratory                          |
+| Test Type           | Functional / Negative                                       |
+| Priority            | High                                                        |
 
 #### Preconditions
 
 - Relay is accessible.
 - The tester is not authenticated.
-- A registration condition capable of producing an error is available.
+- The test email address has not been registered previously.
 
 #### Test Data
 
-| Data               | Value                                                  |
-| ------------------ | ------------------------------------------------------ |
-| Registration Input | Valid registration data                                |
-| Error Condition    | Registration request resulting in an application error |
+| Data             | Value                                        |
+| ---------------- | -------------------------------------------- |
+| Name             | Valid test user name                         |
+| Email            | Unique test email address                    |
+| Password         | Valid test password                          |
+| Confirm Password | A password different from the password field |
 
 #### Steps
 
 1. Open the Relay application.
 2. Navigate to the registration page.
-3. Enter valid registration data.
-4. Submit the registration request under the selected error condition.
-5. Observe the result of the registration attempt.
+3. Enter a valid name.
+4. Enter a unique email address.
+5. Enter a valid password in the "Password" field.
+6. Enter a different password in the "Confirm password" field.
+7. Click the "Create account" button.
+8. Observe the registration result and any error message displayed.
 
 #### Expected Result
 
-- Clarification Required — the available product documentation does not define the expected error behavior for registration failures.
+- Observe the registration behavior when the password and confirm password values do not match.
+- Record whether registration is accepted or rejected.
+- Record the actual error feedback, if any.
+- The definitive expected behavior requires clarification because password confirmation behavior is not specified by the available requirements.
 
 ### TC-AUTH-002-01 — Login with Valid Credentials
 
@@ -285,13 +303,61 @@ Exploratory discovery of application behavior does not by itself establish the e
 - The user enters an authenticated state.
 - The protected chat functionality is accessible to the authenticated user.
 
-### TC-AUTH-003-01 — Login with Invalid Password
+### TC-AUTH-002-02 — Required Field Validation During Login
+
+| Field               | Value                                         |
+| ------------------- | --------------------------------------------- |
+| Test Case ID        | TC-AUTH-002-02                                |
+| Title               | Verify required field validation during login |
+| Related Scenario    | SCN-UX-002                                    |
+| Related Requirement | REQ-AUTH-002, REQ-AUTH-006                    |
+| Risk Level          | High                                          |
+| Test Design Method  | Requirement-Based + Exploratory               |
+| Test Type           | Functional / Negative                         |
+| Priority            | High                                          |
+
+#### Preconditions
+
+- Relay is accessible.
+- The tester is not authenticated.
+
+#### Test Data
+
+| Data        | Value                                           |
+| ----------- | ----------------------------------------------- |
+| Email       | Registered test user's email, or empty          |
+| Password    | Registered test user's valid password, or empty |
+| Empty Field | Email and/or password intentionally left empty  |
+
+#### Steps
+
+1. Open the Relay application.
+2. Verify that the login page is displayed.
+3. Leave both the email and password fields empty.
+4. Click the "Sign in" button.
+5. Observe which field receives validation feedback and the message displayed.
+6. Enter a valid email address while leaving the password field empty.
+7. Click the "Sign in" button.
+8. Observe the validation feedback displayed.
+9. Enter a valid password while leaving the email field empty.
+10. Click the "Sign in" button.
+11. Observe the validation feedback displayed.
+
+#### Expected Result
+
+- Login is not completed when a required authentication field is left empty.
+- The application displays the validation tooltip "Please fill out this field." for an empty required authentication form field.
+- When both fields are empty, validation feedback is observed on the email field first.
+- When only the password field is empty, validation feedback is associated with the password field.
+- When only the email field is empty, validation feedback is associated with the email field.
+
+### TC-AUTH-003-01 — Login with an Invalid Password
 
 | Field               | Value                           |
 | ------------------- | ------------------------------- |
 | Test Case ID        | TC-AUTH-003-01                  |
 | Title               | Login with an invalid password  |
-| Related Scenario    | SCN-AUTH-003                    |
+| Related Scenario    | SCN-AUTH-003, SCN-UX-002        |
 | Related Requirement | REQ-AUTH-002                    |
 | Risk Level          | High                            |
 | Test Design Method  | Requirement-Based + Exploratory |
@@ -318,22 +384,23 @@ Exploratory discovery of application behavior does not by itself establish the e
 2. Verify that the login page is displayed.
 3. Enter the registered user's email address.
 4. Enter an incorrect password.
-5. Click the **"Sign in"** button.
-6. Observe the result of the login attempt.
+5. Click the "Sign in" button.
+6. Observe the result of the login attempt and any error message displayed.
 
 #### Expected Result
 
-- Authentication does not succeed with the invalid password.
+- Authentication does not succeed with the provided invalid credentials.
 - The user does not enter an authenticated state.
-- Specific error behavior: **Clarification Required** due to lack of information defined by the available product documentation.
+- The application provides error feedback for the failed login attempt.
+- The exact error message is not specified by the available requirements and must be recorded during execution.
 
-### TC-AUTH-003-02 — Login with Unknown Account
+### TC-AUTH-003-02 — Login with an Unknown Account
 
 | Field               | Value                           |
 | ------------------- | ------------------------------- |
 | Test Case ID        | TC-AUTH-003-02                  |
 | Title               | Login with an unknown account   |
-| Related Scenario    | SCN-AUTH-003                    |
+| Related Scenario    | SCN-AUTH-003, SCN-UX-002        |
 | Related Requirement | REQ-AUTH-002                    |
 | Risk Level          | High                            |
 | Test Design Method  | Requirement-Based + Exploratory |
@@ -359,14 +426,15 @@ Exploratory discovery of application behavior does not by itself establish the e
 2. Verify that the login page is displayed.
 3. Enter an email address that is not associated with a registered Relay account.
 4. Enter a test password.
-5. Click the **"Sign in"** button.
-6. Observe the result of the login attempt.
+5. Click the "Sign in" button.
+6. Observe the result of the login attempt and any error message displayed.
 
 #### Expected Result
 
-- Authentication does not succeed for the unknown account.
+- Authentication does not succeed with the provided invalid credentials.
 - The user does not enter an authenticated state.
-- Specific error behavior: **Clarification Required** due to lack of information defined by the available product documentation.
+- The application provides error feedback for the failed login attempt.
+- The exact error message is not specified by the available requirements and must be recorded during execution.
 
 ### TC-AUTH-004-01 — Logout from Authenticated Session
 
@@ -407,6 +475,45 @@ Exploratory discovery of application behavior does not by itself establish the e
 - The user is logged out successfully.
 - The user is no longer in an authenticated state.
 - The protected chat functionality is no longer accessible to the logged-out user.
+
+### TC-AUTH-005-01 — Access Protected Chat Without Authentication
+
+| Field               | Value                                        |
+| ------------------- | -------------------------------------------- |
+| Test Case ID        | TC-AUTH-005-01                               |
+| Title               | Access Protected Chat Without Authentication |
+| Related Scenario    | SCN-AUTH-005                                 |
+| Related Requirement | REQ-AUTH-004, REQ-AUTH-005                   |
+| Risk Level          | High                                         |
+| Test Design Method  | Requirement-Based + Risk-Based               |
+| Test Type           | Functional / Negative                        |
+| Priority            | High                                         |
+
+#### Preconditions
+
+- The user is logged out of Relay.
+- No valid authenticated session is available in the browser.
+- The Relay application is accessible.
+
+#### Test Data
+
+| Data                 | Value           |
+| -------------------- | --------------- |
+| Protected Route      | `/chat`         |
+| Authentication State | Unauthenticated |
+
+#### Steps
+
+1. Open Relay in a browser where no authenticated session is available.
+2. Navigate directly to `/chat`.
+3. Observe the resulting page and URL.
+4. Verify whether protected chat content is accessible.
+
+#### Expected Result
+
+- The unauthenticated user cannot access protected chat functionality.
+- The application redirects the user to `/login`, consistent with the observed application behavior.
+- Protected conversation content is not displayed to the unauthenticated user.
 
 ### TC-AUTHZ-001-01 — Authorized User Accesses Existing Conversation
 
@@ -622,16 +729,16 @@ Exploratory discovery of application behavior does not by itself establish the e
 
 ### TC-CONV-003-01 — Display Documented Conversation List Information
 
-| Field | Value |
-|---|---|
-| Test Case ID | TC-CONV-003-01 |
-| Title | Display documented conversation list information |
-| Related Scenario | SCN-CONV-003 |
-| Related Requirement | REQ-CONV-003, REQ-CONV-004, REQ-CONV-005 |
-| Risk Level | Medium |
-| Test Design Method | Requirement-Based |
-| Test Type | Functional / Positive |
-| Priority | Medium |
+| Field               | Value                                            |
+| ------------------- | ------------------------------------------------ |
+| Test Case ID        | TC-CONV-003-01                                   |
+| Title               | Display documented conversation list information |
+| Related Scenario    | SCN-CONV-003                                     |
+| Related Requirement | REQ-CONV-003, REQ-CONV-004, REQ-CONV-005         |
+| Risk Level          | Medium                                           |
+| Test Design Method  | Requirement-Based                                |
+| Test Type           | Functional / Positive                            |
+| Priority            | Medium                                           |
 
 #### Preconditions
 
@@ -643,11 +750,11 @@ Exploratory discovery of application behavior does not by itself establish the e
 
 #### Test Data
 
-| Data | Value |
-|---|---|
-| User | User A |
-| Conversation Participant | User B |
-| Conversation | Existing 1-on-1 conversation containing at least one message |
+| Data                     | Value                                                        |
+| ------------------------ | ------------------------------------------------------------ |
+| User                     | User A                                                       |
+| Conversation Participant | User B                                                       |
+| Conversation             | Existing 1-on-1 conversation containing at least one message |
 
 #### Steps
 
@@ -666,16 +773,16 @@ Exploratory discovery of application behavior does not by itself establish the e
 
 ### TC-CONV-004-01 — Conversation List Reflects Latest Message Activity
 
-| Field | Value |
-|---|---|
-| Test Case ID | TC-CONV-004-01 |
-| Title | Conversation list reflects latest message activity |
-| Related Scenario | SCN-CONV-004 |
-| Related Requirement | REQ-CONV-006 |
-| Risk Level | Medium |
-| Test Design Method | Requirement-Based + Risk-Based |
-| Test Type | Functional / Positive |
-| Priority | Medium |
+| Field               | Value                                              |
+| ------------------- | -------------------------------------------------- |
+| Test Case ID        | TC-CONV-004-01                                     |
+| Title               | Conversation list reflects latest message activity |
+| Related Scenario    | SCN-CONV-004                                       |
+| Related Requirement | REQ-CONV-006                                       |
+| Risk Level          | Medium                                             |
+| Test Design Method  | Requirement-Based + Risk-Based                     |
+| Test Type           | Functional / Positive                              |
+| Priority            | Medium                                             |
 
 #### Preconditions
 
@@ -688,12 +795,12 @@ Exploratory discovery of application behavior does not by itself establish the e
 
 #### Test Data
 
-| Data | Value |
-|---|---|
-| User | User A |
+| Data           | Value                                                  |
+| -------------- | ------------------------------------------------------ |
+| User           | User A                                                 |
 | Conversation A | Existing 1-on-1 conversation between User A and User B |
 | Conversation B | Existing 1-on-1 conversation between User A and User C |
-| New Message | Valid text message sent by User A in Conversation B |
+| New Message    | Valid text message sent by User A in Conversation B    |
 
 #### Steps
 
@@ -717,16 +824,16 @@ Exploratory discovery of application behavior does not by itself establish the e
 
 ### TC-MSG-001-01 — Send a Valid Text Message
 
-| Field | Value |
-|---|---|
-| Test Case ID | TC-MSG-001-01 |
-| Title | Send a valid text message |
-| Related Scenario | SCN-MSG-001 |
-| Related Requirement | REQ-MSG-001 |
-| Risk Level | High |
-| Test Design Method | Requirement-Based + Risk-Based |
-| Test Type | Functional / Positive |
-| Priority | High |
+| Field               | Value                          |
+| ------------------- | ------------------------------ |
+| Test Case ID        | TC-MSG-001-01                  |
+| Title               | Send a valid text message      |
+| Related Scenario    | SCN-MSG-001                    |
+| Related Requirement | REQ-MSG-001                    |
+| Risk Level          | High                           |
+| Test Design Method  | Requirement-Based + Risk-Based |
+| Test Type           | Functional / Positive          |
+| Priority            | High                           |
 
 #### Preconditions
 
@@ -738,11 +845,11 @@ Exploratory discovery of application behavior does not by itself establish the e
 
 #### Test Data
 
-| Data | Value |
-|---|---|
-| Sender | User A |
-| Conversation Participant | User B |
-| Message | Valid text message |
+| Data                     | Value              |
+| ------------------------ | ------------------ |
+| Sender                   | User A             |
+| Conversation Participant | User B             |
+| Message                  | Valid text message |
 
 #### Steps
 
@@ -762,16 +869,16 @@ Exploratory discovery of application behavior does not by itself establish the e
 
 ### TC-MSG-002-01 — Display Existing Conversation Message History
 
-| Field | Value |
-|---|---|
-| Test Case ID | TC-MSG-002-01 |
-| Title | Display existing conversation message history |
-| Related Scenario | SCN-MSG-002 |
-| Related Requirement | REQ-MSG-002 |
-| Risk Level | High |
-| Test Design Method | Requirement-Based + Risk-Based |
-| Test Type | Functional / Positive |
-| Priority | High |
+| Field               | Value                                         |
+| ------------------- | --------------------------------------------- |
+| Test Case ID        | TC-MSG-002-01                                 |
+| Title               | Display existing conversation message history |
+| Related Scenario    | SCN-MSG-002                                   |
+| Related Requirement | REQ-MSG-002                                   |
+| Risk Level          | High                                          |
+| Test Design Method  | Requirement-Based + Risk-Based                |
+| Test Type           | Functional / Positive                         |
+| Priority            | High                                          |
 
 #### Preconditions
 
@@ -784,11 +891,11 @@ Exploratory discovery of application behavior does not by itself establish the e
 
 #### Test Data
 
-| Data | Value |
-|---|---|
-| User | User A |
-| Conversation Participant | User B |
-| Existing Messages | Known messages already available in the selected conversation |
+| Data                     | Value                                                         |
+| ------------------------ | ------------------------------------------------------------- |
+| User                     | User A                                                        |
+| Conversation Participant | User B                                                        |
+| Existing Messages        | Known messages already available in the selected conversation |
 
 #### Steps
 
@@ -809,16 +916,16 @@ Exploratory discovery of application behavior does not by itself establish the e
 
 ### TC-MSG-003-01 — Verify Message Persistence After Refresh and Re-Login
 
-| Field | Value |
-|---|---|
-| Test Case ID | TC-MSG-003-01 |
-| Title | Verify message persistence after refresh and re-login |
-| Related Scenario | SCN-MSG-003 |
-| Related Requirement | REQ-MSG-003 |
-| Risk Level | High |
-| Test Design Method | Requirement-Based + Risk-Based |
-| Test Type | Functional / Positive |
-| Priority | High |
+| Field               | Value                                                 |
+| ------------------- | ----------------------------------------------------- |
+| Test Case ID        | TC-MSG-003-01                                         |
+| Title               | Verify message persistence after refresh and re-login |
+| Related Scenario    | SCN-MSG-003                                           |
+| Related Requirement | REQ-MSG-003                                           |
+| Risk Level          | High                                                  |
+| Test Design Method  | Requirement-Based + Risk-Based                        |
+| Test Type           | Functional / Positive                                 |
+| Priority            | High                                                  |
 
 #### Preconditions
 
@@ -830,11 +937,11 @@ Exploratory discovery of application behavior does not by itself establish the e
 
 #### Test Data
 
-| Data | Value |
-|---|---|
-| User | User A |
-| Conversation Participant | User B |
-| Test Message | Unique valid text message used to verify persistence |
+| Data                     | Value                                                |
+| ------------------------ | ---------------------------------------------------- |
+| User                     | User A                                               |
+| Conversation Participant | User B                                               |
+| Test Message             | Unique valid text message used to verify persistence |
 
 #### Steps
 
@@ -863,16 +970,16 @@ Exploratory discovery of application behavior does not by itself establish the e
 
 ### TC-MSG-004-01 — Verify Chronological Message Ordering
 
-| Field | Value |
-|---|---|
-| Test Case ID | TC-MSG-004-01 |
-| Title | Verify chronological message ordering |
-| Related Scenario | SCN-MSG-004 |
-| Related Requirement | REQ-MSG-002 |
-| Risk Level | Medium |
-| Test Design Method | Requirement-Based + Risk-Based |
-| Test Type | Functional / Positive |
-| Priority | Medium |
+| Field               | Value                                 |
+| ------------------- | ------------------------------------- |
+| Test Case ID        | TC-MSG-004-01                         |
+| Title               | Verify chronological message ordering |
+| Related Scenario    | SCN-MSG-004                           |
+| Related Requirement | REQ-MSG-002                           |
+| Risk Level          | Medium                                |
+| Test Design Method  | Requirement-Based + Risk-Based        |
+| Test Type           | Functional / Positive                 |
+| Priority            | Medium                                |
 
 #### Preconditions
 
@@ -884,13 +991,13 @@ Exploratory discovery of application behavior does not by itself establish the e
 
 #### Test Data
 
-| Data | Value |
-|---|---|
-| User | User A |
-| Conversation Participant | User B |
-| Message 1 | Unique valid text message |
-| Message 2 | Unique valid text message |
-| Message 3 | Unique valid text message |
+| Data                     | Value                     |
+| ------------------------ | ------------------------- |
+| User                     | User A                    |
+| Conversation Participant | User B                    |
+| Message 1                | Unique valid text message |
+| Message 2                | Unique valid text message |
+| Message 3                | Unique valid text message |
 
 #### Steps
 
@@ -921,16 +1028,16 @@ Exploratory discovery of application behavior does not by itself establish the e
 
 ### TC-MSG-005-01 — Verify Automatic Scrolling to the Latest Message
 
-| Field | Value |
-|---|---|
-| Test Case ID | TC-MSG-005-01 |
-| Title | Verify automatic scrolling to the latest message |
-| Related Scenario | SCN-MSG-005 |
-| Related Requirement | REQ-MSG-004 |
-| Risk Level | Medium |
-| Test Design Method | Requirement-Based + Risk-Based |
-| Test Type | Functional / Positive |
-| Priority | Medium |
+| Field               | Value                                            |
+| ------------------- | ------------------------------------------------ |
+| Test Case ID        | TC-MSG-005-01                                    |
+| Title               | Verify automatic scrolling to the latest message |
+| Related Scenario    | SCN-MSG-005                                      |
+| Related Requirement | REQ-MSG-004                                      |
+| Risk Level          | Medium                                           |
+| Test Design Method  | Requirement-Based + Risk-Based                   |
+| Test Type           | Functional / Positive                            |
+| Priority            | Medium                                           |
 
 #### Preconditions
 
@@ -943,12 +1050,12 @@ Exploratory discovery of application behavior does not by itself establish the e
 
 #### Test Data
 
-| Data | Value |
-|---|---|
-| User | User A |
-| Conversation Participant | User B |
-| New Message | Unique valid text message |
-| Message History | Existing conversation containing multiple messages |
+| Data                     | Value                                              |
+| ------------------------ | -------------------------------------------------- |
+| User                     | User A                                             |
+| Conversation Participant | User B                                             |
+| New Message              | Unique valid text message                          |
+| Message History          | Existing conversation containing multiple messages |
 
 #### Steps
 
@@ -973,16 +1080,16 @@ Exploratory discovery of application behavior does not by itself establish the e
 
 ### TC-MSG-006-01 — Verify Calendar Date Separators
 
-| Field | Value |
-|---|---|
-| Test Case ID | TC-MSG-006-01 |
-| Title | Verify calendar date separators |
-| Related Scenario | SCN-MSG-006 |
-| Related Requirement | REQ-MSG-005 |
-| Risk Level | Medium |
-| Test Design Method | Requirement-Based + Risk-Based |
-| Test Type | Functional / Positive |
-| Priority | Medium |
+| Field               | Value                           |
+| ------------------- | ------------------------------- |
+| Test Case ID        | TC-MSG-006-01                   |
+| Title               | Verify calendar date separators |
+| Related Scenario    | SCN-MSG-006                     |
+| Related Requirement | REQ-MSG-005                     |
+| Risk Level          | Medium                          |
+| Test Design Method  | Requirement-Based + Risk-Based  |
+| Test Type           | Functional / Positive           |
+| Priority            | Medium                          |
 
 #### Preconditions
 
@@ -995,13 +1102,13 @@ Exploratory discovery of application behavior does not by itself establish the e
 
 #### Test Data
 
-| Data | Value |
-|---|---|
-| User | User A |
-| Conversation Participant | User B |
-| Current Date Message | Unique valid text message sent on the current date |
-| Previous Date Message | Unique valid text message sent on the previous calendar date |
-| Older Date Message | Unique valid text message sent before the previous calendar date |
+| Data                     | Value                                                            |
+| ------------------------ | ---------------------------------------------------------------- |
+| User                     | User A                                                           |
+| Conversation Participant | User B                                                           |
+| Current Date Message     | Unique valid text message sent on the current date               |
+| Previous Date Message    | Unique valid text message sent on the previous calendar date     |
+| Older Date Message       | Unique valid text message sent before the previous calendar date |
 
 #### Steps
 
@@ -1029,3 +1136,391 @@ Exploratory discovery of application behavior does not by itself establish the e
 - Messages belonging to the same calendar date are grouped under the same date separator.
 - Date separators are displayed in the appropriate position relative to the messages they represent.
 - Date separators and message grouping remain consistent after page refresh.
+
+### TC-UX-001-01 — Verify Empty Conversation List
+
+| Field               | Value                          |
+| ------------------- | ------------------------------ |
+| Test Case ID        | TC-UX-001-01                   |
+| Title               | Verify empty conversation list |
+| Related Scenario    | SCN-UX-001                     |
+| Related Requirement | REQ-UX-005                     |
+| Risk Level          | Low                            |
+| Test Design Method  | Requirement-Based + Risk-Based |
+| Test Type           | Functional / Positive          |
+| Priority            | Low                            |
+
+#### Preconditions
+
+- Relay is accessible.
+- A registered user account is available.
+- The user has no conversations associated with their account.
+- The user's valid credentials are available.
+
+#### Test Data
+
+| Data              | Value                                   |
+| ----------------- | --------------------------------------- |
+| User              | User A                                  |
+| Conversation Data | No conversations associated with User A |
+
+#### Steps
+
+1. Open the Relay application.
+2. Sign in as User A using valid credentials.
+3. Verify that the chat page is displayed.
+4. Observe the conversation list.
+5. Verify how the application represents the absence of conversations.
+
+#### Expected Result
+
+- The conversation list is displayed.
+- The application provides an appropriate representation of the empty conversation list.
+- The exact content and wording of the empty state are subject to clarification if not defined by the available documentation.
+
+### TC-UX-001-02 — Verify Empty Conversation Message History
+
+| Field               | Value                                     |
+| ------------------- | ----------------------------------------- |
+| Test Case ID        | TC-UX-001-02                              |
+| Title               | Verify empty conversation message history |
+| Related Scenario    | SCN-UX-001                                |
+| Related Requirement | REQ-UX-005                                |
+| Risk Level          | Low                                       |
+| Test Design Method  | Requirement-Based + Risk-Based            |
+| Test Type           | Functional / Positive                     |
+| Priority            | Low                                       |
+
+#### Preconditions
+
+- Relay is accessible.
+- User A and User B are registered users.
+- An existing 1-on-1 conversation between User A and User B is available.
+- The conversation contains no messages.
+- User A is authorized to access the conversation.
+- User A's valid credentials are available.
+
+#### Test Data
+
+| Data                         | Value       |
+| ---------------------------- | ----------- |
+| User                         | User A      |
+| Conversation Participant     | User B      |
+| Conversation Message History | No messages |
+
+#### Steps
+
+1. Open the Relay application.
+2. Sign in as User A using valid credentials.
+3. Verify that the chat page is displayed.
+4. Open the existing conversation with User B.
+5. Observe the message history area.
+6. Verify how the application represents the absence of messages.
+
+#### Expected Result
+
+- The selected conversation is displayed.
+- No message entries are displayed in the conversation history.
+- The application provides an appropriate representation of the empty message history.
+- The exact content and wording of the empty state are subject to clarification if not defined by the available documentation.
+
+### TC-UX-002-01 — Recover from a Failed Login Attempt
+
+| Field               | Value                                  |
+| ------------------- | -------------------------------------- |
+| Test Case ID        | TC-UX-002-01                           |
+| Title               | Recover from a failed login attempt    |
+| Related Scenario    | SCN-UX-002, SCN-AUTH-002, SCN-AUTH-003 |
+| Related Requirement | REQ-UX-006, REQ-AUTH-002               |
+| Risk Level          | Medium                                 |
+| Test Design Method  | Requirement-Based + Risk-Based         |
+| Test Type           | Functional / Negative → Positive       |
+| Priority            | Medium                                 |
+
+#### Preconditions
+
+- Relay is accessible.
+- A registered user account is available.
+- The tester is not authenticated.
+- The registered user's valid credentials are known.
+
+#### Test Data
+
+| Data             | Value                                   |
+| ---------------- | --------------------------------------- |
+| Email            | Registered test user's email            |
+| Invalid Password | Incorrect password                      |
+| Valid Password   | Registered test user's correct password |
+
+#### Steps
+
+1. Open the Relay application.
+2. Verify that the login page is displayed.
+3. Enter the registered user's email address.
+4. Enter an incorrect password.
+5. Click the "Sign in" button.
+6. Observe the login result and any error feedback displayed.
+7. Replace the incorrect password with the registered user's valid password.
+8. Click the "Sign in" button.
+9. Observe the login result.
+10. Verify the authentication state after the second login attempt.
+11. Verify whether the protected chat functionality is accessible.
+
+#### Expected Result
+
+- The first login attempt does not authenticate the user.
+- Error feedback is provided for the failed login attempt.
+- The user can correct the password and submit the login form again.
+- The second login attempt authenticates the user successfully.
+- The protected chat functionality is accessible after successful authentication.
+- The exact error message for the failed login attempt is not prescribed by the available requirements.
+
+### TC-UX-003-01 — Verify Light and Dark Mode
+
+| Field               | Value                      |
+| ------------------- | -------------------------- |
+| Test Case ID        | TC-UX-003-01               |
+| Title               | Verify light and dark mode |
+| Related Scenario    | SCN-UX-003                 |
+| Related Requirement | REQ-UX-001, REQ-UX-002     |
+| Risk Level          | Low                        |
+| Test Design Method  | Requirement-Based          |
+| Test Type           | Functional / Positive      |
+| Priority            | Low                        |
+
+#### Preconditions
+
+- Relay is accessible.
+- A registered user account is available.
+- The user's valid credentials are available.
+- The user can access the main application screens.
+
+#### Test Data
+
+| Data              | Value                                                |
+| ----------------- | ---------------------------------------------------- |
+| User              | User A                                               |
+| Theme 1           | Light mode                                           |
+| Theme 2           | Dark mode                                            |
+| Application Areas | Conversation list, conversation panel, message input |
+
+#### Steps
+
+1. Open the Relay application.
+2. Sign in as User A using valid credentials.
+3. Verify that the main application interface is displayed.
+4. Identify the currently selected theme.
+5. Switch to light mode if it is not already active.
+6. Observe the appearance of the conversation list, conversation panel, and message input.
+7. Verify that light mode is applied to the observed application areas.
+8. Switch to dark mode.
+9. Observe the appearance of the same application areas.
+10. Verify that dark mode is applied to the observed application areas.
+11. Switch back to light mode.
+12. Verify that the application returns to light mode.
+13. Navigate between the conversation list and an available conversation.
+14. Observe the theme applied across the main application screens.
+
+#### Expected Result
+
+- Light mode is available and can be selected.
+- Dark mode is available and can be selected.
+- The selected theme is applied to the observed core application areas.
+- Switching from light mode to dark mode changes the displayed theme accordingly.
+- Switching from dark mode to light mode restores the light theme.
+- The selected theme remains visually consistent across the observed main application screens.
+
+### TC-UX-004-01 — Verify Theme Persistence After Refresh and Navigation
+
+| Field               | Value                                                 |
+| ------------------- | ----------------------------------------------------- |
+| Test Case ID        | TC-UX-004-01                                          |
+| Title               | Verify theme persistence after refresh and navigation |
+| Related Scenario    | SCN-UX-004                                            |
+| Related Requirement | REQ-UX-003                                            |
+| Risk Level          | Low                                                   |
+| Test Design Method  | Requirement-Based                                     |
+| Test Type           | Functional / Positive                                 |
+| Priority            | Low                                                   |
+
+#### Preconditions
+
+- Relay is accessible.
+- A registered user account is available.
+- The user's valid credentials are available.
+- The user can access the main application screens.
+
+#### Test Data
+
+| Data              | Value                                    |
+| ----------------- | ---------------------------------------- |
+| User              | User A                                   |
+| Selected Theme    | Dark mode                                |
+| Application Areas | Conversation list and conversation panel |
+
+#### Steps
+
+1. Open the Relay application.
+2. Sign in as User A using valid credentials.
+3. Verify that the main application interface is displayed.
+4. Select dark mode.
+5. Verify that dark mode is applied to the main application interface.
+6. Refresh the page.
+7. Observe the theme applied after the page reloads.
+8. Navigate between the conversation list and an available conversation.
+9. Observe the theme applied after navigation.
+10. Verify that the displayed theme remains consistent with the selected theme.
+
+#### Expected Result
+
+- Dark mode is applied after it is selected.
+- Dark mode remains selected and displayed after page refresh.
+- Dark mode remains selected and displayed after navigation between the observed application areas.
+- The selected theme and the displayed theme remain consistent.
+
+### TC-UX-004-02 — Verify Theme Persistence After Logout and Re-Login
+
+| Field               | Value                                              |
+| ------------------- | -------------------------------------------------- |
+| Test Case ID        | TC-UX-004-02                                       |
+| Title               | Verify theme persistence after logout and re-login |
+| Related Scenario    | SCN-UX-004                                         |
+| Related Requirement | REQ-UX-003                                         |
+| Risk Level          | Low                                                |
+| Test Design Method  | Requirement-Based + Risk-Based                     |
+| Test Type           | Functional / Positive                              |
+| Priority            | Low                                                |
+
+#### Preconditions
+
+- Relay is accessible.
+- A registered user account is available.
+- The user's valid credentials are available.
+- The user can access the main application screens.
+
+#### Test Data
+
+| Data           | Value     |
+| -------------- | --------- |
+| User           | User A    |
+| Selected Theme | Dark mode |
+
+#### Steps
+
+1. Open the Relay application.
+2. Sign in as User A using valid credentials.
+3. Verify that the main application interface is displayed.
+4. Select dark mode.
+5. Verify that dark mode is applied.
+6. Log out from Relay.
+7. Sign in again as User A using valid credentials.
+8. Observe the theme applied to the main application interface.
+9. Verify whether the displayed theme matches the previously selected theme.
+
+#### Expected Result
+
+- Dark mode is applied before logout.
+- The user can log out and sign in again successfully.
+- After re-login, the displayed theme remains consistent with the previously selected dark mode.
+- The theme preference persists across the logout and re-login flow.
+
+### TC-UX-005-01 — Verify Responsive Layout on Desktop
+
+| Field               | Value                               |
+| ------------------- | ----------------------------------- |
+| Test Case ID        | TC-UX-005-01                        |
+| Title               | Verify responsive layout on desktop |
+| Related Scenario    | SCN-UX-005                          |
+| Related Requirement | REQ-UX-004                          |
+| Risk Level          | Medium                              |
+| Test Design Method  | Requirement-Based + Risk-Based      |
+| Test Type           | Functional / Positive               |
+| Priority            | Medium                              |
+
+#### Preconditions
+
+- Relay is accessible.
+- A registered user account is available.
+- The user's valid credentials are available.
+- At least one existing conversation is available to the user.
+
+#### Test Data
+
+| Data              | Value                                                |
+| ----------------- | ---------------------------------------------------- |
+| User              | User A                                               |
+| Viewport          | Representative desktop viewport: 1366 × 768 pixels   |
+| Application Areas | Conversation list, conversation panel, message input |
+
+#### Steps
+
+1. Open the Relay application in a desktop browser.
+2. Set the browser viewport to 1366 × 768 pixels.
+3. Sign in as User A using valid credentials.
+4. Verify that the main application interface is displayed.
+5. Observe the conversation list.
+6. Verify that the conversation list can be accessed and its entries can be selected.
+7. Open an existing conversation.
+8. Observe the message area and verify that existing messages can be viewed.
+9. Observe the message input and verify that it can be accessed and used to enter text.
+10. Inspect the main application layout for overlapping or clipped elements that prevent interaction.
+
+#### Expected Result
+
+- Relay's main application interface remains usable at the selected desktop viewport.
+- The conversation list can be accessed and a conversation can be selected.
+- The message area allows the user to view the selected conversation's messages.
+- The message input can be accessed and used to enter text.
+- No layout issue prevents interaction with the tested application areas.
+- This test uses a representative desktop viewport; it does not establish the product's official responsive breakpoints.
+
+### TC-UX-005-02 — Verify Responsive Layout on Mobile
+
+| Field               | Value                              |
+| ------------------- | ---------------------------------- |
+| Test Case ID        | TC-UX-005-02                       |
+| Title               | Verify responsive layout on mobile |
+| Related Scenario    | SCN-UX-005                         |
+| Related Requirement | REQ-UX-004                         |
+| Risk Level          | Medium                             |
+| Test Design Method  | Requirement-Based + Risk-Based     |
+| Test Type           | Functional / Positive              |
+| Priority            | Medium                             |
+
+#### Preconditions
+
+- Relay is accessible.
+- A registered user account is available.
+- The user's valid credentials are available.
+- At least one existing conversation is available to the user.
+- A mobile browser or browser viewport configured to represent a mobile screen is available.
+
+#### Test Data
+
+| Data              | Value                                                |
+| ----------------- | ---------------------------------------------------- |
+| User              | User A                                               |
+| Viewport          | Representative mobile viewport: 390 × 844 pixels     |
+| Application Areas | Conversation list, conversation panel, message input |
+
+#### Steps
+
+1. Open Relay in a mobile browser or configure the browser viewport to 390 × 844 pixels.
+2. Sign in as User A using valid credentials.
+3. Verify that the main application interface is displayed.
+4. Observe how the conversation list is presented on the mobile viewport.
+5. Verify that the conversation list can be accessed and a conversation can be selected.
+6. Open an existing conversation.
+7. Observe the message area and verify that existing messages can be viewed.
+8. Observe the message input and verify that it can be accessed and used to enter text.
+9. Inspect the layout for overlapping, clipping, or horizontal overflow that prevents interaction with the tested application areas.
+10. Verify that the tested core functionality remains accessible on the mobile viewport.
+
+#### Expected Result
+
+- Relay's main application interface remains usable at the selected mobile viewport.
+- The conversation list can be accessed and a conversation can be selected.
+- The message area allows the user to view the selected conversation's messages.
+- The message input can be accessed and used to enter text.
+- No layout issue prevents interaction with the tested application areas.
+- This test uses a representative mobile viewport; it does not establish the product's official responsive breakpoints.
