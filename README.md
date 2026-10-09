@@ -89,6 +89,12 @@ qa-relay-manual/
 ├── execution/
 │   └── exploratory-session-notes.md
 ├── test-design/
+|   ├── test-cases/
+|   |   ├── authentication.md
+|   |   ├── authorization.md
+|   |   ├── conversations.md
+|   |   ├── messaging.md
+|   |   └── user-experience.md    
 │   ├── scenarios.md
 │   └── test-cases.md
 └── README.md
