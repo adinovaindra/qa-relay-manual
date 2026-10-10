@@ -25,7 +25,7 @@ Only test cases that have actually been executed are recorded as formal executio
 
 ### TC-AUTH-001-01 — Register with Valid Data
 
-**Test Case Reference:** [TC-AUTH-001-01](../test-design/test-cases/authentication.md)
+**Test Case Reference:** [TC-AUTH-001-01](../test-design/test-cases/authentication.md#tc-auth-001-01--register-with-valid-data)
 
 **Scenario Reference:** SCN-AUTH-001
 
@@ -65,7 +65,7 @@ The observed UI behavior supports the reported registration and authentication o
 
 ### TC-AUTH-001-02 — Required Field Validation During Registration
 
-**Test Case Reference:** [TC-AUTH-001-02](../test-design/test-cases/authentication.md)
+**Test Case Reference:** [TC-AUTH-001-02](../test-design/test-cases/authentication.md#tc-auth-001-02--required-field-validation-during-registration)
 
 **Scenario Reference:** SCN-AUTH-001, SCN-UX-002
 
@@ -106,7 +106,7 @@ The test confirms that registration was prevented when required fields were empt
 
 ### TC-AUTH-001-03 — Registration with an Existing Email Address
 
-**Test Case Reference:** [TC-AUTH-001-03](../test-design/test-cases/authentication.md)
+**Test Case Reference:** [TC-AUTH-001-03](../test-design/test-cases/authentication.md#tc-auth-001-03--registration-with-an-existing-email-address)
 
 **Scenario Reference:** SCN-AUTH-001, SCN-UX-002
 
