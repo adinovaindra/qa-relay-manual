@@ -145,7 +145,7 @@ The application displayed explicit feedback indicating that the email address al
 
 ### TC-AUTH-001-04 — Registration Password Confirmation Validation
 
-**Test Case Reference:** [TC-AUTH-001-04](../test-design/test-cases/authentication.md)
+**Test Case Reference:** [TC-AUTH-001-04](../test-design/test-cases/authentication.md#tc-auth-001-04--registration-password-confirmation-validation)
 
 **Scenario Reference:** SCN-AUTH-001, SCN-UX-002
 
