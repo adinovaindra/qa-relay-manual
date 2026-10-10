@@ -23,9 +23,9 @@
 
 | Data     | Value                                                                |
 | -------- | -------------------------------------------------------------------- |
-| Name     | Valid test user name                                                 |
-| Email    | Unique test email address                                            |
-| Password | Valid password according to the application's supported requirements |
+| Name     | Bob                                                                  |
+| Email    | bob@example.com                                                      |
+| Password | password123                                                          |
 
 #### Steps
 
@@ -33,9 +33,9 @@
 2. Verify that the application opens on the login page.
 3. Click the "Create one" link.
 4. Verify that the registration page is displayed.
-5. Enter a valid name.
-6. Enter a unique email address.
-7. Enter a valid password according to the application's supported requirements.
+5. Enter the test data name.
+6. Enter the test data email address.
+7. Enter the test data password.
 8. Enter the same password in the "Confirm password" field.
 9. Click the "Create account" button.
 10. Observe the page displayed after account creation.
@@ -70,29 +70,27 @@
 
 | Data             | Value                                                                |
 | ---------------- | -------------------------------------------------------------------- |
-| Name             | Valid test user name                                                 |
-| Email            | Unique test email address                                            |
-| Password         | Valid password according to the application's supported requirements |
-| Confirm Password | Same as password                                                     |
+| Name             | Bob                                                                  |
+| Email            | bob@example.com                                                      |
+| Password         | password123                                                          |
 | Empty Field      | One registration field intentionally left empty                      |
 
 #### Steps
 
 1. Open the Relay application.
 2. Navigate to the registration page.
-3. Leave one registration field empty.
-4. Enter valid data in the remaining fields.
-5. Click the "Create account" button.
-6. Observe the validation behavior and any error message displayed.
+3. Leave all registration fields empty and click the "Create account" button.
+4. Click the "Create account" button.
+5. Observe which field receives validation feedback first.
+6. Enter valid data in the remaining fields.
 7. Repeat the test with each registration field left empty individually.
-8. Leave all registration fields empty and click the "Create account" button.
-9. Observe which field receives validation feedback first.
+8. Observe the validation behavior and any error message displayed.
 
 #### Expected Result
 
 - Registration is not completed when a required registration field is left empty.
 - The application displays the validation tooltip "Please fill out this field." for an empty required authentication form field.
-- Validation feedback is associated with the field requiring input.
+- When all registration fields are empty, validation feedback must identify a field that requires input.
 - The exact validation order when multiple required fields are empty is not specified by the requirement.
 
 ### TC-AUTH-001-03 — Registration with an Existing Email Address
@@ -119,18 +117,18 @@
 
 | Data             | Value                                                                |
 | ---------------- | -------------------------------------------------------------------- |
-| Name             | Valid test user name                                                 |
-| Email            | Email address belonging to an existing account                       |
-| Password         | Valid password according to the application's supported requirements |
+| Name             | Bob                                                                  |
+| Email            | bob@example.com                                                      |
+| Password         | password123                                                          |
 | Confirm Password | Same as password                                                     |
 
 #### Steps
 
 1. Open the Relay application.
 2. Navigate to the registration page.
-3. Enter a valid name.
-4. Enter the email address of an existing account.
-5. Enter a valid password according to the application's supported requirements.
+3. Enter the test data name.
+4. Enter the the test data email address.
+5. Enter the test data password.
 6. Enter the same password in the "Confirm password" field.
 7. Click the "Create account" button.
 8. Observe the registration result and any error message displayed.
@@ -165,10 +163,10 @@
 
 | Data             | Value                                        |
 | ---------------- | -------------------------------------------- |
-| Name             | Valid test user name                         |
-| Email            | Unique test email address                    |
-| Password         | Valid test password                          |
-| Confirm Password | A password different from the password field |
+| Name             | Bob                                          |
+| Email            | bob@example.com                              |
+| Password         | password123                                  |
+| Confirm Password | password124                                  |
 
 #### Steps
 
