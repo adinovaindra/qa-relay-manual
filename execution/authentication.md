@@ -12,9 +12,9 @@ Only test cases that have actually been executed are recorded as formal executio
 
 | Metric                 |                                Count |
 | ---------------------- | -----------------------------------: |
-| Test Cases Executed    |                                    8 |
+| Test Cases Executed    |                                   10 |
 | Passed                 |                                    7 |
-| Failed                 |                                    1 |
+| Failed                 |                                    3 |
 | Blocked                |                                    0 |
 | Clarification Required |                                    0 |
 | Not Run                | Not tracked in this execution record |
@@ -79,31 +79,39 @@ The observed UI behavior supports the reported registration and authentication o
 **Expected Result**
 
 - Registration is not completed when one or more required registration fields are left empty.
-- The application displays the validation tooltip "Please fill out this field." on the first empty field in visual order.
-- Only one validation tooltip is displayed at a time.
+- The application displays the validation tooltip `Please fill out this field.` on the first empty field in visual order.
+- Only one required-field validation tooltip is displayed at a time.
 - When all registration fields are empty, the tooltip appears on the Name field.
-- When multiple fields are empty, the tooltip appears on the empty field that comes first in visual order.
+- When only Name is empty, the tooltip appears on the Name field.
+- When only Email is empty, the tooltip appears on the Email field.
+- When only Password is empty, the tooltip appears on the Password field.
+- When only Confirm Password is empty, the tooltip appears on the Confirm Password field.
 
 **Actual Result**
 
-- **All fields empty:** The browser displayed the native validation message, `Please fill out this field.`, associated with the Name field first. Registration did not proceed.
-- **Email empty:** The browser displayed the native validation message, `Please fill out this field.`, associated with the Email field. Registration did not proceed.
-- **Password empty:** The browser displayed the native validation message, `Please fill out this field.`, associated with the Password field. Registration did not proceed.
-- **Confirm Password empty:** The browser displayed the native validation message, `Please fill out this field.`, associated with the Confirm Password field. Registration did not proceed.
+- **V1 — All fields empty:** The browser displayed the native validation message `Please fill out this field.` on the Name field. Registration did not proceed.
+- **V2 — Name empty:** The browser displayed the native validation message `Please fill out this field.` on the Name field. Registration did not proceed.
+- **V3 — Email empty:** The browser displayed the native validation message `Please fill out this field.` on the Email field. Registration did not proceed.
+- **V4 — Password empty:** The browser displayed the native validation message `Please fill out this field.` on the Password field. Registration did not proceed.
+- **V5 — Confirm Password empty:** The browser displayed the native validation message `Please fill out this field.` on the Confirm Password field. Registration did not proceed.
 
 **Execution Result:** PASS
 
 **Evidence**
 
-- **Screenshot Collage:** [TC-AUTH-001-02 — Required Field Validation](../evidence/authentication/TC-AUTH-001-02-required-field-validation.png)
+- **V1 — All fields empty:** [TC-AUTH-001-02-V1.png](../evidence/authentication/TC-AUTH-001-02-V1.png)
+- **V2 — Name empty:** [TC-AUTH-001-02-V2.png](../evidence/authentication/TC-AUTH-001-02-V2.png)
+- **V3 — Email empty:** [TC-AUTH-001-02-V3.png](../evidence/authentication/TC-AUTH-001-02-V3.png)
+- **V4 — Password empty:** [TC-AUTH-001-02-V4.png](../evidence/authentication/TC-AUTH-001-02-V4.png)
+- **V5 — Confirm Password empty:** [TC-AUTH-001-02-V5.png](../evidence/authentication/TC-AUTH-001-02-V5.png)
 
 **Defect Reference:** None identified during this execution.
 
 **Execution Notes**
 
-The displayed validation feedback appeared to be native browser form validation. The execution records observed UI behavior and does not independently verify server-side validation.
+The displayed validation feedback appeared to be native browser form validation. All five selected validation variations produced the expected tooltip location, and registration did not proceed when required fields were left empty.
 
-The test confirms that registration was prevented when required fields were empty.
+The execution covers the all-empty condition and each individual required field left empty. It does not cover every possible combination of multiple empty fields. Server-side validation was not independently verified.
 
 ### TC-AUTH-001-03 — Registration with an Existing Email Address
 
@@ -291,7 +299,7 @@ The observed results support the expected validation behavior for the tested com
 
 - Authentication does not succeed with the provided invalid password.
 - The user does not enter an authenticated state.
-- The application displays the generic error message "Invalid email or password".
+- The application displays the generic error message `Invalid email or password.`.
 - The error feedback is visible to the user.
 - The error message does not reveal whether the email address is registered.
 
@@ -303,18 +311,18 @@ The observed results support the expected validation behavior for the tested com
 - The user remained on the `/login` page after the error message appeared.
 - The application did not redirect the user to the `/chat` page.
 
-**Execution Result:** PASS
+**Execution Result:** FAIL
 
 **Evidence**
 
 - **Wrong Password Input:** [TC-AUTH-003-01 — Wrong Password Input](../evidence/authentication/TC-AUTH-003-01-wrong-password-input.png)
 - **Wrong Password Response:** [TC-AUTH-003-01 — Wrong Password Response](../evidence/authentication/TC-AUTH-003-01-wrong-password-response.png)
 
-**Defect Reference:** None identified during this execution.
+**Defect Reference:** [BUG-002 — Generic Login Error Message Missing Trailing Period](../defect-reports/authentication.md#bug-002--generic-login-error-message-missing-trailing-period) · [Jira RQA-7](https://adinovapramono69.atlassian.net/browse/RQA-7)
 
-**Execution Notes**
+**Execution Notes:**
 
-The observed error message matches the generic error message specified in REQ-AUTH-007. The continued presence on the `/login` page and absence of redirection to `/chat` support the expected failed-authentication outcome. This execution does not independently verify server-side authentication handling or session state.
+The observed error message does not exactly match REQ-AUTH-007, which specifies `Invalid email or password.` including the trailing period. The continued presence on the `/login` page and absence of redirection to `/chat` support the expected failed-authentication outcome. This execution does not independently verify server-side authentication handling or session state.
 
 ### TC-AUTH-003-02 — Login with an Unknown Account
 
@@ -334,7 +342,7 @@ The observed error message matches the generic error message specified in REQ-AU
 
 - Authentication does not succeed for the unknown account.
 - The user does not enter an authenticated state.
-- The application displays the generic error message "Invalid email or password".
+- The application displays the generic error message `Invalid email or password.`.
 - The error feedback is visible to the user.
 - The error message does not reveal whether the email address is registered.
 
@@ -346,15 +354,95 @@ The observed error message matches the generic error message specified in REQ-AU
 - The user remained on the `/login` page after the error message appeared.
 - The application did not redirect the user to the `/chat` page.
 
-**Execution Result:** PASS
+**Execution Result:** FAIL
 
 **Evidence**
 
 - **Invalid Email Input:** [TC-AUTH-003-02 — Invalid Email Input](../evidence/authentication/TC-AUTH-003-02-invalid-email-input.png)
 - **Invalid Email Response:** [TC-AUTH-003-02 — Invalid Email Response](../evidence/authentication/TC-AUTH-003-02-invalid-email-response.png)
 
+**Defect Reference:** [BUG-002 — Generic Login Error Message Missing Trailing Period](../defect-reports/authentication.md#bug-002--generic-login-error-message-missing-trailing-period) · [Jira RQA-7](https://adinovapramono69.atlassian.net/browse/RQA-7)
+
+**Execution Notes:**
+
+The observed error message does not exactly match REQ-AUTH-007, which specifies `Invalid email or password.` including the trailing period. The same message discrepancy was observed in TC-AUTH-003-01. The continued presence on the `/login` page and absence of redirection to `/chat` support the expected failed-authentication outcome. This execution does not independently verify server-side account lookup, authentication handling, or session state.
+
+### TC-AUTH-004-01 — Logout from Authenticated Session
+
+**Test Case Reference:** [TC-AUTH-004-01](../test-design/test-cases/authentication.md#tc-auth-004-01--logout-from-authenticated-session)
+
+**Scenario Reference:** SCN-AUTH-004
+
+**Requirement Reference:** REQ-AUTH-003
+
+**Preconditions**
+
+- Relay is accessible.
+- A registered user account is available.
+- The tester is authenticated successfully.
+
+**Expected Result**
+
+- The user is logged out successfully.
+- The user is no longer in an authenticated state.
+- The protected chat functionality is no longer accessible to the logged-out user.
+
+**Actual Result**
+
+- The application was initially displaying the authenticated state for `bob@example.com`.
+- After the Logout button was clicked, the application redirected to `/login`.
+- After logout, direct navigation to `/chat` redirected the browser to `/login`.
+- After using the browser Back button, the browser remained on or was redirected to `/login`; the chat page was not observed to become accessible again.
+
+**Execution Result:** PASS
+
+**Evidence**
+
+- **Authenticated State:** `../evidence/authentication/TC-AUTH-004-01-logged-in.png`
+- **Login Page After Logout:** `../evidence/authentication/TC-AUTH-004-01-login-page.png`
+- **Screen Recording:** [TC-AUTH-004-01 — Logout and Protected Route Check](https://github.com/user-attachments/assets/5ca7b4b4-db82-47b2-8ce6-425af7df9651)
+
 **Defect Reference:** None identified during this execution.
 
 **Execution Notes**
 
-The observed error message matches the generic error message specified in REQ-AUTH-007 and is consistent with the message observed for an invalid password in TC-AUTH-003-01. The continued presence on the `/login` page and absence of redirection to `/chat` support the expected failed-authentication outcome. This execution does not independently verify server-side account lookup, authentication handling, or session state.
+The observed UI behavior supports the expected logout and protected-page access behavior. The browser Back check did not reveal the authenticated chat page during this execution. The test did not independently verify server-side session invalidation or authentication state in the database.
+
+### TC-AUTH-005-01 — Access Protected Chat Without Authentication
+
+**Test Case Reference:** [TC-AUTH-005-01](../test-design/test-cases/authentication.md#tc-auth-005-01--access-protected-chat-without-authentication)
+
+**Scenario Reference:** SCN-AUTH-005
+
+**Requirement Reference:** REQ-AUTH-004, REQ-AUTH-005
+
+**Preconditions**
+
+- The user is logged out of Relay.
+- No valid authenticated session is available in the browser.
+- The Relay application is accessible.
+
+**Expected Result**
+
+- The unauthenticated user cannot access protected chat functionality.
+- The application redirects the user to `/login`, consistent with the observed application behavior.
+- Protected conversation content is not displayed to the unauthenticated user.
+
+**Actual Result**
+
+- The browser was in an unauthenticated state, with no cookies visible in DevTools during the execution.
+- When the tester navigated directly to `/chat`, the application redirected the browser to `/login`.
+- The protected chat page was not displayed during the observed navigation.
+
+**Execution Result:** PASS
+
+**Evidence**
+
+- **Screenshot:** [TC-AUTH-005-01 — Unauthenticated State and DevTools](../evidence/authentication/TC-AUTH-005-01-with-devTools.png)
+- **Screen Recording:** [TC-AUTH-005-01 — Direct Navigation to Protected Chat Without Authentication](https://github.com/user-attachments/assets/fed6f845-2525-484d-8575-649774e64ad5)
+
+**Defect Reference:** None identified during this execution.
+
+**Execution Notes**
+
+The observed redirect to `/login` supports the expected behavior for unauthenticated access to the protected chat page. The DevTools inspection showed no cookies during the execution. This test records observable browser behavior and does not independently verify all possible client-side authentication storage mechanisms or server-side authentication enforcement.

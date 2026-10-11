@@ -21,11 +21,11 @@
 
 #### Test Data
 
-| Data     | Value                                                                |
-| -------- | -------------------------------------------------------------------- |
-| Name     | Bob                                                                  |
-| Email    | bob@example.com                                                      |
-| Password | password123                                                          |
+| Data     | Value           |
+| -------- | --------------- |
+| Name     | Bob             |
+| Email    | bob@example.com |
+| Password | password123     |
 
 #### Steps
 
@@ -68,31 +68,46 @@
 
 #### Test Data
 
-| Data             | Value                                                                |
-| ---------------- | -------------------------------------------------------------------- |
-| Name             | Bob                                                                  |
-| Email            | bob@example.com                                                      |
-| Password         | password123                                                          |
-| Empty Field      | One registration field intentionally left empty                      |
+| Data             | Value           |
+| ---------------- | --------------- |
+| Name             | Bob             |
+| Email            | bob@example.com |
+| Password         | password123     |
+| Confirm Password | password123     |
+
+The test data will be used across the five validation variations defined below. Fields designated as empty must be left blank, while the remaining fields must contain valid values.
+
+| Variation | Name   | Email  | Password | Confirm Password | Expected Tooltip |
+| --------- | ------ | ------ | -------- | ---------------- | ---------------- |
+| V1        | Empty  | Empty  | Empty    | Empty            | Name             |
+| V2        | Empty  | Filled | Filled   | Filled           | Name             |
+| V3        | Filled | Empty  | Filled   | Filled           | Email            |
+| V4        | Filled | Filled | Empty    | Filled           | Password         |
+| V5        | Filled | Filled | Filled   | Empty            | Confirm Password |
 
 #### Steps
 
 1. Open the Relay application.
 2. Navigate to the registration page.
-3. Leave all registration fields empty and click the "Create account" button.
+3. Prepare the registration form according to validation variation V1.
 4. Click the "Create account" button.
-5. Observe which field receives validation feedback first.
-6. Enter valid data in the remaining fields.
-7. Repeat the test with each registration field left empty individually.
-8. Observe the validation behavior and any error message displayed.
+5. Observe which field receives validation feedback and record the displayed message.
+6. Repeat Steps 3–5 for validation variations V2–V5.
+7. For each variation, verify that the validation tooltip appears on the first empty field in visual order.
+8. Verify that only one required-field validation tooltip is displayed at a time.
+9. Record the actual result for each variation.
 
 #### Expected Result
 
-- Registration is not completed when one or more required registration fields are left empty.
-- The application displays the validation tooltip "Please fill out this field." on the first empty field in visual order.
-- Only one validation tooltip is displayed at a time.
-- When all registration fields are empty, the tooltip appears on the Name field.
-- When multiple fields are empty, the tooltip appears on the empty field that comes first in visual order.
+- Registration is not completed when one or more required registration fields are empty.
+- The application displays the exact validation tooltip message: "Please fill out this field."
+- Only one required-field validation tooltip is displayed at a time.
+- The tooltip appears on the first empty field in visual order.
+- When all registration fields are empty, the tooltip appears on Name.
+- When only Name is empty, the tooltip appears on Name.
+- When only Email is empty, the tooltip appears on Email.
+- When only Password is empty, the tooltip appears on Password.
+- When only Confirm Password is empty, the tooltip appears on Confirm Password.
 
 ### TC-AUTH-001-03 — Registration with an Existing Email Address
 
@@ -116,12 +131,12 @@
 
 #### Test Data
 
-| Data             | Value                                                                |
-| ---------------- | -------------------------------------------------------------------- |
-| Name             | Bob                                                                  |
-| Email            | bob@example.com                                                      |
-| Password         | password123                                                          |
-| Confirm Password | Same as password                                                     |
+| Data             | Value            |
+| ---------------- | ---------------- |
+| Name             | Bob              |
+| Email            | bob@example.com  |
+| Password         | password123      |
+| Confirm Password | Same as password |
 
 #### Steps
 
@@ -162,12 +177,12 @@
 
 #### Test Data
 
-| Data             | Value                                        |
-| ---------------- | -------------------------------------------- |
-| Name             | Bob                                          |
-| Email            | bob@example.com                              |
-| Password         | password123                                  |
-| Confirm Password | password124                                  |
+| Data             | Value           |
+| ---------------- | --------------- |
+| Name             | Bob             |
+| Email            | bob@example.com |
+| Password         | password123     |
+| Confirm Password | password124     |
 
 #### Steps
 
@@ -207,10 +222,10 @@
 
 #### Test Data
 
-| Data     | Value                                 |
-| -------- | ------------------------------------- |
-| Email    | bob@example.com                       |
-| Password | password123                           |
+| Data     | Value           |
+| -------- | --------------- |
+| Email    | bob@example.com |
+| Password | password123     |
 
 #### Steps
 
@@ -250,11 +265,11 @@
 
 #### Test Data
 
-| Data        | Value                                                             |
-| ----------- | -----------------------------------------------                   |
-| Email       | Registered test user's email (bob@example.com), or empty          |
-| Password    | Registered test user's valid password (password123), or empty     |
-| Empty Field | Email and/or password intentionally left empty  |
+| Data        | Value                                                         |
+| ----------- | ------------------------------------------------------------- |
+| Email       | Registered test user's email (bob@example.com), or empty      |
+| Password    | Registered test user's valid password (password123), or empty |
+| Empty Field | Email and/or password intentionally left empty                |
 
 #### Steps
 
@@ -301,10 +316,10 @@
 
 #### Test Data
 
-| Data     | Value                        |
-| -------- | ---------------------------- |
-| Email    | bob@example.com              |
-| Password | password124                  |
+| Data     | Value           |
+| -------- | --------------- |
+| Email    | bob@example.com |
+| Password | password124     |
 
 #### Steps
 
@@ -319,7 +334,7 @@
 
 - Authentication does not succeed with the provided invalid password.
 - The user does not enter an authenticated state.
-- The application displays the generic error message "Invalid email or password".
+- The application displays the generic error message `Invalid email or password.`.
 - The error feedback is visible to the user.
 - The error message does not reveal whether the email address is registered.
 
@@ -344,10 +359,10 @@
 
 #### Test Data
 
-| Data     | Value                              |
-| -------- | ---------------------------------- |
-| Email    | invalid@example.com                |
-| Password | password123                        |
+| Data     | Value               |
+| -------- | ------------------- |
+| Email    | invalid@example.com |
+| Password | password123         |
 
 #### Steps
 
@@ -362,7 +377,7 @@
 
 - Authentication does not succeed for the unknown account.
 - The user does not enter an authenticated state.
-- The application displays the generic error message "Invalid email or password".
+- The application displays the generic error message `Invalid email or password.`.
 - The error feedback is visible to the user.
 - The error message does not reveal whether the email address is registered.
 
@@ -387,9 +402,9 @@
 
 #### Test Data
 
-| Data | Value                              |
-| ---- | ---------------------------------- |
-| User | Authenticated registered test user |
+| Data | Value                                                |
+| ---- | ---------------------------------------------------- |
+| User | Authenticated registered test user (bob@example.com) |
 
 #### Steps
 

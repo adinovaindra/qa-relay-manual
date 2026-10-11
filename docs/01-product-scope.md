@@ -232,18 +232,14 @@ The following areas require clarification or explicit observation before assigni
 
 ### Registration
 
-- Required registration fields
-- Field validation rules
 - Password requirements
-- Duplicate account behavior
 - Invalid input handling
 
 ### Authentication
 
-- Exact invalid credential behavior
 - Session expiration behavior
 - Behavior after session expiration
-- Logout behavior when authentication state is already invalid
+- Expected behavior when the authentication state becomes invalid during an active session
 
 ### Conversations
 
@@ -254,7 +250,6 @@ The following areas require clarification or explicit observation before assigni
 
 ### Messaging
 
-- Empty or whitespace-only messages
 - Maximum message length
 - Message validation rules
 - Message timestamp behavior

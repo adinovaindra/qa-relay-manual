@@ -14,12 +14,12 @@ Confirmed defects are documented by functional area.
 
 | Functional Area | Defect Report                            | Defects Recorded |
 | --------------- | ---------------------------------------- | ---------------: |
-| Authentication  | [authentication.md](./authentication.md) |                1 |
+| Authentication  | [authentication.md](./authentication.md) |                2 |
 | Authorization   | Not created yet                          |                0 |
 | Conversations   | Not created yet                          |                0 |
 | Messaging       | Not created yet                          |                0 |
 | User Experience | Not created yet                          |                0 |
-| **Total**       |                                          |            **1** |
+| **Total**       |                                          |            **2** |
 
 The index reflects the defect reports currently documented in this directory. It must be updated when defect reports are added, removed, or reorganized.
 

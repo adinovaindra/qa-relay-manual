@@ -36,15 +36,15 @@ REQ-AUTH-001
 
 ## 3. Authentication Requirements
 
-| ID           | Requirement                                                                                                                                                                                                                                                                                                                                            | Source                 | Status              |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------- | ------------------- |
-| REQ-AUTH-001 | The application shall allow users to register with valid registration data. Registration shall be rejected if the email address is already registered, displaying the exact message "An account with this email already exists.", or if the password and confirm password values do not match, displaying the exact message "Passwords do not match."  | Developer confirmation | Developer-confirmed |
-| REQ-AUTH-002 | The application shall allow a registered user to authenticate using valid credentials.                                                                                                                                                                                                                                                                 | Relay README           | Documented          |
-| REQ-AUTH-003 | The application shall allow an authenticated user to log out.                                                                                                                                                                                                                                                                                          | Relay README           | Documented          |
-| REQ-AUTH-004 | Protected chat functionality shall require an authenticated user.                                                                                                                                                                                                                                                                                      | Relay README           | Documented          |
-| REQ-AUTH-005 | Authentication state shall be derived server-side from the user's authentication token.                                                                                                                                                                                                                                                                | Relay README           | Documented          |
-| REQ-AUTH-006 | The application shall display the validation tooltip "Please fill out this field." on the first empty required field in visual order when a required field is left empty in the registration or login form. Only one validation tooltip shall be displayed at a time.                                                                                  | Developer confirmation | Developer-confirmed |
-| REQ-AUTH-007 | When login fails because the email address is unknown or the password is incorrect, the application shall display the same generic error message "Invalid email or password" without revealing whether the email address is registered.                                                                                                                | Developer confirmation | Developer-confirmed |
+| ID           | Requirement                                                                                                                                                                                                                                                                                                                                           | Source                 | Status              |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ------------------- |
+| REQ-AUTH-001 | The application shall allow users to register with valid registration data. Registration shall be rejected if the email address is already registered, displaying the exact message "An account with this email already exists.", or if the password and confirm password values do not match, displaying the exact message "Passwords do not match." | Developer confirmation | Developer-confirmed |
+| REQ-AUTH-002 | The application shall allow a registered user to authenticate using valid credentials.                                                                                                                                                                                                                                                                | Relay README           | Documented          |
+| REQ-AUTH-003 | The application shall allow an authenticated user to log out.                                                                                                                                                                                                                                                                                         | Relay README           | Documented          |
+| REQ-AUTH-004 | Protected chat functionality shall require an authenticated user.                                                                                                                                                                                                                                                                                     | Relay README           | Documented          |
+| REQ-AUTH-005 | Authentication state shall be derived server-side from the user's authentication token.                                                                                                                                                                                                                                                               | Relay README           | Documented          |
+| REQ-AUTH-006 | The application shall display the validation tooltip "Please fill out this field." on the first empty required field in visual order when a required field is left empty in the registration or login form. Only one validation tooltip shall be displayed at a time.                                                                                 | Developer confirmation | Developer-confirmed |
+| REQ-AUTH-007 | When login fails because the email address is unknown or the password is incorrect, the application shall display the same generic error message "Invalid email or password." without revealing whether the email address is registered.                                                                                                              | Developer confirmation | Developer-confirmed |
 
 ---
 
@@ -75,13 +75,14 @@ REQ-AUTH-001
 
 ## 6. Messaging Requirements
 
-| ID          | Requirement                                                                                            | Source                                 | Status     |
-| ----------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------- | ---------- |
-| REQ-MSG-001 | The application shall allow users to send text messages within an authorized conversation.             | Relay README                           | Documented |
-| REQ-MSG-002 | Messages shall be displayed within the conversation history.                                           | Relay README                           | Documented |
-| REQ-MSG-003 | Messages shall persist across application refresh and re-login.                                        | Relay README                           | Documented |
-| REQ-MSG-004 | Message history shall support automatic scrolling behavior.                                            | Relay README                           | Documented |
-| REQ-MSG-005 | Message history shall display calendar date separators according to the documented date display rules. | Relay README / Developer clarification | Documented |
+| ID          | Requirement                                                                                                                                                         | Source                                 | Status              |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- | ------------------- |
+| REQ-MSG-001 | The application shall allow users to send text messages within an authorized conversation.                                                                          | Relay README                           | Documented          |
+| REQ-MSG-002 | Messages shall be displayed within the conversation history.                                                                                                        | Relay README                           | Documented          |
+| REQ-MSG-003 | Messages shall persist across application refresh and re-login.                                                                                                     | Relay README                           | Documented          |
+| REQ-MSG-004 | Message history shall support automatic scrolling behavior.                                                                                                         | Relay README                           | Documented          |
+| REQ-MSG-005 | Message history shall display calendar date separators according to the documented date display rules.                                                              | Relay README / Developer clarification | Documented          |
+| REQ-MSG-006 | The application shall disable the Send button when the message input is empty or contains whitespace characters only, preventing message submission through the UI. | Developer confirmation                 | Developer-confirmed |
 
 ---
 
@@ -106,12 +107,10 @@ The following behaviors are not sufficiently specified by the available document
 
 - Field validation rules beyond required-field validation
 - Password requirements
-- Duplicate account behavior
 - Invalid input handling
 
 ### Authentication
 
-- Exact invalid credential behavior
 - Session expiration behavior
 - Behavior after session expiration
 - Logout behavior when authentication state is already invalid

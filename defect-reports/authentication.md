@@ -96,6 +96,106 @@ Backend account creation was not independently verified. The screenshot does not
 
 ---
 
+## BUG-002 — Generic Login Error Message Missing Trailing Period
+
+| Field                    | Value                                                                                                                              |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Defect ID                | BUG-002                                                                                                                            |
+| Jira Issue               | [RQA-7](https://adinovapramono69.atlassian.net/browse/RQA-7)                                                                       |
+| Title                    | Generic Login Error Message Missing Trailing Period                                                                               |
+| Functional Area          | Authentication / Login                                                                                                             |
+| Related Test Cases       | [TC-AUTH-003-01](../test-design/test-cases/authentication.md#tc-auth-003-01--login-with-an-invalid-password), [TC-AUTH-003-02](../test-design/test-cases/authentication.md#tc-auth-003-02--login-with-an-unknown-account) |
+| Related Requirement      | [REQ-AUTH-002](../docs/02-requirements.md), [REQ-AUTH-007](../docs/02-requirements.md)                                                                                         |
+| Related Execution Record | [TC-AUTH-003-01 Execution Record](../execution/authentication.md#tc-auth-003-01--login-with-an-invalid-password), [TC-AUTH-003-02 Execution Record](../execution/authentication.md#tc-auth-003-02--login-with-an-unknown-account) |
+| Severity                 | Low                                                                                                                                |
+| Priority                 | Low                                                                                                                                |
+| Status                   | Open                                                                                                                               |
+
+### Description
+
+When a login attempt fails because the password is incorrect or the email address is not registered, Relay displays a generic error message that does not exactly match the message specified in REQ-AUTH-007.
+
+The displayed message is missing the trailing period required by the documented requirement.
+
+### Preconditions
+
+- Relay is accessible.
+- The tester is not authenticated.
+- A registered user account is available for the invalid-password scenario.
+- The test email address is not associated with a registered account for the unknown-account scenario.
+
+### Test Data
+
+| Data               | Value                                         |
+| ------------------ | --------------------------------------------- |
+| Registered Email   | bob@example.com                               |
+| Incorrect Password | password124                                   |
+| Unknown Email      | invalid@example.com                           |
+| Test Password      | password123                                   |
+
+### Steps to Reproduce
+
+**Scenario A — Invalid Password**
+
+1. Open the Relay application.
+2. Navigate to the login page.
+3. Enter the registered user's email address.
+4. Enter an incorrect password.
+5. Click the "Sign in" button.
+6. Observe the error message displayed by the application.
+
+**Scenario B — Unknown Account**
+
+1. Open the Relay application.
+2. Navigate to the login page.
+3. Enter an email address that is not associated with a registered account.
+4. Enter a test password.
+5. Click the "Sign in" button.
+6. Observe the error message displayed by the application.
+
+### Expected Result
+
+For both scenarios, the application displays the exact generic error message specified in REQ-AUTH-007:
+
+`Invalid email or password.`
+
+The message must include a period at the end and must not reveal whether the email address is registered.
+
+### Actual Result
+
+For both scenarios, the application displays the following message:
+
+`Invalid email or password`
+
+The message does not include the required trailing period.
+
+### Evidence
+
+- Screenshot: [`TC-AUTH-003-01-wrong-password-response.png`](../evidence/authentication/TC-AUTH-003-01-wrong-password-response.png)
+- Screenshot: [`TC-AUTH-003-02-invalid-email-response.png`](../evidence/authentication/TC-AUTH-003-02-invalid-email-response.png)
+
+The screenshots support the observed error messages in both login scenarios.
+
+### Impact Assessment
+
+The displayed error message does not exactly match the documented requirement. The observed discrepancy is limited to punctuation in the generic login error message.
+
+No additional functional impact has been established from the available evidence.
+
+### Status and Verification Notes
+
+- **Current Status:** Open
+- **Retest:** Not performed
+- **Fix Verification:** Not performed
+
+Backend authentication handling and the underlying implementation were not independently verified. The available evidence confirms the displayed messages but does not establish whether both scenarios share the same underlying implementation.
+
+### Traceability
+
+`REQ-AUTH-002` / `REQ-AUTH-007` → `TC-AUTH-003-01` / `TC-AUTH-003-02` → Execution Records → `BUG-002` → Retest (pending)
+
+---
+
 ## Other Authentication Defects
 
 No other authentication defects are documented in this file at this time.

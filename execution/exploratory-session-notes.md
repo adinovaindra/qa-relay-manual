@@ -2,13 +2,13 @@
 
 ## Session Information
 
-| Field | Value |
-|---|---|
-| Session ID | EXP-SESSION-001 |
-| Related Scenario | SCN-EXP-001 — Invalid Registration Input |
-| System Under Test | Relay |
-| Session Type | Exploratory Testing |
-| Session Status | Initial observations documented |
+| Field             | Value                                    |
+| ----------------- | ---------------------------------------- |
+| Session ID        | EXP-SESSION-001                          |
+| Related Scenario  | SCN-EXP-001 — Invalid Registration Input |
+| System Under Test | Relay                                    |
+| Session Type      | Exploratory Testing                      |
+| Session Status    | Initial observations documented          |
 
 ## 1. Session Objective
 
@@ -107,13 +107,13 @@ Evidence files: Not recorded in this session note.
 
 ### Session Information
 
-| Field | Value |
-|---|---|
-| Session ID | EXP-SESSION-002 |
-| Related Scenario | SCN-EXP-002 — Invalid or Expired Session |
-| System Under Test | Relay |
-| Session Type | Exploratory Testing — Black-box UI |
-| Session Status | Initial Exploration Completed |
+| Field             | Value                                    |
+| ----------------- | ---------------------------------------- |
+| Session ID        | EXP-SESSION-002                          |
+| Related Scenario  | SCN-EXP-002 — Invalid or Expired Session |
+| System Under Test | Relay                                    |
+| Session Type      | Exploratory Testing — Black-box UI       |
+| Session Status    | Initial Exploration Completed            |
 
 ### 1. Session Objective
 
@@ -169,13 +169,13 @@ No defect is confirmed by the observations collected in this session.
 
 ### Session Information
 
-| Field | Value |
-|---|---|
-| Session ID | EXP-SESSION-003 |
-| Related Scenario | SCN-EXP-003 — Invalid Conversation Reference |
-| System Under Test | Relay |
-| Session Type | Exploratory Testing — Black-box UI |
-| Session Status | Initial Exploration Completed |
+| Field             | Value                                        |
+| ----------------- | -------------------------------------------- |
+| Session ID        | EXP-SESSION-003                              |
+| Related Scenario  | SCN-EXP-003 — Invalid Conversation Reference |
+| System Under Test | Relay                                        |
+| Session Type      | Exploratory Testing — Black-box UI           |
+| Session Status    | Initial Exploration Completed                |
 
 ### 1. Session Objective
 
@@ -237,13 +237,13 @@ No defect is confirmed by the observations collected in this session.
 
 ### Session Information
 
-| Field | Value |
-|---|---|
-| Session ID | EXP-SESSION-004 |
-| Related Scenario | SCN-EXP-004 — Empty or Whitespace Message |
-| System Under Test | Relay |
-| Session Type | Exploratory Testing — Black-box UI |
-| Session Status | Initial Exploration Completed |
+| Field             | Value                                     |
+| ----------------- | ----------------------------------------- |
+| Session ID        | EXP-SESSION-004                           |
+| Related Scenario  | SCN-EXP-004 — Empty or Whitespace Message |
+| System Under Test | Relay                                     |
+| Session Type      | Exploratory Testing — Black-box UI        |
+| Session Status    | Initial Exploration Completed             |
 
 ### 1. Session Objective
 
@@ -288,7 +288,7 @@ Explore Relay's observable behavior when attempting to send an empty message or 
 
 ### 4. Limitations
 
-- The expected validation rules for empty and whitespace-only messages have not been formally confirmed.
+- The intended UI validation behavior for empty and whitespace-only messages has been confirmed by the developer and documented in REQ-MSG-006.
 - The observations cover the browser UI only.
 - Server-side handling of empty or whitespace-only message content has not been independently verified.
 - No conclusion is drawn about behavior when client-side validation is bypassed.
@@ -301,7 +301,7 @@ Screenshots supporting the observations are referenced in Section 2 — Explorat
 
 The observed behaviors are documented for Portfolio 1 — End-to-End Manual QA.
 
-The findings may be used to support clarification of the expected validation rules for empty and whitespace-only messages.
+The observed UI behavior is consistent with the developer-confirmed requirement documented in REQ-MSG-006.
 
 No defect is confirmed by the observations collected in this session.
 
@@ -309,13 +309,13 @@ No defect is confirmed by the observations collected in this session.
 
 ### Session Information
 
-| Field | Value |
-|---|---|
-| Session ID | EXP-SESSION-005 |
-| Related Scenario | SCN-EXP-005 — Message Length Boundary |
-| System Under Test | Relay |
-| Session Type | Exploratory Testing — Browser UI |
-| Session Status | Initial Exploration Completed |
+| Field             | Value                                 |
+| ----------------- | ------------------------------------- |
+| Session ID        | EXP-SESSION-005                       |
+| Related Scenario  | SCN-EXP-005 — Message Length Boundary |
+| System Under Test | Relay                                 |
+| Session Type      | Exploratory Testing — Browser UI      |
+| Session Status    | Initial Exploration Completed         |
 
 ### 1. Session Objective
 

@@ -80,12 +80,8 @@ Coverage considerations:
 - Unknown or unregistered account.
 - Failed authentication does not grant access to protected functionality.
 - Error feedback is displayed when authentication fails.
-- The same generic error message, `Invalid email or password`, is displayed for an invalid password and an unknown account.
+- The same generic error message, `Invalid email or password.`, is displayed for an invalid password and an unknown account.
 - The error message does not reveal whether the email address is registered.
-
----
-
-The exact expected error behavior requires clarification if it is not defined by available product documentation.
 
 ---
 
@@ -393,11 +389,11 @@ The exact expected content of empty states requires clarification where not defi
 
 ---
 
-**### SCN-UX-002 — Error States**
+### SCN-UX-002 — Error States
 
 Verify that appropriate error states and validation feedback are displayed when relevant application operations fail or required input is missing.
 
-**Related Requirement:** REQ-UX-006, REQ-AUTH-006  
+**Related Requirement:** REQ-UX-006, REQ-AUTH-006, REQ-AUTH-007
 **Risk Area:** Error Handling  
 **Risk Level:** Medium
 
@@ -406,7 +402,7 @@ Coverage considerations:
 - Validation feedback when a required authentication form field is left empty
 - Validation feedback appears on the first empty required field in visual order
 - Only one required-field validation tooltip is displayed at a time
-- Error feedback when login fails due to invalid credentials
+- Consistent generic error feedback when login fails due to invalid credentials
 - Error feedback when registration fails
 - Error message visibility
 - Error message clarity
