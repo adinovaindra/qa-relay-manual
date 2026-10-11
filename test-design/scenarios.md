@@ -68,18 +68,22 @@ Coverage considerations:
 
 ### SCN-AUTH-003 — Invalid User Login
 
-Verify that authentication does not succeed when invalid credentials are provided.
+Verify that authentication does not succeed when invalid credentials are provided and that failed login attempts return consistent, generic error feedback.
 
-**Related Requirement:** REQ-AUTH-002  
+**Related Requirement:** REQ-AUTH-002, REQ-AUTH-007  
 **Risk Area:** Authentication  
 **Risk Level:** High
 
 Coverage considerations:
 
-- Invalid password
-- Invalid or unknown account
-- Error handling
-- Protected access after failed authentication
+- Invalid password for a registered account.
+- Unknown or unregistered account.
+- Failed authentication does not grant access to protected functionality.
+- Error feedback is displayed when authentication fails.
+- The same generic error message, `Invalid email or password`, is displayed for an invalid password and an unknown account.
+- The error message does not reveal whether the email address is registered.
+
+---
 
 The exact expected error behavior requires clarification if it is not defined by available product documentation.
 
@@ -389,7 +393,7 @@ The exact expected content of empty states requires clarification where not defi
 
 ---
 
-### SCN-UX-002 — Error States
+**### SCN-UX-002 — Error States**
 
 Verify that appropriate error states and validation feedback are displayed when relevant application operations fail or required input is missing.
 
@@ -400,6 +404,8 @@ Verify that appropriate error states and validation feedback are displayed when 
 Coverage considerations:
 
 - Validation feedback when a required authentication form field is left empty
+- Validation feedback appears on the first empty required field in visual order
+- Only one required-field validation tooltip is displayed at a time
 - Error feedback when login fails due to invalid credentials
 - Error feedback when registration fails
 - Error message visibility
@@ -407,7 +413,7 @@ Coverage considerations:
 - Recovery after an error
 - Error state does not expose inappropriate information
 
-The required-field validation tooltip `Please fill out this field.` is confirmed by developer clarification for empty required authentication form fields. Exact expected behavior for other error conditions requires clarification where not defined by available requirements or developer clarification.
+The required-field validation tooltip `Please fill out this field.` and its visual-order behavior are confirmed by developer clarification for empty required authentication form fields. For registration, the visual field order is Name → Email → Password → Confirm Password. For login, the visual field order is Email → Password. Exact expected behavior for other error conditions requires clarification where not defined by available requirements or developer clarification.
 
 ---
 

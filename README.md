@@ -83,6 +83,9 @@ Tools are used where appropriate to support documentation, manual testing, evide
 
 ```text
 qa-relay-manual/
+├── defect-reports/
+|   ├── README.md
+│   └── authentication.md
 ├── docs/
 │   ├── README.md
 │   ├── 01-product-scope.md
@@ -144,6 +147,10 @@ This is a self-directed portfolio project, not professional QA work performed fo
 The project demonstrates QA methods and reasoning applied to Relay within the documented scope. It does not claim production defect statistics, exhaustive coverage of every possible behavior, or verification of internal server-side implementation details unless supported by separate technical evidence.
 
 ## Related Documentation
+
+### Defect Reports
+
+- [Defect Report Index](defect-reports/README.md)
 
 ### Product Documentation
 

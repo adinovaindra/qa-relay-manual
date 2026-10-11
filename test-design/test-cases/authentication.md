@@ -88,10 +88,11 @@
 
 #### Expected Result
 
-- Registration is not completed when a required registration field is left empty.
-- The application displays the validation tooltip "Please fill out this field." for an empty required authentication form field.
-- When all registration fields are empty, validation feedback must identify a field that requires input.
-- The exact validation order when multiple required fields are empty is not specified by the requirement.
+- Registration is not completed when one or more required registration fields are left empty.
+- The application displays the validation tooltip "Please fill out this field." on the first empty field in visual order.
+- Only one validation tooltip is displayed at a time.
+- When all registration fields are empty, the tooltip appears on the Name field.
+- When multiple fields are empty, the tooltip appears on the empty field that comes first in visual order.
 
 ### TC-AUTH-001-03 — Registration with an Existing Email Address
 
@@ -135,10 +136,10 @@
 
 #### Expected Result
 
-- Observe whether registration is accepted or rejected when an existing email address is submitted.
-- Record the actual application response and any error feedback displayed.
-- Determine whether a second account is created using the existing email address.
-- The definitive expected behavior requires clarification because duplicate account behavior is not specified by the available requirements.
+- Registration is rejected when the email address is already registered.
+- The application displays the exact error message `An account with this email already exists.`
+- The error message includes a period at the end.
+- Registration does not proceed successfully.
 
 ### TC-AUTH-001-04 — Registration Password Confirmation Validation
 
@@ -181,10 +182,8 @@
 
 #### Expected Result
 
-- Observe the registration behavior when the password and confirm password values do not match.
-- Record whether registration is accepted or rejected.
-- Record the actual error feedback, if any.
-- The definitive expected behavior requires clarification because password confirmation behavior is not specified by the available requirements.
+- Registration is rejected when the password and confirm password values do not match.
+- The application displays the exact error message `Passwords do not match.`
 
 ### TC-AUTH-002-01 — Login with Valid Credentials
 
@@ -210,8 +209,8 @@
 
 | Data     | Value                                 |
 | -------- | ------------------------------------- |
-| Email    | Registered test user's email          |
-| Password | Registered test user's valid password |
+| Email    | bob@example.com                       |
+| Password | password123                           |
 
 #### Steps
 
@@ -247,13 +246,14 @@
 
 - Relay is accessible.
 - The tester is not authenticated.
+- A registered user's email and password are available for test data.
 
 #### Test Data
 
-| Data        | Value                                           |
-| ----------- | ----------------------------------------------- |
-| Email       | Registered test user's email, or empty          |
-| Password    | Registered test user's valid password, or empty |
+| Data        | Value                                                             |
+| ----------- | -----------------------------------------------                   |
+| Email       | Registered test user's email (bob@example.com), or empty          |
+| Password    | Registered test user's valid password (password123), or empty     |
 | Empty Field | Email and/or password intentionally left empty  |
 
 #### Steps
@@ -272,11 +272,12 @@
 
 #### Expected Result
 
-- Login is not completed when a required authentication field is left empty.
-- The application displays the validation tooltip "Please fill out this field." for an empty required authentication form field.
-- When both fields are empty, validation feedback is observed on the email field first.
-- When only the password field is empty, validation feedback is associated with the password field.
-- When only the email field is empty, validation feedback is associated with the email field.
+- Login is not completed when one or more required login fields are left empty.
+- The browser displays the validation tooltip "Please fill out this field." on the first empty required field in visual order.
+- Only one validation tooltip is displayed at a time.
+- When both Email and Password are empty, the tooltip appears on the Email field first.
+- When only the Password field is empty, the tooltip appears on the Password field.
+- When only the Email field is empty, the tooltip appears on the Email field.
 
 ### TC-AUTH-003-01 — Login with an Invalid Password
 
@@ -285,7 +286,7 @@
 | Test Case ID        | TC-AUTH-003-01                  |
 | Title               | Login with an invalid password  |
 | Related Scenario    | SCN-AUTH-003, SCN-UX-002        |
-| Related Requirement | REQ-AUTH-002                    |
+| Related Requirement | REQ-AUTH-002, REQ-AUTH-007      |
 | Risk Level          | High                            |
 | Test Design Method  | Requirement-Based + Exploratory |
 | Test Type           | Functional / Negative           |
@@ -302,8 +303,8 @@
 
 | Data     | Value                        |
 | -------- | ---------------------------- |
-| Email    | Registered test user's email |
-| Password | Incorrect password           |
+| Email    | bob@example.com              |
+| Password | password124                  |
 
 #### Steps
 
@@ -316,10 +317,11 @@
 
 #### Expected Result
 
-- Authentication does not succeed with the provided invalid credentials.
+- Authentication does not succeed with the provided invalid password.
 - The user does not enter an authenticated state.
-- The application provides error feedback for the failed login attempt.
-- The exact error message is not specified by the available requirements and must be recorded during execution.
+- The application displays the generic error message "Invalid email or password".
+- The error feedback is visible to the user.
+- The error message does not reveal whether the email address is registered.
 
 ### TC-AUTH-003-02 — Login with an Unknown Account
 
@@ -328,7 +330,7 @@
 | Test Case ID        | TC-AUTH-003-02                  |
 | Title               | Login with an unknown account   |
 | Related Scenario    | SCN-AUTH-003, SCN-UX-002        |
-| Related Requirement | REQ-AUTH-002                    |
+| Related Requirement | REQ-AUTH-002, REQ-AUTH-007      |
 | Risk Level          | High                            |
 | Test Design Method  | Requirement-Based + Exploratory |
 | Test Type           | Functional / Negative           |
@@ -344,8 +346,8 @@
 
 | Data     | Value                              |
 | -------- | ---------------------------------- |
-| Email    | Unknown/unregistered email address |
-| Password | Test password                      |
+| Email    | invalid@example.com                |
+| Password | password123                        |
 
 #### Steps
 
@@ -358,10 +360,11 @@
 
 #### Expected Result
 
-- Authentication does not succeed with the provided invalid credentials.
+- Authentication does not succeed for the unknown account.
 - The user does not enter an authenticated state.
-- The application provides error feedback for the failed login attempt.
-- The exact error message is not specified by the available requirements and must be recorded during execution.
+- The application displays the generic error message "Invalid email or password".
+- The error feedback is visible to the user.
+- The error message does not reveal whether the email address is registered.
 
 ### TC-AUTH-004-01 — Logout from Authenticated Session
 
