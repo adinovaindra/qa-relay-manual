@@ -10,18 +10,18 @@ Each defect is documented with its reproduction steps, expected and actual resul
 
 ## BUG-001 — Duplicate Email Error Message Missing Trailing Period
 
-| Field                    | Value                                                                                                                     |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
-| Defect ID                | BUG-001                                                                                                                   |
-| Jira Issue               | [RQA-6](https://adinovapramono69.atlassian.net/browse/RQA-6)                                                              |
-| Title                    | Duplicate Email Error Message Missing Trailing Period                                                                     |
-| Functional Area          | Authentication / Registration                                                                                             |
-| Related Test Case        | [TC-AUTH-001-03](../test-design/test-cases/authentication.md#tc-auth-001-03--registration-with-an-existing-email-address) |
-| Related Requirement      | [REQ-AUTH-001](../docs/02-requirements.md)                                                                                |
-| Related Execution Record | [TC-AUTH-001-03 Execution Record](../execution/authentication.md)                                                         |
-| Severity                 | Low                                                                                                                       |
-| Priority                 | Low                                                                                                                       |
-| Status                   | Open                                                                                                                      |
+| Field                    | Value                                                                                                                         |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| Defect ID                | BUG-001                                                                                                                       |
+| Jira Issue               | [RQA-6](https://adinovapramono69.atlassian.net/browse/RQA-6)                                                                  |
+| Title                    | Duplicate Email Error Message Missing Trailing Period                                                                         |
+| Functional Area          | Authentication / Registration                                                                                                 |
+| Related Test Case        | [TC-AUTH-001-03](../test-design/test-cases/authentication.md#tc-auth-001-03--registration-with-an-existing-email-address)     |
+| Related Requirement      | [REQ-AUTH-001](../docs/02-requirements.md)                                                                                    |
+| Related Execution Record | [TC-AUTH-001-03 Execution Record](../execution/authentication.md#tc-auth-001-03--registration-with-an-existing-email-address) |
+| Severity                 | Low                                                                                                                           |
+| Priority                 | Low                                                                                                                           |
+| Status                   | Open                                                                                                                          |
 
 ### Description
 
