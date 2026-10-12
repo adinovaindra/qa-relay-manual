@@ -1,17 +1,17 @@
 ## Conversations Test Cases
 
-### TC-CONV-001-01 — Access an Existing One-on-One Conversation
+### TC-CONV-001-01 — Access and Retrieve an Existing One-on-One Conversation
 
-| Field               | Value                                      |
-| ------------------- | ------------------------------------------ |
-| Test Case ID        | TC-CONV-001-01                             |
-| Title               | Access an existing one-on-one conversation |
-| Related Scenario    | SCN-CONV-001                               |
-| Related Requirement | REQ-CONV-001                               |
-| Risk Level          | High                                       |
-| Test Design Method  | Requirement-Based                          |
-| Test Type           | Functional / Positive                      |
-| Priority            | High                                       |
+| Field               | Value                                                   |
+| ------------------- | ------------------------------------------------------- |
+| Test Case ID        | TC-CONV-001-01                                          |
+| Title               | Access and retrieve an existing one-on-one conversation |
+| Related Scenario    | SCN-CONV-001, SCN-CONV-002                              |
+| Related Requirement | REQ-CONV-001, REQ-CONV-002                              |
+| Risk Level          | High                                                    |
+| Test Design Method  | Requirement-Based                                       |
+| Test Type           | Functional / Positive                                   |
+| Priority            | High                                                    |
 
 #### Preconditions
 
@@ -22,51 +22,11 @@
 
 #### Test Data
 
-| Data              | Value                                           |
-| ----------------- | ----------------------------------------------- |
-| User              | User A                                          |
-| Other Participant | User B                                          |
-| Conversation      | Existing conversation between User A and User B |
-
-#### Steps
-
-1. Open the Relay application.
-2. Sign in as User A using valid credentials.
-3. Navigate to the existing conversation between User A and User B.
-4. Observe the conversation displayed.
-
-#### Expected Result
-
-- User A can access the existing one-on-one conversation.
-- The conversation between User A and User B is displayed.
-
-### TC-CONV-002-01 — Retrieve an Existing Conversation
-
-| Field               | Value                             |
-| ------------------- | --------------------------------- |
-| Test Case ID        | TC-CONV-002-01                    |
-| Title               | Retrieve an existing conversation |
-| Related Scenario    | SCN-CONV-002                      |
-| Related Requirement | REQ-CONV-002                      |
-| Risk Level          | High                              |
-| Test Design Method  | Requirement-Based                 |
-| Test Type           | Functional / Positive             |
-| Priority            | High                              |
-
-#### Preconditions
-
-- Relay is accessible.
-- User A and User B are registered users.
-- An existing conversation between User A and User B is available.
-- User A's valid credentials are available.
-
-#### Test Data
-
-| Data              | Value                                           |
-| ----------------- | ----------------------------------------------- |
-| User              | User A                                          |
-| Other Participant | User B                                          |
-| Conversation      | Existing conversation between User A and User B |
+| Data              | Value                                       |
+| ----------------- | ------------------------------------------- |
+| Authorized User   | User A - Alice (alice@example.com)          |
+| Other Participant | User B - Bob (bob@example.com)              |
+| Conversation      | Existing conversation between Alice and Bob |
 
 #### Steps
 
@@ -79,15 +39,16 @@
 
 #### Expected Result
 
+- The chat page is displayed after User A signs in successfully.
 - The existing conversation with User B is available in the conversation list.
-- Selecting the conversation retrieves and displays the existing conversation.
-- The displayed conversation corresponds to the existing conversation between User A and User B.
+- Selecting the conversation retrieves and displays the existing one-on-one conversation.
+- The displayed conversation corresponds to the conversation between User A and User B.
 
-### TC-CONV-002-02 — Create a New Conversation
+### TC-CONV-002-01 — Create a New Conversation
 
 | Field               | Value                     |
 | ------------------- | ------------------------- |
-| Test Case ID        | TC-CONV-002-02            |
+| Test Case ID        | TC-CONV-002-01            |
 | Title               | Create a new conversation |
 | Related Scenario    | SCN-CONV-002              |
 | Related Requirement | REQ-CONV-002              |
@@ -99,16 +60,16 @@
 #### Preconditions
 
 - Relay is accessible.
-- User A and Alice are registered users.
-- No existing conversation between User A and Alice is available.
+- User A and User C are registered users.
+- No existing conversation between User A and User C is available.
 - User A's valid credentials are available.
 
 #### Test Data
 
-| Data                     | Value  |
-| ------------------------ | ------ |
-| User                     | User A |
-| Conversation Participant | Alice  |
+| Data                     | Value                                  |
+| ------------------------ | -------------------------------------- |
+| User                     | User A - Alice (alice@example.com)     |
+| Conversation Participant | User C - Charlie (charlie@example.com) |
 
 #### Steps
 
@@ -116,14 +77,14 @@
 2. Sign in as User A using valid credentials.
 3. Verify that the chat page is displayed.
 4. Open the **"Select a user"** dropdown under **"New Chat"**.
-5. Select **Alice**.
+5. Select **Charlie**.
 6. Click the **"Start Chat"** button.
 7. Observe the conversation displayed in the main conversation panel.
 8. Observe the conversation list.
 
 #### Expected Result
 
-- A new conversation between User A and Alice is created.
+- A new conversation between User A and User C is created.
 - The newly created conversation is displayed in the main conversation panel.
 - The newly created conversation is available in the conversation list.
 
@@ -152,8 +113,8 @@
 
 | Data                     | Value                                                        |
 | ------------------------ | ------------------------------------------------------------ |
-| User                     | User A                                                       |
-| Conversation Participant | User B                                                       |
+| User                     | User A - Alice (alice@example.com)                           |
+| Conversation Participant | User B - Bob (bob@example.com)                               |
 | Conversation             | Existing 1-on-1 conversation containing at least one message |
 
 #### Steps
@@ -195,12 +156,12 @@
 
 #### Test Data
 
-| Data           | Value                                                  |
-| -------------- | ------------------------------------------------------ |
-| User           | User A                                                 |
-| Conversation A | Existing 1-on-1 conversation between User A and User B |
-| Conversation B | Existing 1-on-1 conversation between User A and User C |
-| New Message    | Valid text message sent by User A in Conversation B    |
+| Data           | Value                                                                                  |
+| -------------- | -------------------------------------------------------------------------------------- |
+| User           | User A - Alice (alice@example.com)                                                     |
+| Conversation A | Existing 1-on-1 conversation between User A and User B - Bob (bob@example.com)         |
+| Conversation B | Existing 1-on-1 conversation between User A and User C - Charlie (charlie@example.com) |
+| New Message    | Valid text message sent by User A in Conversation A                                    |
 
 #### Steps
 
@@ -209,7 +170,7 @@
 3. Verify that the chat page is displayed.
 4. Locate Conversation A and Conversation B in the conversation list.
 5. Record their current relative order.
-6. Open Conversation B.
+6. Open Conversation A.
 7. Send a valid text message.
 8. Return to or observe the conversation list.
 9. Identify the current position of Conversation A and Conversation B.
@@ -218,6 +179,6 @@
 
 #### Expected Result
 
-- The conversation list reflects the latest message activity.
-- Conversation B's position is consistent with its latest message activity relative to Conversation A.
-- The conversation position is consistent with the latest message activity associated with the conversation.
+- The conversation list is ordered based on the latest message activity.
+- After User A successfully sends a new message in Conversation A, Conversation A appears above Conversation B in the conversation list, provided no newer message activity occurs in Conversation B during the test.
+- The conversation list order reflects the latest message activity associated with the conversations.

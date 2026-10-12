@@ -10,12 +10,12 @@ Formal execution results are recorded only for test cases that have actually bee
 
 ## Execution Records
 
-| Functional Area | Execution Record | Status |
-|---|---|---|
-| Authentication | [authentication.md](./authentication.md) | In Progress |
-| Authorization | [authorization.md](./authorization.md) | Not Started |
-| Conversations | [conversations.md](./conversations.md) | Not Started |
-| Messaging | [messaging.md](./messaging.md) | Not Started |
+| Functional Area | Execution Record                           | Status      |
+| --------------- | ------------------------------------------ | ----------- |
+| Authentication  | [authentication.md](./authentication.md)   | Completed   |
+| Authorization   | [authorization.md](./authorization.md)     | Completed   |
+| Conversations   | [conversations.md](./conversations.md)     | Completed   |
+| Messaging       | [messaging.md](./messaging.md)             | In Progress |
 | User Experience | [user-experience.md](./user-experience.md) | Not Started |
 
 **Status note:** These statuses describe the progress of formal execution documentation, not the pass/fail status of every test case in each functional area.
