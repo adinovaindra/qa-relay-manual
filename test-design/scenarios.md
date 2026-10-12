@@ -367,6 +367,22 @@ Coverage considerations:
 
 ---
 
+### SCN-MSG-007 — Empty and Whitespace-Only Message Validation
+
+Verify that the Send button is disabled when the message input is empty or contains only whitespace, preventing submission through the UI.
+
+**Related Requirement:** REQ-MSG-006  
+**Risk Area:** Messaging / Input Validation  
+**Risk Level:** Medium
+
+Coverage considerations:
+
+- Send button state when the message input is empty
+- Send button state when the message input contains only whitespace
+- Prevention of empty or whitespace-only message submission through the UI
+
+---
+
 ## 7. User Experience Scenarios
 
 ### SCN-UX-001 — Empty States
@@ -658,9 +674,9 @@ The current scenario set covers:
 | Authentication                 |              5 |
 | Authorization                  |              4 |
 | Conversations                  |              4 |
-| Messaging                      |              6 |
+| Messaging                      |              7 |
 | User Experience                |              5 |
 | Exploratory / Requirement Gaps |              5 |
-| **Total**                      |         **29** |
+| **Total**                      |         **30** |
 
 The scenario count is not intended to represent final test case count. Individual scenarios may produce multiple test cases covering positive, negative, boundary, and edge conditions.

@@ -23,11 +23,11 @@
 
 #### Test Data
 
-| Data                     | Value              |
-| ------------------------ | ------------------ |
-| Sender                   | User A             |
-| Conversation Participant | User B             |
-| Message                  | Valid text message |
+| Data                     | Value                              |
+| ------------------------ | ---------------------------------- |
+| Sender                   | User A - Alice (alice@example.com) |
+| Conversation Participant | User B - Bob (bob@example.com)     |
+| Message                  | Valid text message                 |
 
 #### Steps
 
@@ -71,8 +71,8 @@
 
 | Data                     | Value                                                         |
 | ------------------------ | ------------------------------------------------------------- |
-| User                     | User A                                                        |
-| Conversation Participant | User B                                                        |
+| Sender                   | User A - Alice (alice@example.com)                            |
+| Conversation Participant | User B - Bob (bob@example.com)                                |
 | Existing Messages        | Known messages already available in the selected conversation |
 
 #### Steps
@@ -117,8 +117,8 @@
 
 | Data                     | Value                                                |
 | ------------------------ | ---------------------------------------------------- |
-| User                     | User A                                               |
-| Conversation Participant | User B                                               |
+| Sender                   | User A - Alice (alice@example.com)                   |
+| Conversation Participant | User B - Bob (bob@example.com)                       |
 | Test Message             | Unique valid text message used to verify persistence |
 
 #### Steps
@@ -162,38 +162,38 @@
 #### Preconditions
 
 - Relay is accessible.
-- User A and User B are registered users.
-- An existing 1-on-1 conversation between User A and User B is available.
+- User A and User C are registered users.
+- An existing 1-on-1 conversation between User A and User C is available.
 - User A is authorized to access the conversation.
 - User A's valid credentials are available.
 
 #### Test Data
 
-| Data                     | Value                     |
-| ------------------------ | ------------------------- |
-| User                     | User A                    |
-| Conversation Participant | User B                    |
-| Message 1                | Unique valid text message |
-| Message 2                | Unique valid text message |
-| Message 3                | Unique valid text message |
+| Data                     | Value                                  |
+| ------------------------ | -------------------------------------- |
+| User                     | User A - Alice (alice@example.com)     |
+| Conversation Participant | User C - Charlie (charlie@example.com) |
+| Message 1                | Unique valid text message              |
+| Message 2                | Unique valid text message              |
+| Message 3                | Unique valid text message              |
 
 #### Steps
 
 1. Open the Relay application.
 2. Sign in as User A using valid credentials.
 3. Verify that the chat page is displayed.
-4. Open the existing conversation with User B.
+4. Open the existing conversation with User C.
 5. Enter and send Message 1.
 6. Enter and send Message 2.
 7. Enter and send Message 3.
 8. Observe the displayed message history.
 9. Verify the relative order of Message 1, Message 2, and Message 3.
 10. Refresh the page.
-11. Open the conversation with User B if necessary.
+11. Open the conversation with User C if necessary.
 12. Verify the relative order of Message 1, Message 2, and Message 3.
 13. Log out from Relay.
 14. Sign in again as User A using valid credentials.
-15. Open the conversation with User B.
+15. Open the conversation with User C.
 16. Verify the relative order of Message 1, Message 2, and Message 3.
 
 #### Expected Result
@@ -220,8 +220,8 @@
 #### Preconditions
 
 - Relay is accessible.
-- User A and User B are registered users.
-- An existing 1-on-1 conversation between User A and User B is available.
+- User A and User C are registered users.
+- An existing 1-on-1 conversation between User A and User C is available.
 - The conversation contains enough existing messages to require scrolling within the message view.
 - User A is authorized to access the conversation.
 - User A's valid credentials are available.
@@ -230,8 +230,8 @@
 
 | Data                     | Value                                              |
 | ------------------------ | -------------------------------------------------- |
-| User                     | User A                                             |
-| Conversation Participant | User B                                             |
+| User                     | User A - Alice (alice@example.com)                 |
+| Conversation Participant | User C - Charlie (charlie@example.com)             |
 | New Message              | Unique valid text message                          |
 | Message History          | Existing conversation containing multiple messages |
 
@@ -240,7 +240,7 @@
 1. Open the Relay application.
 2. Sign in as User A using valid credentials.
 3. Verify that the chat page is displayed.
-4. Open the existing conversation with User B.
+4. Open the existing conversation with User C.
 5. Observe the message view immediately after the conversation is opened.
 6. Identify the latest message currently available in the conversation.
 7. Verify the visible position of the message view relative to the latest message.
@@ -282,8 +282,8 @@
 
 | Data                     | Value                                                            |
 | ------------------------ | ---------------------------------------------------------------- |
-| User                     | User A                                                           |
-| Conversation Participant | User B                                                           |
+| User                     | User A - Alice (alice@example.com)                               |
+| Conversation Participant | User B - Bob (bob@example.com)                                   |
 | Current Date Message     | Unique valid text message sent on the current date               |
 | Previous Date Message    | Unique valid text message sent on the previous calendar date     |
 | Older Date Message       | Unique valid text message sent before the previous calendar date |
@@ -314,3 +314,52 @@
 - Messages belonging to the same calendar date are grouped under the same date separator.
 - Date separators are displayed in the appropriate position relative to the messages they represent.
 - Date separators and message grouping remain consistent after page refresh.
+
+### TC-MSG-007-01 — Prevent Sending Empty or Whitespace-Only Messages
+
+| Field               | Value                                             |
+| ------------------- | ------------------------------------------------- |
+| Test Case ID        | TC-MSG-007-01                                     |
+| Title               | Prevent sending empty or whitespace-only messages |
+| Related Scenario    | SCN-MSG-007                                       |
+| Related Requirement | REQ-MSG-006                                       |
+| Risk Level          | Medium                                            |
+| Test Design Method  | Requirement-Based + Risk-Based                    |
+| Test Type           | Functional / Negative                             |
+| Priority            | Medium                                            |
+
+#### Preconditions
+
+- Relay is accessible.
+- User A and User B are registered users.
+- An existing 1-on-1 conversation between User A and User B is available.
+- User A is authorized to access the conversation.
+- User A's valid credentials are available.
+
+#### Test Data
+
+| Data                     | Value                              |
+| ------------------------ | ---------------------------------- |
+| User                     | User A - Alice (alice@example.com) |
+| Conversation Participant | User B - Bob (bob@example.com)     |
+| Input Variation 1        | Empty input                        |
+| Input Variation 2        | Whitespace-only input              |
+
+#### Steps
+
+1. Open the Relay application.
+2. Sign in as User A using valid credentials.
+3. Verify that the chat page is displayed.
+4. Open the existing conversation with User B.
+5. Leave the message input empty.
+6. Observe the state of the Send button.
+7. Verify that the Send button is disabled.
+8. Enter whitespace-only characters in the message input.
+9. Observe the state of the Send button.
+10. Verify that the Send button is disabled.
+
+#### Expected Result
+
+- The Send button is disabled when the message input is empty.
+- The Send button is disabled when the message input contains only whitespace characters.
+- Empty or whitespace-only messages cannot be submitted through the UI.

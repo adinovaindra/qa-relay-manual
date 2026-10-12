@@ -75,14 +75,14 @@ REQ-AUTH-001
 
 ## 6. Messaging Requirements
 
-| ID          | Requirement                                                                                                                                                         | Source                                 | Status              |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- | ------------------- |
-| REQ-MSG-001 | The application shall allow users to send text messages within an authorized conversation.                                                                          | Relay README                           | Documented          |
-| REQ-MSG-002 | Messages shall be displayed within the conversation history.                                                                                                        | Relay README                           | Documented          |
-| REQ-MSG-003 | Messages shall persist across application refresh and re-login.                                                                                                     | Relay README                           | Documented          |
-| REQ-MSG-004 | Message history shall support automatic scrolling behavior.                                                                                                         | Relay README                           | Documented          |
-| REQ-MSG-005 | Message history shall display calendar date separators according to the documented date display rules.                                                              | Relay README / Developer clarification | Documented          |
-| REQ-MSG-006 | The application shall disable the Send button when the message input is empty or contains whitespace characters only, preventing message submission through the UI. | Developer confirmation                 | Developer-confirmed |
+| ID          | Requirement                                                                                                                                                                                                                                | Source                                 | Status              |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------- | ------------------- |
+| REQ-MSG-001 | The application shall allow users to send text messages within an authorized conversation.                                                                                                                                                 | Relay README                           | Documented          |
+| REQ-MSG-002 | Messages shall be displayed within the conversation history in chronological order, with the oldest message at the top and the newest message at the bottom. This ordering shall remain consistent after application refresh and re-login. | Developer confirmation                 | Developer-confirmed |
+| REQ-MSG-003 | Messages shall persist across application refresh and re-login.                                                                                                                                                                            | Relay README                           | Documented          |
+| REQ-MSG-004 | Message history shall support automatic scrolling behavior.                                                                                                                                                                                | Relay README                           | Documented          |
+| REQ-MSG-005 | Message history shall display calendar date separators according to the documented date display rules.                                                                                                                                     | Relay README / Developer clarification | Documented          |
+| REQ-MSG-006 | The application shall disable the Send button when the message input is empty or contains whitespace characters only, preventing message submission through the UI.                                                                        | Developer confirmation                 | Developer-confirmed |
 
 ---
 
