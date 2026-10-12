@@ -23,17 +23,17 @@
 
 #### Test Data
 
-| Data              | Value                                           |
-| ----------------- | ----------------------------------------------- |
-| Authorized User   | User A                                          |
-| Other Participant | User B                                          |
-| Conversation      | Existing conversation between User A and User B |
+| Data              | Value                                       |
+| ----------------- | ------------------------------------------- |
+| Authorized User   | User A - Alice (alice@example.com)          |
+| Other Participant | User B - Bob (bob@example.com)              |
+| Conversation      | Existing conversation between Alice and Bob |
 
 #### Steps
 
 1. Open the Relay application.
-2. Sign in as User A using valid credentials.
-3. Navigate to the conversation between User A and User B.
+2. Sign in as user A using valid credentials.
+3. Navigate to the conversation between user A and user B.
 4. Observe the conversation displayed.
 
 #### Expected Result
@@ -64,11 +64,11 @@
 
 #### Test Data
 
-| Data      | Value              |
-| --------- | ------------------ |
-| Sender    | User A             |
-| Recipient | User B             |
-| Message   | Valid test message |
+| Data      | Value                              |
+| --------- | ---------------------------------- |
+| Sender    | User A - Alice (alice@example.com) |
+| Recipient | User B - Bob (bob@example.com)     |
+| Message   | Valid test message                 |
 
 #### Steps
 

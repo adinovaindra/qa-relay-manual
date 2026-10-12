@@ -33,7 +33,7 @@ _Summary reflects the execution records documented in this file and must be upda
 
 **Preconditions**
 
-- Relay application is accessible.
+- Relay is accessible.
 - The test email has not been registered previously, based on the tester's knowledge before execution.
 - The tester is not authenticated.
 
@@ -52,7 +52,7 @@ _Summary reflects the execution records documented in this file and must be upda
 
 **Evidence**
 
-- **Screen Recording:** [TC-AUTH-001-01 — Registration and Login](https://github.com/user-attachments/assets/c25b0b54-9729-4314-8733-237f74e5dec6)
+- **Screen Recording:** [TC-AUTH-001-01 — Registration and Login](https://github.com/user-attachments/assets/79d97389-1197-44d9-9be7-d60ba71cdab6)
 - **Screenshot:** [TC-AUTH-001-01 — Successful Login](../evidence/authentication/TC-AUTH-001-01-successful-login.png)
 
 **Defect Reference:** None identified during this execution.
@@ -73,7 +73,7 @@ The observed UI behavior supports the reported registration and authentication o
 
 **Preconditions**
 
-- Relay application is accessible.
+- Relay is accessible.
 - The tester is not authenticated.
 
 **Expected Result**
@@ -163,7 +163,7 @@ The observed error message does not exactly match REQ-AUTH-001, which specifies 
 
 **Preconditions**
 
-- Relay application is accessible.
+- Relay is accessible.
 - The tester is not authenticated.
 - The test email address has not been registered previously.
 
@@ -243,7 +243,7 @@ The observed redirect to `/chat` and the displayed user context support the expe
 
 **Preconditions**
 
-- Relay application is accessible.
+- Relay is accessible.
 - The tester is not authenticated.
 - A registered user's email and password are available for test data.
 
@@ -400,7 +400,7 @@ The observed error message does not exactly match REQ-AUTH-007, which specifies 
 
 - **Authenticated State:** `../evidence/authentication/TC-AUTH-004-01-logged-in.png`
 - **Login Page After Logout:** `../evidence/authentication/TC-AUTH-004-01-login-page.png`
-- **Screen Recording:** [TC-AUTH-004-01 — Logout and Protected Route Check](https://github.com/user-attachments/assets/5ca7b4b4-db82-47b2-8ce6-425af7df9651)
+- **Screen Recording:** [TC-AUTH-004-01 — Logout and Protected Route Check](https://github.com/user-attachments/assets/b53b9c94-35a0-4868-86a3-a17561ec1e86)
 
 **Defect Reference:** None identified during this execution.
 
@@ -418,9 +418,9 @@ The observed UI behavior supports the expected logout and protected-page access 
 
 **Preconditions**
 
+- Relay is accessible.
 - The user is logged out of Relay.
 - No valid authenticated session is available in the browser.
-- The Relay application is accessible.
 
 **Expected Result**
 
@@ -439,7 +439,7 @@ The observed UI behavior supports the expected logout and protected-page access 
 **Evidence**
 
 - **Screenshot:** [TC-AUTH-005-01 — Unauthenticated State and DevTools](../evidence/authentication/TC-AUTH-005-01-with-devTools.png)
-- **Screen Recording:** [TC-AUTH-005-01 — Direct Navigation to Protected Chat Without Authentication](https://github.com/user-attachments/assets/fed6f845-2525-484d-8575-649774e64ad5)
+- **Screen Recording:** [TC-AUTH-005-01 — Direct Navigation to Protected Chat Without Authentication](https://github.com/user-attachments/assets/2e92e1a3-7871-482c-a807-c39a198a37a0)
 
 **Defect Reference:** None identified during this execution.
 
