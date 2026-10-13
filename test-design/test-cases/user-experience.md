@@ -24,13 +24,13 @@
 
 | Data              | Value                                   |
 | ----------------- | --------------------------------------- |
-| User              | User A                                  |
-| Conversation Data | No conversations associated with User A |
+| User              | User D - Dave (dave@example.com)        |
+| Conversation Data | No conversations associated with User D |
 
 #### Steps
 
 1. Open the Relay application.
-2. Sign in as User A using valid credentials.
+2. Sign in as User D using valid credentials.
 3. Verify that the chat page is displayed.
 4. Observe the conversation list.
 5. Verify how the application represents the absence of conversations.
@@ -57,26 +57,26 @@
 #### Preconditions
 
 - Relay is accessible.
-- User A and User B are registered users.
-- An existing 1-on-1 conversation between User A and User B is available.
+- User D and User E are registered users.
+- An existing 1-on-1 conversation between User D and User E is available.
 - The conversation contains no messages.
-- User A is authorized to access the conversation.
-- User A's valid credentials are available.
+- User D is authorized to access the conversation.
+- User D's valid credentials are available.
 
 #### Test Data
 
-| Data                         | Value       |
-| ---------------------------- | ----------- |
-| User                         | User A      |
-| Conversation Participant     | User B      |
-| Conversation Message History | No messages |
+| Data                         | Value                            |
+| ---------------------------- | -------------------------------- |
+| User                         | User D - Dave (dave@example.com) |
+| Conversation Participant     | User E - Elon (elon@example.com) |
+| Conversation Message History | No messages                      |
 
 #### Steps
 
 1. Open the Relay application.
-2. Sign in as User A using valid credentials.
+2. Sign in as User D using valid credentials.
 3. Verify that the chat page is displayed.
-4. Open the existing conversation with User B.
+4. Open the existing conversation with User E.
 5. Observe the message history area.
 6. Verify how the application represents the absence of messages.
 
@@ -109,11 +109,11 @@
 
 #### Test Data
 
-| Data             | Value                                   |
-| ---------------- | --------------------------------------- |
-| Email            | Registered test user's email            |
-| Invalid Password | Incorrect password                      |
-| Valid Password   | Registered test user's correct password |
+| Data             | Value                            |
+| ---------------- | -------------------------------- |
+| Email            | User D - Dave (dave@example.com) |
+| Invalid Password | password124                      |
+| Valid Password   | password123                      |
 
 #### Steps
 
@@ -160,29 +160,35 @@
 
 #### Test Data
 
-| Data              | Value                                                |
-| ----------------- | ---------------------------------------------------- |
-| User              | User A                                               |
-| Theme 1           | Light mode                                           |
-| Theme 2           | Dark mode                                            |
-| Application Areas | Conversation list, conversation panel, message input |
+| Data              | Value                                                                 |
+| ----------------- | --------------------------------------------------------------------- |
+| User              | User D - Dave (dave@example.com)                                      |
+| Theme 1           | Light mode                                                            |
+| Theme 2           | Dark mode                                                             |
+| Application Areas | Register, Login, Conversation list, conversation panel, message input |
 
 #### Steps
 
 1. Open the Relay application.
-2. Sign in as User A using valid credentials.
-3. Verify that the main application interface is displayed.
-4. Identify the currently selected theme.
-5. Switch to light mode if it is not already active.
-6. Observe the appearance of the conversation list, conversation panel, and message input.
-7. Verify that light mode is applied to the observed application areas.
-8. Switch to dark mode.
-9. Observe the appearance of the same application areas.
-10. Verify that dark mode is applied to the observed application areas.
-11. Switch back to light mode.
-12. Verify that the application returns to light mode.
-13. Navigate between the conversation list and an available conversation.
-14. Observe the theme applied across the main application screens.
+2. Navigate to the Register page.
+3. Select Light Mode using the theme toggle.
+4. Verify that the Register page displays Light Mode consistently.
+5. Select Dark Mode using the theme toggle.
+6. Verify that the Register page displays Dark Mode consistently.
+7. Navigate to the Login page.
+8. Select Light Mode using the theme toggle.
+9. Verify that the Login page displays Light Mode consistently.
+10. Select Dark Mode using the theme toggle.
+11. Verify that the Login page displays Dark Mode consistently.
+12. Log in using Dave's valid credentials.
+13. Navigate to the Conversation List.
+14. Select Light Mode and verify that the Conversation List displays Light Mode consistently.
+15. Select Dark Mode and verify that the Conversation List displays Dark Mode consistently.
+16. Open an existing conversation.
+17. Select Light Mode and verify that the Conversation Panel and Message Input display Light Mode consistently.
+18. Select Dark Mode and verify that the Conversation Panel and Message Input display Dark Mode consistently.
+19. Observe the overall appearance of all five application areas in both themes.
+20. Verify that switching themes updates the appearance consistently without making content or interactive controls unusable.
 
 #### Expected Result
 
@@ -193,53 +199,78 @@
 - Switching from dark mode to light mode restores the light theme.
 - The selected theme remains visually consistent across the observed main application screens.
 
-### TC-UX-004-01 — Verify Theme Persistence After Refresh and Navigation
+### TC-UX-004-01 — Verify Theme Persistence After Refresh
 
-| Field               | Value                                                 |
-| ------------------- | ----------------------------------------------------- |
-| Test Case ID        | TC-UX-004-01                                          |
-| Title               | Verify theme persistence after refresh and navigation |
-| Related Scenario    | SCN-UX-004                                            |
-| Related Requirement | REQ-UX-003                                            |
-| Risk Level          | Low                                                   |
-| Test Design Method  | Requirement-Based                                     |
-| Test Type           | Functional / Positive                                 |
-| Priority            | Low                                                   |
+| Field               | Value                                  |
+| ------------------- | -------------------------------------- |
+| Test Case ID        | TC-UX-004-01                           |
+| Title               | Verify theme persistence after refresh |
+| Related Scenario    | SCN-UX-004                             |
+| Related Requirement | REQ-UX-003                             |
+| Risk Level          | Low                                    |
+| Test Design Method  | Requirement-Based                      |
+| Test Type           | Functional / Positive                  |
+| Priority            | Low                                    |
 
 #### Preconditions
 
 - Relay is accessible.
 - A registered user account is available.
 - The user's valid credentials are available.
-- The user can access the main application screens.
+- An existing conversation with User E (Elon) is available.
+- The user can access the Register, Login, and main application screens.
 
 #### Test Data
 
-| Data              | Value                                    |
-| ----------------- | ---------------------------------------- |
-| User              | User A                                   |
-| Selected Theme    | Dark mode                                |
-| Application Areas | Conversation list and conversation panel |
+| Data              | Value                                                                 |
+| ----------------- | --------------------------------------------------------------------- |
+| User              | User D - Dave (dave@example.com)                                      |
+| Themes            | Light Mode, Dark Mode                                                 |
+| Desktop Viewport  | 1366 × 768                                                            |
+| Application Areas | Register, Login, Conversation List, Conversation Panel, Message Input |
 
 #### Steps
 
-1. Open the Relay application.
-2. Sign in as User A using valid credentials.
-3. Verify that the main application interface is displayed.
-4. Select dark mode.
-5. Verify that dark mode is applied to the main application interface.
+1. Set the browser viewport to 1366 × 768.
+2. Open the Relay application.
+3. Navigate to the Register page.
+4. Select Light Mode using the theme toggle.
+5. Verify that the Register page displays Light Mode consistently.
 6. Refresh the page.
-7. Observe the theme applied after the page reloads.
-8. Navigate between the conversation list and an available conversation.
-9. Observe the theme applied after navigation.
-10. Verify that the displayed theme remains consistent with the selected theme.
+7. Verify that the Register page remains in Light Mode after the page reloads.
+8. Select Dark Mode using the theme toggle.
+9. Verify that the Register page displays Dark Mode consistently.
+10. Refresh the page.
+11. Verify that the Register page remains in Dark Mode after the page reloads.
+12. Navigate to the Login page.
+13. Select Light Mode using the theme toggle.
+14. Verify that the Login page displays Light Mode consistently.
+15. Refresh the page.
+16. Verify that the Login page remains in Light Mode after the page reloads.
+17. Select Dark Mode using the theme toggle.
+18. Verify that the Login page displays Dark Mode consistently.
+19. Refresh the page.
+20. Verify that the Login page remains in Dark Mode after the page reloads.
+21. Log in using Dave's valid credentials.
+22. Verify that the Conversation List is displayed.
+23. Open the existing conversation with Elon
+24. Select Light Mode and verify that the Conversation List, Conversation Panel, and Message Input display Light Mode consistently.
+25. Refresh the page.
+26. Verify that the Conversation List, Conversation Panel, and Message Input remain in Light Mode after the page reloads.
+27. Select Dark Mode and verify that the Conversation List, Conversation Panel, and Message Input display Dark Mode consistently.
+28. Refresh the page.
+29. Verify that the Conversation List, Conversation Panel, and Message Input remain in Dark Mode after the page reloads.
+30. Verify that the selected theme and displayed theme remain consistent across all tested application areas after refresh.
 
 #### Expected Result
 
-- Dark mode is applied after it is selected.
-- Dark mode remains selected and displayed after page refresh.
-- Dark mode remains selected and displayed after navigation between the observed application areas.
-- The selected theme and the displayed theme remain consistent.
+- Light Mode remains selected and displayed after refresh on the Register page.
+- Dark Mode remains selected and displayed after refresh on the Register page.
+- Light Mode remains selected and displayed after refresh on the Login page.
+- Dark Mode remains selected and displayed after refresh on the Login page.
+- Light Mode remains selected and displayed after refresh on the main application interface.
+- Dark Mode remains selected and displayed after refresh on the main application interface.
+- The selected theme and displayed theme remain consistent across all tested application areas after refresh.
 
 ### TC-UX-004-02 — Verify Theme Persistence After Logout and Re-Login
 
@@ -263,20 +294,20 @@
 
 #### Test Data
 
-| Data           | Value     |
-| -------------- | --------- |
-| User           | User A    |
-| Selected Theme | Dark mode |
+| Data           | Value                            |
+| -------------- | -------------------------------- |
+| User           | User D - Dave (dave@example.com) |
+| Selected Theme | Dark mode                        |
 
 #### Steps
 
 1. Open the Relay application.
-2. Sign in as User A using valid credentials.
+2. Sign in as User D using valid credentials.
 3. Verify that the main application interface is displayed.
 4. Select dark mode.
 5. Verify that dark mode is applied.
 6. Log out from Relay.
-7. Sign in again as User A using valid credentials.
+7. Sign in again as User D using valid credentials.
 8. Observe the theme applied to the main application interface.
 9. Verify whether the displayed theme matches the previously selected theme.
 
@@ -286,6 +317,70 @@
 - The user can log out and sign in again successfully.
 - After re-login, the displayed theme remains consistent with the previously selected dark mode.
 - The theme preference persists across the logout and re-login flow.
+
+### TC-UX-004-03 — Verify Theme Persistence During Navigation
+
+| Field               | Value                                      |
+| ------------------- | ------------------------------------------ |
+| Test Case ID        | TC-UX-004-03                               |
+| Title               | Verify theme persistence during navigation |
+| Related Scenario    | SCN-UX-004                                 |
+| Related Requirement | REQ-UX-003                                 |
+| Risk Level          | Low                                        |
+| Test Design Method  | Requirement-Based                          |
+| Test Type           | Functional / Positive                      |
+| Priority            | Low                                        |
+
+#### Preconditions
+
+- Relay is accessible.
+- Dave (`dave@example.com`) has a registered account and valid credentials.
+- An existing conversation between User D (Dave) and User E (Elon) is available.
+- The user can navigate between the Conversation List and Conversation Panel on a mobile viewport.
+
+#### Test Data
+
+| Data              | Value                                                |
+| ----------------- | ---------------------------------------------------- |
+| User              | User D - Dave (`dave@example.com`)                   |
+| Themes            | Light Mode, Dark Mode                                |
+| Mobile Viewport   | 390 × 844                                            |
+| Application Areas | Conversation List, Conversation Panel, Message Input |
+
+#### Steps
+
+1. Set the browser viewport to 390 × 844.
+2. Open the Relay application.
+3. Log in using Dave's valid credentials.
+4. Verify that the Conversation List is displayed.
+5. Select Light Mode using the theme toggle.
+6. Verify that the Conversation List displays Light Mode consistently.
+7. Open the existing conversation with Elon without refreshing the page.
+8. Verify that the Conversation Panel and Message Input display Light Mode consistently after navigation.
+9. Navigate back to the Conversation List using the available navigation control without refreshing the page.
+10. Verify that the Conversation List still displays Light Mode consistently.
+11. Open the existing conversation with Elon again without refreshing the page.
+12. Verify that the Conversation Panel and Message Input still display Light Mode consistently.
+13. Navigate back to the Conversation List without refreshing the page.
+14. Select Dark Mode using the theme toggle.
+15. Verify that the Conversation List displays Dark Mode consistently.
+16. Open the existing conversation with Elon without refreshing the page.
+17. Verify that the Conversation Panel and Message Input display Dark Mode consistently after navigation.
+18. Navigate back to the Conversation List using the available navigation control without refreshing the page.
+19. Verify that the Conversation List still displays Dark Mode consistently.
+20. Open the existing conversation with Elon again without refreshing the page.
+21. Verify that the Conversation Panel and Message Input still display Dark Mode consistently.
+22. Verify that the selected theme and displayed theme remain consistent when navigating between the Conversation List and Conversation Panel in both themes.
+
+#### Expected Result
+
+- Light Mode remains selected and displayed when navigating from the Conversation List to the Conversation Panel.
+- Light Mode remains selected and displayed when returning to the Conversation List.
+- Light Mode remains selected and displayed when reopening the conversation.
+- Dark Mode remains selected and displayed when navigating from the Conversation List to the Conversation Panel.
+- Dark Mode remains selected and displayed when returning to the Conversation List.
+- Dark Mode remains selected and displayed when reopening the conversation.
+- The selected theme and displayed theme remain consistent across the tested application areas without refreshing the page.
 
 ### TC-UX-005-01 — Verify Responsive Layout on Desktop
 
@@ -309,17 +404,17 @@
 
 #### Test Data
 
-| Data              | Value                                                |
-| ----------------- | ---------------------------------------------------- |
-| User              | User A                                               |
-| Viewport          | Representative desktop viewport: 1366 × 768 pixels   |
-| Application Areas | Conversation list, conversation panel, message input |
+| Data              | Value                                                                 |
+| ----------------- | --------------------------------------------------------------------- |
+| User              | User D - Dave (dave@example.com)                                      |
+| Viewport          | Representative desktop viewport: 1366 × 768 pixels                    |
+| Application Areas | Register, Login, Conversation list, conversation panel, message input |
 
 #### Steps
 
 1. Open the Relay application in a desktop browser.
 2. Set the browser viewport to 1366 × 768 pixels.
-3. Sign in as User A using valid credentials.
+3. Sign in as User D using valid credentials.
 4. Verify that the main application interface is displayed.
 5. Observe the conversation list.
 6. Verify that the conversation list can be accessed and its entries can be selected.
@@ -362,14 +457,14 @@
 
 | Data              | Value                                                |
 | ----------------- | ---------------------------------------------------- |
-| User              | User A                                               |
+| User              | User D - Dave (dave@example.com)                     |
 | Viewport          | Representative mobile viewport: 390 × 844 pixels     |
 | Application Areas | Conversation list, conversation panel, message input |
 
 #### Steps
 
 1. Open Relay in a mobile browser or configure the browser viewport to 390 × 844 pixels.
-2. Sign in as User A using valid credentials.
+2. Sign in as User D using valid credentials.
 3. Verify that the main application interface is displayed.
 4. Observe how the conversation list is presented on the mobile viewport.
 5. Verify that the conversation list can be accessed and a conversation can be selected.

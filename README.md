@@ -110,6 +110,16 @@ qa-relay-manual/
 │   ├── messaging.md
 │   └── user-experience.md
 ├── evidence/
+│   ├── authentication/
+│   ├── authorization/
+│   ├── conversations/
+│   ├── messaging/
+│   ├── EXP-003-invalid-conversation-id.png
+│   ├── EXP-003-valid-id-authorized-account.png
+│   ├── EXP-003-valid-id-other-account.png
+│   ├── EXP-004-empty-message.png
+│   ├── EXP-004-whitespace-only-message.png
+│   └── EXP-005-message-1000-characters.png
 └── README.md
 ```
 

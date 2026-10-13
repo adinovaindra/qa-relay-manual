@@ -79,9 +79,9 @@ Detailed test cases are organized by functional area to improve navigation, revi
 | Authorization   | [authorization.md](test-cases/authorization.md)     | 2          |
 | Conversations   | [conversations.md](test-cases/conversations.md)     | 4          |
 | Messaging       | [messaging.md](test-cases/messaging.md)             | 7          |
-| User Experience | [user-experience.md](test-cases/user-experience.md) | 8          |
+| User Experience | [user-experience.md](test-cases/user-experience.md) | 9          |
 
-**Total: 31 test cases**
+**Total: 32 test cases**
 
 Each file contains the detailed test cases for its respective functional area. Test case IDs and traceability mappings are maintained across the repository.
 
