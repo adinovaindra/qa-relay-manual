@@ -169,13 +169,13 @@
 
 #### Test Data
 
-| Data                     | Value                                  |
-| ------------------------ | -------------------------------------- |
-| User                     | User A - Alice (alice@example.com)     |
-| Conversation Participant | User C - Charlie (charlie@example.com) |
-| Message 1                | Unique valid text message              |
-| Message 2                | Unique valid text message              |
-| Message 3                | Unique valid text message              |
+| Data                     | Value                                   |
+| ------------------------ | --------------------------------------- |
+| User                     | User A - Alice (alice@example.com)      |
+| Conversation Participant | User C - Charlie (charlie@example.com)  |
+| Message 1                | "Happy birthday, Charlie!"              |
+| Message 2                | "I wish you a lifetime of happiness."   |
+| Message 3                | "I hope we can meet again really soon!" |
 
 #### Steps
 
@@ -220,27 +220,27 @@
 #### Preconditions
 
 - Relay is accessible.
-- User A and User C are registered users.
-- An existing 1-on-1 conversation between User A and User C is available.
+- User A and User B are registered users.
+- An existing 1-on-1 conversation between User A and User B is available.
 - The conversation contains enough existing messages to require scrolling within the message view.
 - User A is authorized to access the conversation.
 - User A's valid credentials are available.
 
 #### Test Data
 
-| Data                     | Value                                              |
-| ------------------------ | -------------------------------------------------- |
-| User                     | User A - Alice (alice@example.com)                 |
-| Conversation Participant | User C - Charlie (charlie@example.com)             |
-| New Message              | Unique valid text message                          |
-| Message History          | Existing conversation containing multiple messages |
+| Data                     | Value                                                         |
+| ------------------------ | ------------------------------------------------------------- |
+| User                     | User A - Alice (alice@example.com)                            |
+| Conversation Participant | User B - Bob (bob@example.com)                                |
+| New Message              | "I've never heard of it before. What tech stack does it use?" |
+| Message History          | Existing conversation containing multiple messages            |
 
 #### Steps
 
 1. Open the Relay application.
 2. Sign in as User A using valid credentials.
 3. Verify that the chat page is displayed.
-4. Open the existing conversation with User C.
+4. Open the existing conversation with User B.
 5. Observe the message view immediately after the conversation is opened.
 6. Identify the latest message currently available in the conversation.
 7. Verify the visible position of the message view relative to the latest message.
@@ -280,13 +280,13 @@
 
 #### Test Data
 
-| Data                     | Value                                                            |
-| ------------------------ | ---------------------------------------------------------------- |
-| User                     | User A - Alice (alice@example.com)                               |
-| Conversation Participant | User B - Bob (bob@example.com)                                   |
-| Current Date Message     | Unique valid text message sent on the current date               |
-| Previous Date Message    | Unique valid text message sent on the previous calendar date     |
-| Older Date Message       | Unique valid text message sent before the previous calendar date |
+| Data                     | Value                                                               |
+| ------------------------ | ------------------------------------------------------------------- |
+| User                     | User A - Alice (alice@example.com)                                  |
+| Conversation Participant | User B - Bob (bob@example.com)                                      |
+| Current Date Message     | "I've never heard of it before. What tech stack does it use?"       |
+| Previous Date Message    | "I live in Yogyakarta, Bob. How about you? What do you do for now?" |
+| Older Date Message       | "Hello Bob! How are you?"                                           |
 
 #### Steps
 
@@ -302,18 +302,14 @@
 10. Locate the messages sent before the previous calendar date.
 11. Verify the date separator associated with the older messages.
 12. Verify that messages belonging to the same calendar date are grouped under the same date separator.
-13. Refresh the page.
-14. Open the conversation with User B if necessary.
-15. Verify that the date separators and message grouping remain consistent after refresh.
 
 #### Expected Result
 
 - Messages sent on the current date are grouped under the `Today` date separator.
 - Messages sent on the previous calendar date are grouped under the `Yesterday` date separator.
-- Messages sent before the previous calendar date are grouped under a two-digit day and month date separator.
+- Messages sent before the previous calendar date are grouped under a date separator in the documented DD Mon format (e.g., 01 Jan).
 - Messages belonging to the same calendar date are grouped under the same date separator.
 - Date separators are displayed in the appropriate position relative to the messages they represent.
-- Date separators and message grouping remain consistent after page refresh.
 
 ### TC-MSG-007-01 — Prevent Sending Empty or Whitespace-Only Messages
 

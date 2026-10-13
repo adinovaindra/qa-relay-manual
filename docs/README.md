@@ -29,7 +29,7 @@ Requirements or behavior that are not sufficiently specified must not be treated
 
 ### Defect Reports
 
-- [Defect Report Index](defect-reports/README.md)
+- [Defect Report Index](../defect-reports/README.md)
 
 ### Test Design
 

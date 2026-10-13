@@ -130,7 +130,7 @@ The observed behavior matched all documented expected results. The new conversat
 
 - User B (Bob) appeared in the conversation list.
 - The conversation list entry for the conversation with User B displayed the latest message preview: "Hello Bob! How are you?"
-- The timestamp for the conversation with User B was displayed as 21:54.
+- The timestamp for the conversation with User B was displayed as 21.54.
 
 **Execution Result:** PASS
 
@@ -170,10 +170,10 @@ The observed conversation list entry displayed the counterpart's name, latest me
 **Actual Result**
 
 - Before sending a new message, Conversation B (Alice and Charlie) appeared above Conversation A (Alice and Bob) in the conversation list.
-- Conversation B displayed a timestamp of 23:15, while Conversation A displayed a timestamp of 21:54.
-- User A successfully sent the message "I hope you are good, Bob." in Conversation A at 23:29.
+- Conversation B displayed a timestamp of 23.15, while Conversation A displayed a timestamp of 21.54.
+- User A successfully sent the message "I hope you are good, Bob." in Conversation A at 23.29.
 - After the message was sent, Conversation A appeared above Conversation B in the conversation list.
-- Conversation A displayed the latest message preview "I hope you are good, Bob." with a timestamp of 23:29.
+- Conversation A displayed the latest message preview "I hope you are good, Bob." with a timestamp of 23.29.
 
 **Execution Result:** PASS
 

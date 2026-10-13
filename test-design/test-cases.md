@@ -73,13 +73,13 @@ Exploratory discovery of application behavior does not by itself establish the e
 
 Detailed test cases are organized by functional area to improve navigation, review, and maintenance.
 
-| Functional Area | File | Test Cases |
-|---|---|---|
-| Authentication | [authentication.md](test-cases/authentication.md) | 10 |
-| Authorization | [authorization.md](test-cases/authorization.md) | 2 |
-| Conversations | [conversations.md](test-cases/conversations.md) | 4 |
-| Messaging | [messaging.md](test-cases/messaging.md) | 7 |
-| User Experience | [user-experience.md](test-cases/user-experience.md) | 8 |
+| Functional Area | File                                                | Test Cases |
+| --------------- | --------------------------------------------------- | ---------- |
+| Authentication  | [authentication.md](test-cases/authentication.md)   | 10         |
+| Authorization   | [authorization.md](test-cases/authorization.md)     | 2          |
+| Conversations   | [conversations.md](test-cases/conversations.md)     | 4          |
+| Messaging       | [messaging.md](test-cases/messaging.md)             | 7          |
+| User Experience | [user-experience.md](test-cases/user-experience.md) | 8          |
 
 **Total: 31 test cases**
 

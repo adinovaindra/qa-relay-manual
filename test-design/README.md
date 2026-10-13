@@ -57,7 +57,7 @@ Detailed test cases are organized by functional area.
 
 ### Defect Reports
 
-- [Defect Report Index](defect-reports/README.md)
+- [Defect Report Index](../defect-reports/README.md)
 
 ### Product Documentation
 

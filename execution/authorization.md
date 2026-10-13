@@ -52,9 +52,9 @@ _Summary reflects the execution records documented in this file and must be upda
 - Bob signed in using valid credentials and opened the conversation with Alice.
 - The conversation initially displayed the empty state `No messages yet`.
 - Bob sent the message `Hello Alice, I am Bob!` in the conversation.
-- The message appeared in Bob's conversation view at 21:17.
+- The message appeared in Bob's conversation view at 21.17.
 - Alice subsequently signed in using valid credentials and opened the corresponding conversation.
-- The same message, `Hello Alice, I am Bob!`, was visible in Alice's conversation view at 21:17.
+- The same message, `Hello Alice, I am Bob!`, was visible in Alice's conversation view at 21.17.
 - The conversation URL in both user sessions contained the same conversation ID: `deeaf79d-e410-4a9a-8011-71aa2c782f28`.
 
 **Execution Result:** PASS

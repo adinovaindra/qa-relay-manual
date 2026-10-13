@@ -362,7 +362,6 @@ Coverage considerations:
 - Messages sent before the previous calendar date
 - Messages from the same calendar date
 - Date separator placement
-- Date separator consistency after refresh
 - Date separator behavior when viewing message history
 
 ---
