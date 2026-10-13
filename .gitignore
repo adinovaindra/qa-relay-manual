@@ -1,5 +1,7 @@
 # Local-only screen recordings
 /evidence/authentication/recordings/
+/evidence/messaging/recordings/
+/evidence/user-experience/recordings/
 
 #zip files
 *.zip
