@@ -12,8 +12,8 @@ Only test cases that have actually been executed are recorded as formal executio
 
 | Metric                 |                                Count |
 | ---------------------- | -----------------------------------: |
-| Test Cases Executed    |                                    5 |
-| Passed                 |                                    5 |
+| Test Cases Executed    |                                    8 |
+| Passed                 |                                    8 |
 | Failed                 |                                    0 |
 | Blocked                |                                    0 |
 | Clarification Required |                                    0 |
@@ -236,7 +236,7 @@ Both Light Mode and Dark Mode were exercised on all five application areas: Regi
 
 The observed theme changes were consistent with the selected mode in each tested area. No interactive-control issues were observed during this execution.
 
-This test verifies theme switching and the visible appearance of the tested application areas. Theme persistence after refresh, navigation, logout, and re-login remains covered separately by TC-UX-004-01 and TC-UX-004-02.
+This test verifies theme switching and the visible appearance of the tested application areas. Theme persistence after refresh, logout and re-login, and navigation is covered separately by TC-UX-004-01, TC-UX-004-02, and TC-UX-004-03, respectively.
 
 ### TC-UX-004-01 — Verify Theme Persistence After Refresh
 
@@ -301,6 +301,171 @@ Both Light Mode and Dark Mode were tested on the Register page, Login page, and 
 
 On the chat page, the theme remained visually consistent across the Conversation List, Conversation Panel, and Message Input after refresh.
 
-The execution supports a PASS verdict for theme persistence after refresh in the tested application areas. Persistence across navigation and logout/re-login remains covered separately by TC-UX-004-02 and TC-UX-004-03.
+The execution supports a PASS verdict for theme persistence after refresh in the tested application areas. Theme persistence after logout and re-login is documented in TC-UX-004-02, while persistence during navigation is documented in TC-UX-004-03. Both test cases have been executed and recorded separately below.
 
 The screen recording was identified as supporting evidence.
+
+### TC-UX-004-02 — Verify Theme Persistence After Logout and Re-Login
+
+**Test Case Reference:** [TC-UX-004-02](../test-design/test-cases/user-experience.md#tc-ux-004-02--verify-theme-persistence-after-logout-and-re-login)
+
+**Scenario Reference:** SCN-UX-004
+
+**Requirement Reference:** REQ-UX-003
+
+**Preconditions**
+
+- Relay is accessible.
+- A registered user account is available (dave@example.com).
+- The user's valid credentials are available.
+- The user can access the main application screens.
+
+**Expected Result**
+
+- Dark mode is applied before logout.
+- The user can log out and sign in again successfully.
+- After re-login, the displayed theme remains consistent with the previously selected dark mode.
+- The theme preference persists across the logout and re-login flow.
+
+**Actual Result**
+
+- The user opened Relay with the current theme set to Light Mode.
+- The user signed in successfully using Dave's valid credentials and was redirected to the `/chat` page.
+- On the chat page, the user selected the **Dark** theme toggle button.
+- The application interface changed to Dark Mode.
+- The user clicked **Logout**, and the application displayed the `/login` page.
+- The user signed in again using Dave's valid credentials.
+- After successful re-login, the application redirected the user to the `/chat` page.
+- Dark Mode remained applied after re-login.
+
+**Execution Result:** PASS
+
+**Evidence**
+
+- **Screen Recording:** [TC-UX-004-02 — Theme Persistence After Logout & Re-Login Full Flow](https://github.com/user-attachments/assets/433bb89a-f956-46e9-aa46-67de4ce0b4d3)
+
+**Defect Reference:** None identified during this execution.
+
+**Execution Notes**
+
+The selected Dark Mode theme remained applied after the user logged out and signed in again using the same account.
+
+The observed behavior is consistent with REQ-UX-003 and the expected result for theme persistence across the logout and re-login flow.
+
+This execution verifies theme persistence across the tested logout and re-login sequence. Persistence after refresh is covered separately by TC-UX-004-01, while persistence during navigation is covered separately by TC-UX-004-03.
+
+### TC-UX-004-03 — Verify Theme Persistence During Navigation
+
+**Test Case Reference:** [TC-UX-004-03](../test-design/test-cases/user-experience.md#tc-ux-004-03--verify-theme-persistence-during-navigation)
+
+**Scenario Reference:** SCN-UX-004
+
+**Requirement Reference:** REQ-UX-003
+
+**Preconditions**
+
+- Relay is accessible.
+- Dave (`dave@example.com`) has a registered account and valid credentials.
+- An existing conversation between User D (Dave) and User E (Elon) is available.
+- The user can navigate between the Conversation List and Conversation Panel on a mobile viewport.
+
+**Expected Result**
+
+- Light Mode remains selected and displayed when navigating from the Conversation List to the Conversation Panel.
+- Light Mode remains selected and displayed when returning to the Conversation List.
+- Light Mode remains selected and displayed when reopening the conversation.
+- Dark Mode remains selected and displayed when navigating from the Conversation List to the Conversation Panel.
+- Dark Mode remains selected and displayed when returning to the Conversation List.
+- Dark Mode remains selected and displayed when reopening the conversation.
+- The selected theme and displayed theme remain consistent across the tested application areas without refreshing the page.
+
+**Actual Result**
+
+- The browser viewport was set to 440 × 956 using DevTools.
+- Dave (`dave@example.com`) signed in using valid credentials and was redirected to the Conversation List.
+- On the Conversation List, clicking **Light** changed the selected theme to Light Mode, and the Conversation List appearance changed accordingly.
+- Dave opened the existing conversation with Elon without refreshing the page.
+- The Conversation Panel and Message Input displayed Light Mode consistently.
+- Dave returned to the Conversation List using the **←** navigation control. Light Mode remained applied.
+- Dave reopened the conversation with Elon without refreshing the page. The Conversation Panel and Message Input continued to display Light Mode.
+- Dave returned to the Conversation List again using the **←** navigation control. Light Mode remained applied.
+- On the Conversation List, clicking **Dark** changed the selected theme to Dark Mode, and the Conversation List appearance changed accordingly.
+- Dave opened the existing conversation with Elon without refreshing the page.
+- The Conversation Panel and Message Input displayed Dark Mode consistently.
+- Dave returned to the Conversation List using the **←** navigation control. Dark Mode remained applied.
+- Dave reopened the conversation with Elon without refreshing the page. The Conversation Panel and Message Input continued to display Dark Mode.
+- The selected theme remained visually consistent across the tested navigation flow in both themes.
+
+**Execution Result:** PASS
+
+**Evidence**
+
+- **Screen Recording:** [TC-UX-004-03 — Theme Persistence During Navigation Full Flow](https://github.com/user-attachments/assets/625444e2-98ec-4332-8027-e4a9729adf05)
+
+**Defect Reference:** None identified during this execution.
+
+**Execution Notes**
+
+The test was executed using a 440 × 956 browser viewport configured through DevTools.
+
+Both Light Mode and Dark Mode were tested while navigating between the Conversation List and Conversation Panel. Each theme remained visually consistent across the Conversation List, Conversation Panel, and Message Input during repeated navigation without refreshing the page.
+
+The observed behavior supports a PASS verdict for theme persistence during navigation in the tested application areas and viewport. This execution does not independently verify theme persistence after refresh or after logout and re-login, which are covered by TC-UX-004-01 and TC-UX-004-02, respectively.
+
+### TC-UX-005-01 — Verify Responsive Layout on Desktop
+
+**Test Case Reference:** [TC-UX-005-01](../test-design/test-cases/user-experience.md#tc-ux-005-01--verify-responsive-layout-on-desktop)
+
+**Scenario Reference:** SCN-UX-005
+
+**Requirement Reference:** REQ-UX-004
+
+**Preconditions**
+
+- Relay is accessible.
+- User has an active account.
+- User has a valid password.
+- An existing conversation between User A and User C contains several messages.
+- A desktop browser is available.
+
+**Expected Result**
+
+- The Register page is displayed, and no layout overlap or clipping prevents access to its displayed UI elements.
+- The Login page is displayed, and no layout overlap or clipping prevents access to its displayed UI elements.
+- Alice successfully accesses the main application interface.
+- The Conversation List is accessible, and the existing Alice – Charlie conversation can be located and selected.
+- The Conversation Panel displays the selected conversation, and several existing messages can be viewed without layout issues preventing their content from being read.
+- The Message Input is accessible, accepts the test text, and displays the entered text without sending the message.
+- No layout overlap or clipping prevents access to the relevant UI elements or completion of the interactions described in this test case.
+- The test evaluates the desktop browser viewport used during execution and does not establish coverage of every desktop resolution or responsive breakpoint.
+
+**Actual Result**
+
+- The Relay application was opened in a desktop browser.
+- The user navigated to the Register page by clicking **Create one**.
+- The Register page was displayed, and its layout was observed to be satisfactory.
+- The user navigated to the Login page by clicking **Sign in**.
+- The Login page was displayed, and its layout was observed to be satisfactory.
+- The user signed in as Alice (`alice@example.com`) using valid credentials.
+- After clicking **Sign in**, the application successfully redirected Alice to the chat page.
+- The Conversation List and Conversation Panel were displayed without observed layout overlap.
+- The user opened the existing conversation with Charlie from the Conversation List.
+- Several existing messages were displayed in the Conversation Panel.
+- The user entered the text `I'm good. I'm very good. How about you, Charlie?` into the Message Input without sending it.
+- The tested application areas were inspected for layout overlap and clipping. No issues preventing access to UI elements or completion of the tested interactions were observed.
+
+**Execution Result:** PASS
+
+**Evidence**
+
+- **Screen Recording:** [TC-UX-005-01 — Verify Responsive Layout on Desktop Full Flow](https://github.com/user-attachments/assets/4f810d03-63e7-4206-b4f4-b0763c07f2f7)
+
+**Defect Reference:** None identified during this execution.
+
+**Execution Notes**
+
+The Register page, Login page, Conversation List, Conversation Panel, and Message Input were inspected during this execution.
+
+Alice successfully accessed the chat page, opened the existing conversation with Charlie, viewed several messages, and entered text into the Message Input without sending it. No layout overlap or clipping that prevented the tested interactions was observed.
+
+This execution supports a PASS verdict for the tested desktop browser viewport. It does not establish responsive behavior across all desktop resolutions, all supported breakpoints, or mobile screen sizes.

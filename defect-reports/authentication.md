@@ -85,14 +85,16 @@ No additional functional impact has been established from the available evidence
 ### Status and Verification Notes
 
 - **Current Status:** Open
-- **Retest:** Not performed
-- **Fix Verification:** Not performed
+- **Retest:** Not performed — outside this portfolio scope
+- **Fix Verification:** Not performed — no fix verification is included in this portfolio deliverables
+
+The defect remains open because no verified fix is available within this portfolio project. Retesting after a fix is not required for this portfolio completion.
 
 Backend account creation was not independently verified. The screenshot does not establish whether the application created a new account despite displaying the duplicate-email error.
 
 ### Traceability
 
-`REQ-AUTH-001` → `TC-AUTH-001-03` → Execution Record → `BUG-001` → Retest (pending)
+`REQ-AUTH-001` → `TC-AUTH-001-03` → Execution Record → `BUG-001`
 
 ---
 
@@ -185,14 +187,16 @@ No additional functional impact has been established from the available evidence
 ### Status and Verification Notes
 
 - **Current Status:** Open
-- **Retest:** Not performed
-- **Fix Verification:** Not performed
+- **Retest:** Not performed — outside this portfolio scope
+- **Fix Verification:** Not performed — no fix verification is included in this portfolio deliverables
+
+The defect remains open because no verified fix is available within this portfolio project. Retesting after a fix is not required for this portfolio completion.
 
 Backend authentication handling and the underlying implementation were not independently verified. The available evidence confirms the displayed messages but does not establish whether both scenarios share the same underlying implementation.
 
 ### Traceability
 
-`REQ-AUTH-002` / `REQ-AUTH-007` → `TC-AUTH-003-01` / `TC-AUTH-003-02` → Execution Records → `BUG-002` → Retest (pending)
+`REQ-AUTH-002` / `REQ-AUTH-007` → `TC-AUTH-003-01` / `TC-AUTH-003-02` → Execution Records → `BUG-002`
 
 ---
 

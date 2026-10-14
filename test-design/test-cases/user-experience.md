@@ -22,10 +22,11 @@
 
 #### Test Data
 
-| Data              | Value                                   |
-| ----------------- | --------------------------------------- |
-| User              | User D - Dave (dave@example.com)        |
-| Conversation Data | No conversations associated with User D |
+| Data                        | Value                                   |
+| --------------------------- | --------------------------------------- |
+| Authenticated User          | User D - Dave (dave@example.com)        |
+| Authenticated User Password | password123                             |
+| Conversation Data           | No conversations associated with User D |
 
 #### Steps
 
@@ -67,7 +68,8 @@
 
 | Data                         | Value                            |
 | ---------------------------- | -------------------------------- |
-| User                         | User D - Dave (dave@example.com) |
+| Authenticated User           | User D - Dave (dave@example.com) |
+| Authenticated User Password  | password123                      |
 | Conversation Participant     | User E - Elon (elon@example.com) |
 | Conversation Message History | No messages                      |
 
@@ -109,11 +111,11 @@
 
 #### Test Data
 
-| Data             | Value                            |
-| ---------------- | -------------------------------- |
-| Email            | User D - Dave (dave@example.com) |
-| Invalid Password | password124                      |
-| Valid Password   | password123                      |
+| Data               | Value                            |
+| ------------------ | -------------------------------- |
+| Authenticated User | User D - Dave (dave@example.com) |
+| Invalid Password   | password124                      |
+| Valid Password     | password123                      |
 
 #### Steps
 
@@ -160,12 +162,13 @@
 
 #### Test Data
 
-| Data              | Value                                                                 |
-| ----------------- | --------------------------------------------------------------------- |
-| User              | User D - Dave (dave@example.com)                                      |
-| Theme 1           | Light mode                                                            |
-| Theme 2           | Dark mode                                                             |
-| Application Areas | Register, Login, Conversation list, conversation panel, message input |
+| Data                        | Value                                                                 |
+| --------------------------- | --------------------------------------------------------------------- |
+| Authenticated User          | User D - Dave (dave@example.com)                                      |
+| Authenticated User Password | password123                                                           |
+| Theme 1                     | Light mode                                                            |
+| Theme 2                     | Dark mode                                                             |
+| Application Areas           | Register, Login, Conversation list, conversation panel, message input |
 
 #### Steps
 
@@ -222,45 +225,45 @@
 
 #### Test Data
 
-| Data              | Value                                                                 |
-| ----------------- | --------------------------------------------------------------------- |
-| User              | User D - Dave (dave@example.com)                                      |
-| Themes            | Light Mode, Dark Mode                                                 |
-| Desktop Viewport  | 1366 × 768                                                            |
-| Application Areas | Register, Login, Conversation List, Conversation Panel, Message Input |
+| Data                        | Value                                                                 |
+| --------------------------- | --------------------------------------------------------------------- |
+| Authenticated User          | User D - Dave (dave@example.com)                                      |
+| Authenticated User Password | password123                                                           |
+| Themes                      | Light Mode, Dark Mode                                                 |
+| Viewport                    | Desktop                                                               |
+| Application Areas           | Register, Login, Conversation List, Conversation Panel, Message Input |
 
 #### Steps
 
-1. Set the browser viewport to 1366 × 768.
-2. Open the Relay application.
-3. Navigate to the Register page.
-4. Select Light Mode using the theme toggle.
-5. Verify that the Register page displays Light Mode consistently.
-6. Refresh the page.
-7. Verify that the Register page remains in Light Mode after the page reloads.
-8. Select Dark Mode using the theme toggle.
-9. Verify that the Register page displays Dark Mode consistently.
-10. Refresh the page.
-11. Verify that the Register page remains in Dark Mode after the page reloads.
-12. Navigate to the Login page.
-13. Select Light Mode using the theme toggle.
-14. Verify that the Login page displays Light Mode consistently.
-15. Refresh the page.
-16. Verify that the Login page remains in Light Mode after the page reloads.
-17. Select Dark Mode using the theme toggle.
-18. Verify that the Login page displays Dark Mode consistently.
-19. Refresh the page.
-20. Verify that the Login page remains in Dark Mode after the page reloads.
-21. Log in using Dave's valid credentials.
-22. Verify that the Conversation List is displayed.
-23. Open the existing conversation with Elon
-24. Select Light Mode and verify that the Conversation List, Conversation Panel, and Message Input display Light Mode consistently.
-25. Refresh the page.
-26. Verify that the Conversation List, Conversation Panel, and Message Input remain in Light Mode after the page reloads.
-27. Select Dark Mode and verify that the Conversation List, Conversation Panel, and Message Input display Dark Mode consistently.
-28. Refresh the page.
-29. Verify that the Conversation List, Conversation Panel, and Message Input remain in Dark Mode after the page reloads.
-30. Verify that the selected theme and displayed theme remain consistent across all tested application areas after refresh.
+1. Open the Relay application.
+2. Navigate to the Register page.
+3. Select Light Mode using the theme toggle.
+4. Verify that the Register page displays Light Mode consistently.
+5. Refresh the page.
+6. Verify that the Register page remains in Light Mode after the page reloads.
+7. Select Dark Mode using the theme toggle.
+8. Verify that the Register page displays Dark Mode consistently.
+9. Refresh the page.
+10. Verify that the Register page remains in Dark Mode after the page reloads.
+11. Navigate to the Login page.
+12. Select Light Mode using the theme toggle.
+13. Verify that the Login page displays Light Mode consistently.
+14. Refresh the page.
+15. Verify that the Login page remains in Light Mode after the page reloads.
+16. Select Dark Mode using the theme toggle.
+17. Verify that the Login page displays Dark Mode consistently.
+18. Refresh the page.
+19. Verify that the Login page remains in Dark Mode after the page reloads.
+20. Log in using Dave's valid credentials.
+21. Verify that the Conversation List is displayed.
+22. Open the existing conversation with Elon
+23. Select Light Mode and verify that the Conversation List, Conversation Panel, and Message Input display Light Mode consistently.
+24. Refresh the page.
+25. Verify that the Conversation List, Conversation Panel, and Message Input remain in Light Mode after the page reloads.
+26. Select Dark Mode and verify that the Conversation List, Conversation Panel, and Message Input display Dark Mode consistently.
+27. Refresh the page.
+28. Verify that the Conversation List, Conversation Panel, and Message Input remain in Dark Mode after the page reloads.
+29. Verify that the selected theme and displayed theme remain consistent across all tested application areas after refresh.
 
 #### Expected Result
 
@@ -294,22 +297,24 @@
 
 #### Test Data
 
-| Data           | Value                            |
-| -------------- | -------------------------------- |
-| User           | User D - Dave (dave@example.com) |
-| Selected Theme | Dark mode                        |
+| Data                        | Value                            |
+| --------------------------- | -------------------------------- |
+| Authenticated User          | User D - Dave (dave@example.com) |
+| Authenticated User Password | password123                      |
+| Selected Theme              | Dark mode                        |
 
 #### Steps
 
 1. Open the Relay application.
-2. Sign in as User D using valid credentials.
-3. Verify that the main application interface is displayed.
-4. Select dark mode.
-5. Verify that dark mode is applied.
-6. Log out from Relay.
-7. Sign in again as User D using valid credentials.
-8. Observe the theme applied to the main application interface.
-9. Verify whether the displayed theme matches the previously selected theme.
+2. Make sure the current theme is light.
+3. Sign in as User D using valid credentials.
+4. Verify that the main application interface is displayed.
+5. Select dark mode.
+6. Verify that dark mode is applied.
+7. Log out from Relay.
+8. Sign in again as User D using valid credentials.
+9. Observe the theme applied to the main application interface.
+10. Verify whether the displayed theme matches the previously selected theme.
 
 #### Expected Result
 
@@ -340,16 +345,17 @@
 
 #### Test Data
 
-| Data              | Value                                                |
-| ----------------- | ---------------------------------------------------- |
-| User              | User D - Dave (`dave@example.com`)                   |
-| Themes            | Light Mode, Dark Mode                                |
-| Mobile Viewport   | 390 × 844                                            |
-| Application Areas | Conversation List, Conversation Panel, Message Input |
+| Data                        | Value                                                |
+| --------------------------- | ---------------------------------------------------- |
+| Authenticated User          | User D - Dave (dave@example.com)                     |
+| Authenticated User Password | password123                                          |
+| Themes                      | Light Mode, Dark Mode                                |
+| Mobile Viewport             | 440 × 956                                            |
+| Application Areas           | Conversation List, Conversation Panel, Message Input |
 
 #### Steps
 
-1. Set the browser viewport to 390 × 844.
+1. Set the browser viewport to 440 × 956.
 2. Open the Relay application.
 3. Log in using Dave's valid credentials.
 4. Verify that the Conversation List is displayed.
@@ -398,39 +404,46 @@
 #### Preconditions
 
 - Relay is accessible.
-- A registered user account is available.
-- The user's valid credentials are available.
-- At least one existing conversation is available to the user.
+- User has an active account.
+- User has a valid password.
+- An existing conversation between User A and User C contains several messages.
+- A desktop browser is available.
 
 #### Test Data
 
-| Data              | Value                                                                 |
-| ----------------- | --------------------------------------------------------------------- |
-| User              | User D - Dave (dave@example.com)                                      |
-| Viewport          | Representative desktop viewport: 1366 × 768 pixels                    |
-| Application Areas | Register, Login, Conversation list, conversation panel, message input |
+| Data                        | Value                                                                 |
+| --------------------------- | --------------------------------------------------------------------- |
+| Authenticated User          | User A - Alice (alice@example.com)                                    |
+| Authenticated User Password | password123                                                           |
+| User C                      | Charlie (charlie@example.com)                                         |
+| Conversation                | Existing User A - User C conversation containing several messages     |
+| Viewport                    | Desktop                                                               |
+| Message Input Text          | "I'm good. I'm very good. How about you, Charlie?"                    |
+| Application Areas           | Register, Login, Conversation List, Conversation Panel, Message Input |
 
 #### Steps
 
 1. Open the Relay application in a desktop browser.
-2. Set the browser viewport to 1366 × 768 pixels.
-3. Sign in as User D using valid credentials.
-4. Verify that the main application interface is displayed.
-5. Observe the conversation list.
-6. Verify that the conversation list can be accessed and its entries can be selected.
-7. Open an existing conversation.
-8. Observe the message area and verify that existing messages can be viewed.
-9. Observe the message input and verify that it can be accessed and used to enter text.
-10. Inspect the main application layout for overlapping or clipped elements that prevent interaction.
+2. Navigate to the Register page and inspect the displayed layout without creating a new account.
+3. Navigate to the Login page and inspect the displayed layout.
+4. Sign in as User A using valid credentials.
+5. Verify that the main application interface is displayed.
+6. Observe the Conversation List and locate the existing conversation with User C - Charlie.
+7. Select the Alice – Charlie conversation.
+8. Observe the Conversation Panel and verify that several existing messages can be viewed.
+9. Observe the Message Input and enter the test text `I'm good. I'm very good. How about you, Charlie?` without sending the message.
+10. Inspect the tested application areas for overlapping or clipped elements that prevent access to UI elements or completion of the interactions described in this test case.
 
 #### Expected Result
 
-- Relay's main application interface remains usable at the selected desktop viewport.
-- The conversation list can be accessed and a conversation can be selected.
-- The message area allows the user to view the selected conversation's messages.
-- The message input can be accessed and used to enter text.
-- No layout issue prevents interaction with the tested application areas.
-- This test uses a representative desktop viewport; it does not establish the product's official responsive breakpoints.
+- The Register page is displayed, and no layout overlap or clipping prevents access to its displayed UI elements.
+- The Login page is displayed, and no layout overlap or clipping prevents access to its displayed UI elements.
+- Alice successfully accesses the main application interface.
+- The Conversation List is accessible, and the existing Alice – Charlie conversation can be located and selected.
+- The Conversation Panel displays the selected conversation, and several existing messages can be viewed without layout issues preventing their content from being read.
+- The Message Input is accessible, accepts the test text, and displays the entered text without sending the message.
+- No layout overlap or clipping prevents access to the relevant UI elements or completion of the interactions described in this test case.
+- The test evaluates the desktop browser viewport used during execution and does not establish coverage of every desktop resolution or responsive breakpoint.
 
 ### TC-UX-005-02 — Verify Responsive Layout on Mobile
 
@@ -458,12 +471,12 @@
 | Data              | Value                                                |
 | ----------------- | ---------------------------------------------------- |
 | User              | User D - Dave (dave@example.com)                     |
-| Viewport          | Representative mobile viewport: 390 × 844 pixels     |
+| Viewport          | Representative mobile viewport: 440 × 956 pixels     |
 | Application Areas | Conversation list, conversation panel, message input |
 
 #### Steps
 
-1. Open Relay in a mobile browser or configure the browser viewport to 390 × 844 pixels.
+1. Open Relay in a mobile browser or configure the browser viewport to 440 × 956 pixels.
 2. Sign in as User D using valid credentials.
 3. Verify that the main application interface is displayed.
 4. Observe how the conversation list is presented on the mobile viewport.

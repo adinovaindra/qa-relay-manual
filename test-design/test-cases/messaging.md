@@ -23,11 +23,12 @@
 
 #### Test Data
 
-| Data                     | Value                              |
-| ------------------------ | ---------------------------------- |
-| Sender                   | User A - Alice (alice@example.com) |
-| Conversation Participant | User B - Bob (bob@example.com)     |
-| Message                  | Valid text message                 |
+| Data                        | Value                              |
+| --------------------------- | ---------------------------------- |
+| Authenticated User          | User A - Alice (alice@example.com) |
+| Authenticated User Password | password123                        |
+| Conversation Participant    | User B - Bob (bob@example.com)     |
+| Message                     | Valid text message                 |
 
 #### Steps
 
@@ -69,11 +70,12 @@
 
 #### Test Data
 
-| Data                     | Value                                                         |
-| ------------------------ | ------------------------------------------------------------- |
-| Sender                   | User A - Alice (alice@example.com)                            |
-| Conversation Participant | User B - Bob (bob@example.com)                                |
-| Existing Messages        | Known messages already available in the selected conversation |
+| Data                        | Value                                                         |
+| --------------------------- | ------------------------------------------------------------- |
+| Authenticated User          | User A - Alice (alice@example.com)                            |
+| Authenticated User Password | password123                                                   |
+| Conversation Participant    | User B - Bob (bob@example.com)                                |
+| Existing Messages           | Known messages already available in the selected conversation |
 
 #### Steps
 
@@ -115,11 +117,12 @@
 
 #### Test Data
 
-| Data                     | Value                                                |
-| ------------------------ | ---------------------------------------------------- |
-| Sender                   | User A - Alice (alice@example.com)                   |
-| Conversation Participant | User B - Bob (bob@example.com)                       |
-| Test Message             | Unique valid text message used to verify persistence |
+| Data                        | Value                                                |
+| --------------------------- | ---------------------------------------------------- |
+| Authenticated User          | User A - Alice (alice@example.com)                   |
+| Authenticated User Password | password123                                          |
+| Conversation Participant    | User B - Bob (bob@example.com)                       |
+| Test Message                | Unique valid text message used to verify persistence |
 
 #### Steps
 
@@ -169,13 +172,14 @@
 
 #### Test Data
 
-| Data                     | Value                                   |
-| ------------------------ | --------------------------------------- |
-| User                     | User A - Alice (alice@example.com)      |
-| Conversation Participant | User C - Charlie (charlie@example.com)  |
-| Message 1                | "Happy birthday, Charlie!"              |
-| Message 2                | "I wish you a lifetime of happiness."   |
-| Message 3                | "I hope we can meet again really soon!" |
+| Data                        | Value                                   |
+| --------------------------- | --------------------------------------- |
+| Authenticated User          | User A - Alice (alice@example.com)      |
+| Authenticated User Password | password123                             |
+| Conversation Participant    | User C - Charlie (charlie@example.com)  |
+| Message 1                   | "Happy birthday, Charlie!"              |
+| Message 2                   | "I wish you a lifetime of happiness."   |
+| Message 3                   | "I hope we can meet again really soon!" |
 
 #### Steps
 
@@ -228,12 +232,13 @@
 
 #### Test Data
 
-| Data                     | Value                                                         |
-| ------------------------ | ------------------------------------------------------------- |
-| User                     | User A - Alice (alice@example.com)                            |
-| Conversation Participant | User B - Bob (bob@example.com)                                |
-| New Message              | "I've never heard of it before. What tech stack does it use?" |
-| Message History          | Existing conversation containing multiple messages            |
+| Data                        | Value                                                         |
+| --------------------------- | ------------------------------------------------------------- |
+| Authenticated User          | User A - Alice (alice@example.com)                            |
+| Authenticated User Password | password123                                                   |
+| Conversation Participant    | User B - Bob (bob@example.com)                                |
+| New Message                 | "I've never heard of it before. What tech stack does it use?" |
+| Message History             | Existing conversation containing multiple messages            |
 
 #### Steps
 
@@ -280,13 +285,14 @@
 
 #### Test Data
 
-| Data                     | Value                                                               |
-| ------------------------ | ------------------------------------------------------------------- |
-| User                     | User A - Alice (alice@example.com)                                  |
-| Conversation Participant | User B - Bob (bob@example.com)                                      |
-| Current Date Message     | "I've never heard of it before. What tech stack does it use?"       |
-| Previous Date Message    | "I live in Yogyakarta, Bob. How about you? What do you do for now?" |
-| Older Date Message       | "Hello Bob! How are you?"                                           |
+| Data                        | Value                                                               |
+| --------------------------- | ------------------------------------------------------------------- |
+| Authenticated User          | User A - Alice (alice@example.com)                                  |
+| Authenticated User Password | password123                                                         |
+| Conversation Participant    | User B - Bob (bob@example.com)                                      |
+| Current Date Message        | "I've never heard of it before. What tech stack does it use?"       |
+| Previous Date Message       | "I live in Yogyakarta, Bob. How about you? What do you do for now?" |
+| Older Date Message          | "Hello Bob! How are you?"                                           |
 
 #### Steps
 
@@ -334,12 +340,13 @@
 
 #### Test Data
 
-| Data                     | Value                              |
-| ------------------------ | ---------------------------------- |
-| User                     | User A - Alice (alice@example.com) |
-| Conversation Participant | User B - Bob (bob@example.com)     |
-| Input Variation 1        | Empty input                        |
-| Input Variation 2        | Whitespace-only input              |
+| Data                        | Value                              |
+| --------------------------- | ---------------------------------- |
+| Authenticated User          | User A - Alice (alice@example.com) |
+| Authenticated User Password | password123                        |
+| Conversation Participant    | User B - Bob (bob@example.com)     |
+| Input Variation 1           | Empty input                        |
+| Input Variation 2           | Whitespace-only input              |
 
 #### Steps
 

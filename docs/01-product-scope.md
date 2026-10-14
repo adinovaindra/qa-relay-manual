@@ -6,7 +6,7 @@ This document defines the product scope and QA scope for the Relay End-to-End Ma
 
 The purpose of this scope is to establish what will be tested, what will remain outside the current testing scope, the available requirement sources, and the initial areas of product risk.
 
-This document serves as the foundation for subsequent test design, execution, defect reporting, retesting, regression testing, and test summary activities.
+This document serves as the foundation for test design, initial manual test execution, evidence collection, defect reporting, and the final test summary. Retesting and regression testing after a fix are outside the deliverables of this portfolio.
 
 ---
 
@@ -72,9 +72,9 @@ The current Relay implementation includes the following documented capabilities:
 
 ## 4. QA Objective
 
-The primary objective of this portfolio is to demonstrate an end-to-end manual QA workflow against a realistic full-stack web application.
+The primary objective of this portfolio is to demonstrate an evidence-based manual QA workflow against a realistic full-stack web application.
 
-The QA workflow will cover:
+The Portfolio workflow covers:
 
 ```text
 Requirement Analysis
@@ -91,14 +91,12 @@ Evidence Collection
         ↓
 Defect Reporting
         ↓
-Retest
-        ↓
-Regression Testing
-        ↓
 Test Summary
 ```
 
-The testing activities will focus on functional behavior, authorization boundaries, data persistence, integration behavior, and important user experience flows.
+The testing activities focus on functional behavior, authorization boundaries, data persistence, integration behavior, and important user experience flows.
+
+Retesting after a fix and regression testing after a fix are excluded because this self-directed portfolio does not include implementing or waiting for a developer fix or new application build.
 
 ---
 
@@ -189,6 +187,8 @@ The following areas are outside the current scope:
 - Broad cross-browser compatibility testing
 - Source-code/unit-test review as the primary QA activity
 - Realtime messaging
+- Retesting after a fix
+- Regression testing after a fix
 
 Realtime messaging is intentionally excluded from the current Relay implementation and is documented as outside the application's current scope.
 
@@ -273,8 +273,8 @@ The following areas are identified as initial QA risk areas based on the documen
 | Risk Area | Potential Impact | Initial Risk |
 |---|---|---|
 | Authentication | Users may be unable to securely access the application. | High |
-| Authorization | Users may access conversations they are not authorized to access. | Critical |
-| Sender Identity | Messages may be attributed to the wrong user. | Critical |
+| Authorization | Users may access conversations they are not authorized to access. | High |
+| Sender Identity | Messages may be attributed to the wrong user. | High |
 | Message Persistence | User messages may be lost or inconsistent across sessions. | High |
 | Conversation Access | Users may access or interact with incorrect conversations. | High |
 | Session / Logout | Authentication state may remain incorrectly active. | High |

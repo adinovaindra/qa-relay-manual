@@ -22,11 +22,12 @@
 
 #### Test Data
 
-| Data              | Value                                       |
-| ----------------- | ------------------------------------------- |
-| Authorized User   | User A - Alice (alice@example.com)          |
-| Other Participant | User B - Bob (bob@example.com)              |
-| Conversation      | Existing conversation between Alice and Bob |
+| Data                     | Value                                       |
+| ------------------------ | ------------------------------------------- |
+| Authorized User          | User A - Alice (alice@example.com)          |
+| Authorized User Password | password123                                 |
+| Other Participant        | User B - Bob (bob@example.com)              |
+| Conversation             | Existing conversation between Alice and Bob |
 
 #### Steps
 
@@ -68,7 +69,8 @@
 
 | Data                     | Value                                  |
 | ------------------------ | -------------------------------------- |
-| User                     | User A - Alice (alice@example.com)     |
+| Sender                   | User A - Alice (alice@example.com)     |
+| Sender Password          | password123                            |
 | Conversation Participant | User C - Charlie (charlie@example.com) |
 
 #### Steps
@@ -111,11 +113,12 @@
 
 #### Test Data
 
-| Data                     | Value                                                        |
-| ------------------------ | ------------------------------------------------------------ |
-| User                     | User A - Alice (alice@example.com)                           |
-| Conversation Participant | User B - Bob (bob@example.com)                               |
-| Conversation             | Existing 1-on-1 conversation containing at least one message |
+| Data                        | Value                                                        |
+| --------------------------- | ------------------------------------------------------------ |
+| Authenticated User          | User A - Alice (alice@example.com)                           |
+| Authenticated User Password | password123                                                  |
+| Conversation Participant    | User B - Bob (bob@example.com)                               |
+| Conversation                | Existing 1-on-1 conversation containing at least one message |
 
 #### Steps
 
@@ -156,12 +159,13 @@
 
 #### Test Data
 
-| Data           | Value                                                                                  |
-| -------------- | -------------------------------------------------------------------------------------- |
-| User           | User A - Alice (alice@example.com)                                                     |
-| Conversation A | Existing 1-on-1 conversation between User A and User B - Bob (bob@example.com)         |
-| Conversation B | Existing 1-on-1 conversation between User A and User C - Charlie (charlie@example.com) |
-| New Message    | Valid text message sent by User A in Conversation A                                    |
+| Data                        | Value                                                                                  |
+| --------------------------- | -------------------------------------------------------------------------------------- |
+| Authenticated User          | User A - Alice (alice@example.com)                                                     |
+| Authenticated User Password | password123                                                                            |
+| Conversation A              | Existing 1-on-1 conversation between User A and User B - Bob (bob@example.com)         |
+| Conversation B              | Existing 1-on-1 conversation between User A and User C - Charlie (charlie@example.com) |
+| New Message                 | Valid text message sent by User A in Conversation A                                    |
 
 #### Steps
 

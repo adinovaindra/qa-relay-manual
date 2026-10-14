@@ -4,7 +4,9 @@
 
 This repository contains a self-directed QA portfolio project for **Relay**, a full-stack 1-on-1 messaging web application.
 
-The project demonstrates a structured manual QA workflow, from requirement analysis and risk assessment through test design, exploratory testing, formal test execution, defect reporting, retesting, regression testing, and test summary.
+The project demonstrates a structured manual QA workflow, from requirement analysis and risk assessment through test design, exploratory testing, formal test execution, defect reporting, and test summary.
+
+Retesting after a fix and regression testing after a fix are intentionally excluded from this portfolio's deliverables because this self-directed project does not include a developer fix or a new application build.
 
 The project focuses on evidence-based testing, requirement traceability, risk-based prioritization, and a clear separation between observed behavior, assumptions, unspecified behavior, and confirmed defects.
 
@@ -41,7 +43,7 @@ See [Product & QA Scope](docs/01-product-scope.md) for the detailed scope and li
 
 ## QA Workflow
 
-The intended end-to-end QA workflow is:
+The Portfolio workflow is:
 
 ```text
 Requirement Analysis
@@ -52,20 +54,16 @@ Test Scenario Design
         ↓
 Test Case Design
         ↓
-Test Execution
+Manual Test Execution
         ↓
 Evidence Collection
         ↓
 Defect Reporting
         ↓
-Retesting
-        ↓
-Regression Testing
-        ↓
 Test Summary
 ```
 
-The workflow represents the project's QA process. Individual activities and completion status are documented separately; the workflow diagram does not imply that every activity has been completed.
+Retesting after a fix and regression testing after a fix are outside the deliverables of this self-directed portfolio. The workflow reflects the activities included in the agreed portfolio scope.
 
 ## Tools
 
@@ -83,8 +81,9 @@ Tools are used where appropriate to support documentation, manual testing, evide
 
 ```text
 qa-relay-manual/
+├── .gitignore
 ├── defect-reports/
-|   ├── README.md
+│   ├── README.md
 │   └── authentication.md
 ├── docs/
 │   ├── README.md
@@ -114,6 +113,7 @@ qa-relay-manual/
 │   ├── authorization/
 │   ├── conversations/
 │   ├── messaging/
+│   ├── user-experience/
 │   ├── EXP-003-invalid-conversation-id.png
 │   ├── EXP-003-valid-id-authorized-account.png
 │   ├── EXP-003-valid-id-other-account.png
@@ -138,7 +138,9 @@ Each documentation directory uses its own README as an entry point where appropr
 
 Product scope, requirements, risk assessment, test scenarios, detailed test cases, and exploratory testing notes are documented in the repository.
 
-Formal test execution, defect reporting, retesting, regression testing, and test summary activities are documented as they are performed and supported by evidence.
+Formal test execution and defect reporting are documented as they are performed and supported by evidence. The final test summary will report the tested scope, execution results, open defects, untested areas, limitations, and residual risk.
+
+Retesting after a fix and regression testing after a fix are intentionally excluded from this portfolio. Open defects do not prevent portfolio completion when they are documented and reported transparently.
 
 Test results and defects are not assumed or fabricated. A test result is recorded based on actual execution, while a defect is reported only when the available requirement or contract supports the identified violation.
 

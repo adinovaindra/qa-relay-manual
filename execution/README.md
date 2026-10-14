@@ -34,7 +34,9 @@ Exploratory findings are not automatically treated as formal test execution resu
 - Record deviations from the planned test procedure when applicable.
 - Report a defect only when the available requirement or contract supports the violation.
 - Mark behavior that lacks sufficient specification as requiring clarification.
-- Record retest and regression results only when those activities have actually been performed.
+- Record only actual execution and verification results supported by evidence.
+- Retesting after a fix and regression testing after a fix are outside the deliverables of this portfolio.
+- Do not claim retest or regression results when those activities have not been performed.
 
 ## Related Documentation
 

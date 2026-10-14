@@ -6,7 +6,7 @@ This document identifies and prioritizes product risks that may affect the relia
 
 The risk assessment is used to guide test coverage and testing depth throughout the QA lifecycle.
 
-Higher-risk areas will receive greater testing attention, including deeper negative testing, authorization checks, edge cases, and regression coverage where appropriate.
+Higher-risk areas receive greater testing attention during initial manual execution, including deeper negative testing, authorization checks, multi-user scenarios, persistence checks, and edge cases where appropriate. Retesting and regression testing after a fix are outside the deliverables of this portfolio.
 
 ---
 
@@ -81,7 +81,7 @@ Testing may include:
 - Multi-user scenarios
 - Session-state checks
 - Persistence verification
-- Regression coverage after defects are fixed
+- Additional test depth for high-risk behavior during initial execution
 
 High-risk areas include:
 
@@ -127,7 +127,7 @@ High Risk
      ↓
 Positive + Negative + Multi-user + Boundary/Edge
      ↓
-High Regression Attention
+High Initial Test Depth
 ```
 
 Whereas a lower-risk feature may receive:
@@ -139,7 +139,7 @@ Low risk
      ↓
 Core functional verification
      ↓
-Limited regression depth
+Standard Functional Coverage
 ```
 
 This approach prioritizes testing effort according to the potential consequences of failure.

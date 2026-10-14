@@ -143,7 +143,7 @@ These areas will be addressed through clarification, observable product behavior
 
 ## 9. Requirement Traceability
 
-Requirements will be traced through the QA lifecycle using the following relationship:
+Requirements are traced through the Portfolio QA workflow using the following relationship:
 
 ```text
 Requirement
@@ -156,13 +156,13 @@ Test Execution
      ↓
 Evidence
      ↓
-Defect
+Defect (if confirmed)
      ↓
-Retest
-     ↓
-Regression
+Test Summary
 ```
 
-A requirement is considered QA-verified only when supported by actual test execution evidence.
+A requirement is considered QA-verified only to the extent supported by actual test execution evidence.
 
 A documented requirement does not automatically indicate that the implementation has passed QA verification.
+
+Retesting after a fix and regression testing after a fix are outside the deliverables of this portfolio. Open defects and unverified behavior must be reported transparently in the final test summary.

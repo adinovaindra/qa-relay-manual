@@ -57,7 +57,8 @@ Each defect report should include, where applicable:
 - Distinguish defect severity from priority.
 - Preserve traceability between requirements, test cases, execution records, evidence, and defect reports.
 - Update defect status and related records only when supported by actual actions or new evidence.
-- Record retest results only after a fix or relevant build is available and retesting has been performed.
+- Record verification activities only when they have actually been performed and are within the agreed portfolio scope.
+- Retesting after a fix and regression testing after a fix are excluded from this portfolio. Keep open defects documented transparently in the final test summary.
 
 ## Defect Severity
 
@@ -83,7 +84,7 @@ These levels are the classification scheme adopted for this self-directed QA por
 3. Determine whether the evidence supports a confirmed defect or whether further clarification or investigation is needed.
 4. Create or update the defect report when justified.
 5. Link the defect report from the related execution record.
-6. Record retest and regression results when those activities are performed.
+6. Record verification activities only when they have actually been performed and are within the agreed portfolio scope.
 7. Update this index to reflect the documented defect reports.
 
 ## Related Documentation

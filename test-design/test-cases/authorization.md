@@ -23,11 +23,12 @@
 
 #### Test Data
 
-| Data              | Value                                       |
-| ----------------- | ------------------------------------------- |
-| Authorized User   | User A - Alice (alice@example.com)          |
-| Other Participant | User B - Bob (bob@example.com)              |
-| Conversation      | Existing conversation between Alice and Bob |
+| Data                     | Value                                       |
+| ------------------------ | ------------------------------------------- |
+| Authorized User          | User A - Alice (alice@example.com)          |
+| Authorized User Password | password123                                 |
+| Other Participant        | User B - Bob (bob@example.com)              |
+| Conversation             | Existing conversation between Alice and Bob |
 
 #### Steps
 
@@ -64,11 +65,12 @@
 
 #### Test Data
 
-| Data      | Value                              |
-| --------- | ---------------------------------- |
-| Sender    | User A - Alice (alice@example.com) |
-| Recipient | User B - Bob (bob@example.com)     |
-| Message   | Valid test message                 |
+| Data            | Value                              |
+| --------------- | ---------------------------------- |
+| Sender          | User A - Alice (alice@example.com) |
+| Sender Password | password123                        |
+| Recipient       | User B - Bob (bob@example.com)     |
+| Message         | Valid test message                 |
 
 #### Steps
 
