@@ -118,7 +118,7 @@ The following areas are included in the current testing scope:
 - Observable UI behavior when accessing conversations available to the authenticated user
 - UI-level access behavior within the documented application scope
 
-Server-side authorization enforcement, unauthorized conversation access verification, authenticated user identity manipulation, and message sender identity enforcement are deferred to Portfolio 2 — Technical QA. This portfolio does not claim to verify these backend security controls.
+Server-side authorization enforcement, unauthorized conversation access verification, authenticated user identity manipulation, and message sender identity enforcement have not been independently verified through formal test execution. This portfolio does not claim to verify these backend security controls.
 
 ### 5.3 Conversations
 

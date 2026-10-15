@@ -134,13 +134,13 @@ Each documentation directory uses its own README as an entry point where appropr
 
 ## Project Status
 
-**Status: In Progress**
+**Status: Complete**
 
 Product scope, requirements, risk assessment, test scenarios, detailed test cases, and exploratory testing notes are documented in the repository.
 
 Formal test execution has been completed for all 32 defined test cases, with 29 PASS and 3 FAIL. The three failed test cases are associated with two documented defects, both of which remain open. Execution records and defect reports are maintained in the repository.
 
-The final test summary is pending. It will consolidate the tested scope, execution results, open defects, unverified requirements, limitations, and residual risk.
+The [Final Test Summary](execution/final-test-summary.md) consolidates the tested scope, execution results, open defects, unverified requirements, limitations, and residual risk.
 
 Retesting after a fix and regression testing after a fix are intentionally excluded from this portfolio. Open defects do not prevent portfolio completion when they are documented and reported transparently.
 
@@ -161,6 +161,11 @@ This is a self-directed portfolio project, not professional QA work performed fo
 The project demonstrates QA methods and reasoning applied to Relay within the documented scope. It does not claim production defect statistics, exhaustive coverage of every possible behavior, or verification of internal server-side implementation details unless supported by separate technical evidence.
 
 ## Related Documentation
+
+### Test Execution
+
+- [Final Test Summary](execution/final-test-summary.md)
+- [Execution Index](execution/README.md)
 
 ### Defect Reports
 
