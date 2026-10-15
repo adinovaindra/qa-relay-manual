@@ -138,7 +138,9 @@ Each documentation directory uses its own README as an entry point where appropr
 
 Product scope, requirements, risk assessment, test scenarios, detailed test cases, and exploratory testing notes are documented in the repository.
 
-Formal test execution and defect reporting are documented as they are performed and supported by evidence. The final test summary will report the tested scope, execution results, open defects, untested areas, limitations, and residual risk.
+Formal test execution has been completed for all 32 defined test cases, with 29 PASS and 3 FAIL. The three failed test cases are associated with two documented defects, both of which remain open. Execution records and defect reports are maintained in the repository.
+
+The final test summary is pending. It will consolidate the tested scope, execution results, open defects, unverified requirements, limitations, and residual risk.
 
 Retesting after a fix and regression testing after a fix are intentionally excluded from this portfolio. Open defects do not prevent portfolio completion when they are documented and reported transparently.
 

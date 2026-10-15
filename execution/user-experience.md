@@ -12,8 +12,8 @@ Only test cases that have actually been executed are recorded as formal executio
 
 | Metric                 |                                Count |
 | ---------------------- | -----------------------------------: |
-| Test Cases Executed    |                                    8 |
-| Passed                 |                                    8 |
+| Test Cases Executed    |                                    9 |
+| Passed                 |                                    9 |
 | Failed                 |                                    0 |
 | Blocked                |                                    0 |
 | Clarification Required |                                    0 |
@@ -469,3 +469,57 @@ The Register page, Login page, Conversation List, Conversation Panel, and Messag
 Alice successfully accessed the chat page, opened the existing conversation with Charlie, viewed several messages, and entered text into the Message Input without sending it. No layout overlap or clipping that prevented the tested interactions was observed.
 
 This execution supports a PASS verdict for the tested desktop browser viewport. It does not establish responsive behavior across all desktop resolutions, all supported breakpoints, or mobile screen sizes.
+
+### TC-UX-005-02 — Verify Responsive Layout on Mobile
+
+**Test Case Reference:** [TC-UX-005-02](../test-design/test-cases/user-experience.md#tc-ux-005-02--verify-responsive-layout-on-mobile)
+
+**Scenario Reference:** SCN-UX-005
+
+**Requirement Reference:** REQ-UX-004
+
+**Preconditions**
+
+- Relay is accessible.
+- A registered user account is available.
+- The user's valid credentials are available.
+- At least one existing conversation is available to the user.
+- A mobile browser or browser viewport configured to represent a mobile screen is available.
+
+**Expected Result**
+
+- Relay's main application interface remains usable at the selected mobile viewport.
+- The Register page is displayed, and no layout overlap or clipping prevents access to its displayed UI elements.
+- The Login page is displayed, and no layout overlap or clipping prevents access to its displayed UI elements.
+- Alice successfully accesses the main application interface.
+- The Conversation List is accessible, and the existing Alice - Charlie conversation can be located and selected.
+- The Conversation Panel displays the selected conversation, and several existing messages can be viewed without layout issues preventing their content from being read.
+- The Message Input is accessible, accepts the test text, and displays the entered text without sending the message.
+- No overlapping elements, clipping, or horizontal overflow prevents interaction with the tested application areas.
+- The test evaluates the mobile viewport used during execution and does not establish coverage of every mobile resolution or responsive breakpoint.
+
+**Actual Result**
+
+- Relay was opened using browser DevTools with the viewport configured to 440 × 956 pixels.
+- The Register page was opened using "Create one". Its displayed inputs, UI elements, and toggles were inspected. No overlapping elements, clipping, or horizontal overflow preventing access or interaction were observed.
+- The Login page was opened using "Sign in". Its displayed inputs, UI elements, and toggles were inspected. No overlapping elements, clipping, or horizontal overflow preventing access or interaction were observed.
+- Login using the credentials specified in the test data succeeded, and the Conversation List was displayed.
+- The Conversation List displayed two conversations: Charlie and Bob. No overlapping elements, clipping, or horizontal overflow preventing access or interaction were observed.
+- The conversation with Charlie was opened. Several existing messages and the Message Input were visible.
+- The test text, `I'm good. I'm very good. How about you, Charlie?`, was entered into the Message Input without clicking the Send button.
+- No overlapping elements, clipping, or horizontal overflow preventing access or interaction were observed in the inspected application areas.
+
+**Execution Result:** PASS
+
+**Evidence**
+
+- **Screen Recording:** [TC-UX-005-02 — Verify Responsive Layout on Mobile Full Flow](https://github.com/user-attachments/assets/446bfe2f-35f0-42b8-82f5-085afce1a863)
+
+**Defect Reference:** None identified during this execution.
+
+**Execution Notes**
+
+- This execution evaluated the layout and accessibility of the tested application areas at a viewport of 440 × 956 pixels.
+- Register and Login were inspected for layout issues; this execution did not independently validate all registration or authentication behavior.
+- The message text was entered but not sent. Message delivery was not tested.
+- The result does not establish responsive behavior across all mobile resolutions or official breakpoints.

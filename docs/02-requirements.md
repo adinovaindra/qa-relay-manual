@@ -58,6 +58,10 @@ REQ-AUTH-001
 | REQ-AUTHZ-004 | Message sender identity shall be derived from the authenticated user rather than accepted as authoritative input from the request body. | Relay README | Documented |
 | REQ-AUTHZ-005 | Protected operations shall perform authentication and authorization on the server.                                                      | Relay README | Documented |
 
+**Portfolio Verification Note**
+
+`REQ-AUTHZ-003` and `REQ-AUTHZ-005` are documented requirements that have not been independently verified through formal test execution. Their verification status remains unverified.
+
 ---
 
 ## 5. Conversation Requirements

@@ -115,11 +115,10 @@ The following areas are included in the current testing scope:
 
 ### 5.2 Authorization
 
-- Access to authorized conversations
-- Rejection of unauthorized conversation access
-- Server-side authorization behavior
-- Authenticated user identity handling
-- Message sender identity handling
+- Observable UI behavior when accessing conversations available to the authenticated user
+- UI-level access behavior within the documented application scope
+
+Server-side authorization enforcement, unauthorized conversation access verification, authenticated user identity manipulation, and message sender identity enforcement are deferred to Portfolio 2 — Technical QA. This portfolio does not claim to verify these backend security controls.
 
 ### 5.3 Conversations
 
@@ -149,23 +148,21 @@ The following areas are included in the current testing scope:
 
 ### 5.6 End-to-End Integration
 
-Testing of critical user flows across application layers, including:
+Manual testing of selected critical user flows across the application's observable UI behavior, including:
 
 ```text
-UI
- ↓
-Server-side API logic
- ↓
-Authentication / Authorization
- ↓
-Database operation
- ↓
-Response
- ↓
-UI state
+User Action
+    ↓
+Application UI
+    ↓
+Observable Application Response
+    ↓
+Resulting UI State
 ```
 
-The portfolio will primarily evaluate the observable behavior of the application rather than perform source-code review as the main testing activity.
+The portfolio evaluates end-to-end user flows through observable behavior and documented requirements or contracts. Internal server-side API logic, authentication and authorization enforcement, database operations, and data integrity are not independently verified as part of this portfolio unless explicitly supported by separate evidence and in-scope test activities.
+
+Source-code review is not the primary testing activity.
 
 ---
 
@@ -198,14 +195,14 @@ Realtime messaging is intentionally excluded from the current Relay implementati
 
 The following assumptions will be treated as assumptions until they are supported by explicit requirements or verified through testing:
 
-| ID | Assumption | Initial Status |
-|---|---|---|
-| ASM-001 | A user can register a new account. | Documented |
-| ASM-002 | A registered user can authenticate using valid credentials. | Documented |
-| ASM-003 | Relay supports 1-on-1 conversations. | Documented |
-| ASM-004 | Messages persist across refresh and re-login. | Documented |
-| ASM-005 | Conversation access is authorized server-side. | Documented |
-| ASM-006 | Message sender identity is derived from the authenticated user. | Documented |
+| ID      | Assumption                                                      | Initial Status |
+| ------- | --------------------------------------------------------------- | -------------- |
+| ASM-001 | A user can register a new account.                              | Documented     |
+| ASM-002 | A registered user can authenticate using valid credentials.     | Documented     |
+| ASM-003 | Relay supports 1-on-1 conversations.                            | Documented     |
+| ASM-004 | Messages persist across refresh and re-login.                   | Documented     |
+| ASM-005 | Conversation access is authorized server-side.                  | Documented     |
+| ASM-006 | Message sender identity is derived from the authenticated user. | Documented     |
 
 Documented behavior is not treated as QA-verified behavior until it has been tested.
 
@@ -270,18 +267,18 @@ Where expected behavior is not defined by available documentation or observable 
 
 The following areas are identified as initial QA risk areas based on the documented product behavior and the impact of potential failures:
 
-| Risk Area | Potential Impact | Initial Risk |
-|---|---|---|
-| Authentication | Users may be unable to securely access the application. | High |
-| Authorization | Users may access conversations they are not authorized to access. | High |
-| Sender Identity | Messages may be attributed to the wrong user. | High |
-| Message Persistence | User messages may be lost or inconsistent across sessions. | High |
-| Conversation Access | Users may access or interact with incorrect conversations. | High |
-| Session / Logout | Authentication state may remain incorrectly active. | High |
-| Message Ordering | Conversation history may become confusing or misleading. | Medium |
-| Error Handling | Users may not receive appropriate feedback when operations fail. | Medium |
-| Input Validation | Invalid or unexpected input may be accepted, rejected incorrectly, or cause unintended application behavior. | Medium |
-| Empty States | Users may receive unclear or misleading UI states. | Low |
-| Responsive Behavior | Core functionality may become difficult to use on smaller screens. | Medium |
+| Risk Area           | Potential Impact                                                                                             | Initial Risk |
+| ------------------- | ------------------------------------------------------------------------------------------------------------ | ------------ |
+| Authentication      | Users may be unable to securely access the application.                                                      | High         |
+| Authorization       | Users may access conversations they are not authorized to access.                                            | High         |
+| Sender Identity     | Messages may be attributed to the wrong user.                                                                | High         |
+| Message Persistence | User messages may be lost or inconsistent across sessions.                                                   | High         |
+| Conversation Access | Users may access or interact with incorrect conversations.                                                   | High         |
+| Session / Logout    | Authentication state may remain incorrectly active.                                                          | High         |
+| Message Ordering    | Conversation history may become confusing or misleading.                                                     | Medium       |
+| Error Handling      | Users may not receive appropriate feedback when operations fail.                                             | Medium       |
+| Input Validation    | Invalid or unexpected input may be accepted, rejected incorrectly, or cause unintended application behavior. | Medium       |
+| Empty States        | Users may receive unclear or misleading UI states.                                                           | Low          |
+| Responsive Behavior | Core functionality may become difficult to use on smaller screens.                                           | Medium       |
 
 These are initial risk assessments and will be refined as requirements, test scenarios, and execution evidence become available.

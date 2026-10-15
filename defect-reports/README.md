@@ -15,13 +15,13 @@ Confirmed defects are documented by functional area.
 | Functional Area | Defect Report                            | Defects Recorded |
 | --------------- | ---------------------------------------- | ---------------: |
 | Authentication  | [authentication.md](./authentication.md) |                2 |
-| Authorization   | Not created yet                          |                0 |
-| Conversations   | Not created yet                          |                0 |
-| Messaging       | Not created yet                          |                0 |
-| User Experience | Not created yet                          |                0 |
+| Authorization   | None documented                          |                0 |
+| Conversations   | None documented                          |                0 |
+| Messaging       | None documented                          |                0 |
+| User Experience | None documented                          |                0 |
 | **Total**       |                                          |            **2** |
 
-The index reflects the defect reports currently documented in this directory. It must be updated when defect reports are added, removed, or reorganized.
+The index reflects the defect reports currently documented in this directory. A functional area with no documented defects is not necessarily defect-free; it means that no defect report is currently recorded for that area in this directory. Update the index when defect reports are added, removed, or reorganized.
 
 ## Defect Identification
 
@@ -66,12 +66,12 @@ Severity describes the impact of a confirmed defect on application functionality
 
 This portfolio uses the following severity levels:
 
-| Severity | Definition |
-| -------- | ---------- |
+| Severity | Definition                                                                                                                                    |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | Critical | The defect causes a serious security compromise, unauthorized access to important data, or a critical failure that makes the system unusable. |
-| High | The defect significantly blocks core functionality or an important user workflow, without meeting the Critical criteria. |
-| Medium | The defect disrupts a specific feature or workflow, but its impact is limited and core functionality remains usable. |
-| Low | The defect has a minor impact on usability, presentation, or non-critical details without disrupting core functionality. |
+| High     | The defect significantly blocks core functionality or an important user workflow, without meeting the Critical criteria.                      |
+| Medium   | The defect disrupts a specific feature or workflow, but its impact is limited and core functionality remains usable.                          |
+| Low      | The defect has a minor impact on usability, presentation, or non-critical details without disrupting core functionality.                      |
 
 Severity must be assigned based on the demonstrated impact and available evidence. The severity of a defect must not be inferred solely from the risk level of the affected feature.
 

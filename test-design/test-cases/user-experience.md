@@ -468,30 +468,38 @@
 
 #### Test Data
 
-| Data              | Value                                                |
-| ----------------- | ---------------------------------------------------- |
-| User              | User D - Dave (dave@example.com)                     |
-| Viewport          | Representative mobile viewport: 440 × 956 pixels     |
-| Application Areas | Conversation list, conversation panel, message input |
+| Data                        | Value                                                                 |
+| --------------------------- | --------------------------------------------------------------------- |
+| Authenticated User          | User A - Alice (alice@example.com)                                    |
+| Authenticated User Password | password123                                                           |
+| User C                      | Charlie (charlie@example.com)                                         |
+| Conversation                | Existing Alice - Charlie conversation containing several messages     |
+| Viewport                    | Representative mobile viewport: 440 × 956 pixels                      |
+| Message Input Text          | `I'm good. I'm very good. How about you, Charlie?`                    |
+| Application Areas           | Register, Login, Conversation List, Conversation Panel, Message Input |
 
 #### Steps
 
 1. Open Relay in a mobile browser or configure the browser viewport to 440 × 956 pixels.
-2. Sign in as User D using valid credentials.
-3. Verify that the main application interface is displayed.
-4. Observe how the conversation list is presented on the mobile viewport.
-5. Verify that the conversation list can be accessed and a conversation can be selected.
-6. Open an existing conversation.
-7. Observe the message area and verify that existing messages can be viewed.
-8. Observe the message input and verify that it can be accessed and used to enter text.
-9. Inspect the layout for overlapping, clipping, or horizontal overflow that prevents interaction with the tested application areas.
-10. Verify that the tested core functionality remains accessible on the mobile viewport.
+2. Navigate to the Register page and inspect its layout without creating a new account.
+3. Navigate to the Login page and inspect its layout.
+4. Sign in as User A using the valid credentials.
+5. Verify that the main application interface is displayed.
+6. Observe how the Conversation List is presented on the mobile viewport.
+7. Verify that the Conversation List can be accessed and the existing Alice - Charlie conversation can be located and selected.
+8. Open the Alice - Charlie conversation.
+9. Observe the message area and verify that several existing messages can be viewed.
+10. Observe the Message Input and enter the test text `I'm good. I'm very good. How about you, Charlie?` without sending the message.
+11. Inspect the tested application areas for overlapping elements, clipping, or horizontal overflow that prevents access to UI elements or completion of the interactions described in this test case.
 
 #### Expected Result
 
 - Relay's main application interface remains usable at the selected mobile viewport.
-- The conversation list can be accessed and a conversation can be selected.
-- The message area allows the user to view the selected conversation's messages.
-- The message input can be accessed and used to enter text.
-- No layout issue prevents interaction with the tested application areas.
-- This test uses a representative mobile viewport; it does not establish the product's official responsive breakpoints.
+- The Register page is displayed, and no layout overlap or clipping prevents access to its displayed UI elements.
+- The Login page is displayed, and no layout overlap or clipping prevents access to its displayed UI elements.
+- Alice successfully accesses the main application interface.
+- The Conversation List is accessible, and the existing Alice - Charlie conversation can be located and selected.
+- The Conversation Panel displays the selected conversation, and several existing messages can be viewed without layout issues preventing their content from being read.
+- The Message Input is accessible, accepts the test text, and displays the entered text without sending the message.
+- No overlapping elements, clipping, or horizontal overflow prevents interaction with the tested application areas.
+- The test evaluates the mobile viewport used during execution and does not establish coverage of every mobile resolution or responsive breakpoint.
